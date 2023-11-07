@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+header {
+    width: 85%;
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    margin-left: 15%;
+}
+
+.userpage {
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.userpage a{
+    padding: 0px 15px;
+    text-decoration: none;
+}
+
+.box-left {
+    position: fixed;
+    width: 15%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.menu-icon {
+    background-color: #141313;
+    padding: 10px;
+    cursor: pointer;
+    justify-content: center;
+    text-align: center;
+}
+
+.menu-list {
+    display: flex; 
+    flex-direction: column; 
+    position: fixed;
+    top: 80px;
+    left: 0;
+    background-color: white;
+    width: 10%;
+}
+
+.menu-list a {
+    display: block;
+    padding: 10px 25px;
+    text-decoration: none;
+    color: black;
+}
+
+.menu-list a.active,
+.menu-list a:hover {
+    color: rgb(0, 166, 255);
+}
+
+main{
+    width: 85%;
+    margin-left: 15%;
+}
+
+.box_footer{
+    margin-top:300px;
+}
+/* footer section starts */
+#footer {
+    height: auto;
+    width: 85%;
+    background-color: rgb(0, 170, 255);
+    margin-left: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #000;
+    position: fixed;
+    bottom: 0;
+  }
+  
+  .footer-left,
+  .footer-right {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-left {
+    padding-left: 12%;
+    display: flex;
+    align-items: center;
+    width: 30%;
+    border-right: 1px solid black;
+    margin-right: 100px;
+  }
+  
+  .footer-right {
+    padding-right: 20%;
+    display: flex;
+    align-items: center;
+    width: 60%;
+  }
+  
+  #footer h3 {
+    font-family: BalooExtra;
+    text-align: start;
+    color: var(--yellow-color);
+  }
+  
+  #footer p,
+  #footer a {
+    font-family: Barlow;
+    color: #ffff;
+    text-align: start;
+  }
+  #footer a {
+    text-decoration: none;
+    display: block;
+    line-height: 1.8rem;
+  }
+  
+  #footer i {
+    color: var(--yellow-color);
+  }
+  
+  #footer .card_1 {
+    width: 70%;
+  }
+  
+  .card_1 {
+    width: 70%;
+    margin: 0;
+  }
+  
+  .card_1 div {
+    display: flex;
+    align-items: center;
+  }
+  
+  .card_1 div p,
+  .card_1 p {
+    font-size: 0.9rem;
+    margin-left: 0.3rem;
+    line-height: 2rem;
+    display: block;
+    text-align: start;
+  }
+  
+  .icons i {
+    font-size: 1.5rem;
+    margin-left: 1.3rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.4rem;
+    cursor: pointer;
+  }
+  
+  /* footer section ends */
+  .spct{
+    text-align: center;
+  }
+  
