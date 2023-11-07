@@ -14,6 +14,9 @@
 </style>
 <body>
     <div class="form-dangnhap">
+      <div class="image">
+         <img src="https://caodang.fpt.edu.vn/wp-content/uploads/176198234_10207898689062597_8908401704523734923_n.jpg" alt="">
+      </div>
      <form action="" id="form-login">
         <h1>ĐĂNG NHẬP</h1>
         <div class="form-all" >
