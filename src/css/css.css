@@ -39,6 +39,9 @@ header {
     top: 0;
     left: 0;
 }
+.box_footer{
+    margin-top:300px;
+}
 
 .menu-icon {
     background-color: #141313;
@@ -70,14 +73,37 @@ header {
     color: rgb(0, 166, 255);
 }
 
-main{
-    width: 85%;
-    margin-left: 15%;
+main {
+  width: 85%;
+  margin-left: 15%;
+  display: flex;
 }
 
-.box_footer{
-    margin-top:300px;
+.content {
+  flex: 1;
+  padding: 10px;
 }
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.news-item {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.news-item h2 {
+  margin-bottom: 5px;
+}
+
+.news-item p {
+  margin: 0;
+}
+
+
 /* footer section starts */
 #footer {
     height: auto;
