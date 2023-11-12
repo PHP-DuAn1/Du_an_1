@@ -26,8 +26,8 @@
           <li> <a href="../controller/admin/student/index.php"></a>Quản lý sinh viên</li>
           <li><a href="../controller/admin/teacher/index.php"></a>Quản lý giáo viên</li>
           <li><a href="../controller/admin/point/index.php"></a>Quản lý điểm</li>
-          <li><a href=""></a>Quản lý chuyên ngành</li>
-          <li><a href=""></a>Quản lý lớp</li>
+          <li><a href="../controller/admin/major/index.php"></a>Quản lý chuyên ngành</li>
+          <li><a href="../controller/admin/class/index.php"></a>Quản lý lớp</li>
         </ul>
       </div>
 

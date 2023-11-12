@@ -1,4 +1,4 @@
-<?php
+                                                                                                                                                                             <?php
     function insert_taikhoan($email, $pass) {
         $sql = "INSERT INTO taikhoan ( email, pass) VALUES ( :email, :pass)";
         pdo_execute($sql, array(':email' => $email, ':pass' => $pass));
