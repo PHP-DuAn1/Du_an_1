@@ -12,6 +12,7 @@
         <header>
             <div class="userpage">
                 <a href="#">Xin Chào, admin</a>
+                <a href="#">Đăng xuất</a>
             </div>
             
         </header>

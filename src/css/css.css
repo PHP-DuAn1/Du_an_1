@@ -10,35 +10,35 @@
 }
 
 header {
-width: 100%;
-display: flex;
-justify-content: space-between;
-align-items: center;
-height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
 }
 
 .userpage {
-display: flex;
-list-style: none;
-justify-content: flex-end;
-align-items: center;
-width: 100%;
+  display: flex;
+  list-style: none;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
 }
 
-.userpage a{
-padding: 0px 15px;
-text-decoration: none;
+.userpage a {
+  padding: 0px 15px;
+  text-decoration: none;
 }
 
 .box-left {
-border-top: 5px solid grey;
-width: 15%;
-height: 100%;
-top: 0;
-left: 0;
-z-index: 1; /* Ensure it's above other elements */
+  position: sticky;
+  border-top: 15px solid grey;
+  width: 15%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Ensure it's above other elements */
 }
-
 
 .menu-icon {
   background-color: #141313;
@@ -49,11 +49,11 @@ z-index: 1; /* Ensure it's above other elements */
 }
 
 .menu-list {
-display: flex; 
-flex-direction: column; 
-top: 80px;
-left: 0;
-background-color: white;
+  display: flex;
+  flex-direction: column;
+  top: 80px;
+  left: 0;
+  background-color: white;
 }
 
 .menu-list a {
@@ -68,93 +68,101 @@ background-color: white;
   color: rgb(0, 166, 255);
 }
 
-main{
-width: 100%;
-display: flex;
-border-top: 1px solid gray;
+main {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  border: 1px solid gray;
 }
+
 .main-content {
-width: 85%;
-display: flex;
+  width: 85%;
+  display: flex;
 }
 
 .content {
-flex: 1;
-padding: 10px;
-border-top: 5px solid grey;
-border-left: 5px solid grey;
-color: #000;
-margin-bottom: 0;
+  flex: 1;
+  padding: 10px;
+  border: 15px solid grey;
+  color: #000;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: auto; /* Bật tính năng cuộn khi nội dung vượt quá kích thước */
 }
 
-
 .column {
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .news-item {
-background-color: #f9f9f9;
-padding: 10px;
-margin-bottom: 10px;
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .news-item h2 a {
-color: black; 
-text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
 
 .news-item h2 a:hover {
-color: rgb(0, 166, 255);
+  color: rgb(0, 166, 255);
 }
 
 .news-item p {
-margin: 0;
+  margin: 0;
 }
 
 .content_schedule {
-margin: 80px auto; 
-max-width: 800px;
-padding: 20px;
+  margin: 80px auto;
+  max-width: 800px;
+  padding: 20px;
 }
 
 .table-container {
-width: 100%;
-border-collapse: collapse;
-margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  overflow: auto; /* Bật tính năng cuộn khi bảng vượt quá kích thước */
 }
 
 .table-container th,
 .table-container td {
-border: 1px solid black;
-padding: 8px;
-text-align: left;
-border-right: 1px solid black;
-border-bottom: 1px solid black;
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  width: auto;
 }
 
 .table-container th {
-background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 .table-container tbody tr:nth-child(even) {
-background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 .table-container tbody tr:hover {
-background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
-
 
 /* footer section starts */
 #footer {
-font-family: BalloExtra;
-height: auto;
-width:100%;
-background-color: rgb(0, 170, 255);
-display: flex;
-border-top: 1px solid #000;
-bottom: 0;
+  bottom: 0;
+  font-family: BalloExtra;
+  height: auto;
+  width: 100%;
+  background-color: rgb(0, 170, 255);
+  display: flex;
+  border-top: 1px solid #000;
+}
+
+.box_footer{
+  display: flex;
 }
 
 .footer-left,
@@ -164,20 +172,18 @@ bottom: 0;
 }
 
 .footer-left {
-  padding-left: 12%;
   display: flex;
+  justify-content: center;
   align-items: center;
-  width: 30%;
+  width: 50%;
   border-right: 1px solid black;
-  margin-right: 100px;
-  margin-top: 10px;
 }
 
 .footer-right {
-  padding-right: 20%;
   display: flex;
+  justify-content: center;
   align-items: center;
-  width: 60%;
+  width: 50%;
 }
 
 #footer h3 {
@@ -192,15 +198,13 @@ bottom: 0;
   color: #ffff;
   text-align: start;
 }
+
 #footer a {
   text-decoration: none;
   display: block;
   line-height: 1.8rem;
 }
 
-#footer i {
-  color: var(--yellow-color);
-}
 
 #footer .card_1 {
   width: 100%;
@@ -211,13 +215,11 @@ bottom: 0;
 }
 
 .card_1 {
-  width: 100%;
   margin: 0;
   margin-top: 10px;
 }
 
 .card_2 {
-  width: 100%;
   margin: 0;
   margin-top: 10px;
 }
@@ -234,54 +236,42 @@ bottom: 0;
   margin-top: 10px;
 }
 
-/* .card_1 div p,
-.card_1 p {
-  font-size: 0.9rem;
-  margin-left: 0.3rem;
-  line-height: 2rem;
-  display: block;
-  text-align: start;
-} */
-
-.icons i {
-  font-size: 1.5rem;
-  margin-left: 1.3rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1.4rem;
-  cursor: pointer;
+.card_2 i,.card_1 i {
+  margin-right: 10px;
+  color: black;
 }
 
+
+
 /* footer section ends */
-.spct{
+.spct {
   text-align: center;
 }
 
 table {
-width: 100%;
-border-collapse: collapse;
-font-family: Arial, sans-serif;
-margin-left:50px ;
-margin-top:30px;
-}
-
-th, td {
-border: 1px solid #000000;
-padding: 10px;
-text-align: center;
-}
-#form{
   width: 100%;
-
-
-
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  margin-left: 50px;
+  margin-top: 30px;
 }
-th{
-  font-size:15px;
-  color:gray;
-  
+
+th,
+td {
+  border: 1px solid #000000;
+  padding: 10px;
+  text-align: center;
 }
-td{
-  font-size:12px;
 
+#form {
+  width: 100%;
+}
 
+th {
+  font-size: 15px;
+  color: gray;
+}
+
+td {
+  font-size: 12px;
 }

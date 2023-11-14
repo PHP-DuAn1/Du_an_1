@@ -1,6 +1,5 @@
 
 <footer class="box_footer">
-        <div id="footer">
           <div class="footer-left">
             <div class="card_1">
               <h3>Nhóm 5</h3>
@@ -13,10 +12,7 @@
                 <i class="fa-solid fa-envelope"></i>
                 <p>nhom5@fpt.edu.vn</p>
               </div>
-            <div>
-                <i class="far fa-envelope"></i>
-                <p>Địa chỉ email các phòng ban</p>
-            </div>
+            
           </div>
           </div>
           <div class="footer-right">
@@ -26,7 +22,10 @@
                 <i class="fas fa-phone-alt"></i>
                 <p>Số điện thoại liên hệ giải đáp ý kiến sinh viên: 1900996686</p>
             </div>
-        </div>
+            <div>
+                <i class="fa-solid fa-envelope"></i>
+                <p>Địa chỉ email các phòng ban</p>
+            </div>
         
 </footer>      
         

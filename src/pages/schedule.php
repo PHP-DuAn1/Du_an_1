@@ -1,19 +1,43 @@
-<div class="content">
-   <!-- Nội dung trang điểm -->
-   <form action="#" method="POST" id="bang">
-      <p>Chuyên ngành: Lập trình website </p>
-      <table>
-         <tr>
-            <th>#</th>
-            <th>Môn</th>
-            <th>Mã môn</th>
-            <th>Mã lớp</th>
-            <th>Điểm</th>
-         </tr>
-         <!-- Các dòng khác của bảng điểm -->
-      </table>
-   </form>
 
-      
-   </div>
+<div class="content">
+<div class="content_schedule">
+<h2>Bảng Thời Khóa Biểu</h2>
+
+<table class="table-container">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Ngày</th>
+            <th>Phòng</th>
+            <th>Giảng đường</th>
+            <th>Mã môn</th>
+            <th>Môn</th>
+            <th>Lớp</th>
+            <th>Giảng viên</th>
+            <th>Ca</th>
+            <th>Thời gian</th>
+            <th>Link Học trực tuyến</th>
+            <th>Chi tiết</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>12/11/2023</td>
+            <td>A101</td>
+            <td>Phòng 101</td>
+            <td>M001</td>
+            <td>Toán</td>
+            <td>Lớp 1A</td>
+            <td>Nguyễn Văn A</td>
+            <td>Sáng</td>
+            <td>8:00 - 10:00</td>
+            <td><a href="#">Link 1</a></td>
+            <td><a href="#">Chi tiết 1</a></td>
+        </tr>
+
+    </tbody>
+</table>
+</div>
+</div>
 </main>
