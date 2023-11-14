@@ -11,7 +11,7 @@ ALTER TABLE students
 ADD COLUMN roleId INT;
 
 UPDATE students
-SET roleId = 2;
+SET roleId = 1;
 
 
 
@@ -19,4 +19,4 @@ ALTER TABLE teachers
 ADD COLUMN roleId INT;
 
 UPDATE teachers
-SET roleId = 1;
+SET roleId = 2;
