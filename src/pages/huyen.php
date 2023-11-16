@@ -3,92 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="../css/first.css"> -->
     <title>Document</title>
-</head>
-<style>
-    
-    
-    form{
-        margin-left:900px;
-        margin-top: -50px;
-        padding-right: 50px;
-        
+    <style>
+.menu {
+  height: 110px;
+  display: flex;
+}
+.submit {
+  margin-left: 600px;
+  margin-top: 40px;
+}
+input {
+  margin-right: 70px;
+  height: 30px;
+  width: 120px;
+  /* border-radius:10px; */
+  background-color: #60cdf2;
+  color: black;
+  font-size: 15px;
+  content: "\e8b9";
+  box-shadow: none;
+}
+.menu img {
+  margin-left: 40px;
+  margin-top: 10px;
+}
+hr {
+  margin-top: 5px;
+}
+.footer {
+  background-color: #61caed;
+  height: 180px;
+  margin-top: 30px;
+  text-align: center;
+  padding-top: 10px;
+}
+p {
+  font-size: 16px;
+  margin-left: 1110px;
+}
 
-    }
-    input{
-        width:150px;
-        height:30px;
-        background-color: rgb(65, 173, 230);
-        margin-right: 50px;
-       
-        font-size: 18px;
-        font-weight: bold;
-
-    }
-    img{
-        margin-top: 30px;
-        margin-left: 30px;
-
-    }
-    .home img{
-     width:95%;
-     height:700px;
-     margin-left: 30px;
-    }
-    .footer{
-       width: 95%;
-       height:200px;
-       background-color:rgb(56, 199, 231)0, 119, 255;
-       margin-left: 30px;
-       margin-top: 10px;
-       text-align: center;
-       justify-items: center;
-       
-
-    }
-    .footer img {
-        width: 160px;
-        height: 70px;
-    }
-    p{
-        font-size: 25px;
-        font-weight: bold;
-
-    }
-   
-    
-
+    </style>
   
-    
-</style>
-<body>
-    <div class="container">
-        <div clas="header">
-        <div class="logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/FPT_Polytechnic.png" width=200px width=100px alt="">
-        </div>
-        <div class="input">
-            <form action="">
-                <input type="submit" value="ĐĂNG NHẬP">
-                <input type="submit" value="LIÊN HỆ">
-            </form>
-        </div>
-    </div>
-    <div class="home">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/FPT_Polytechnic_-_Sao_nhap_hoc_-_Tap_1_-_00001.jpg/1599px-FPT_Polytechnic_-_Sao_nhap_hoc_-_Tap_1_-_00001.jpg" alt="">
 
+</head>
+<body>
+    <div class="menu">
+        <img src="../img/z4882685840288_1a95851ec438de621f3e2a928fd10843.jpg" width=150px height=80px alt="">
+        <div class="submit">
+            <input type="submit" value="GIẢNG VIÊN">
+            <input type="submit" value="SINH VIÊN">
+            <input type="submit" value="LIÊN HỆ">
+        </div>
+
+    </div>
+    <hr color="gray">
+    <div class="banner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/FPT_Polytechnic_-_Sao_nhap_hoc_-_Tap_1_-_00001.jpg"  width=100% height=900px alt="">
     </div>
     <div class="footer">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/FPT_Polytechnic.png" alt="">
-        <p>TOÀ NHÀ HATECO,SỐ 5 PHƯƠNG CANH,NAM TỪ LIÊM,HÀ NỘI</p>
+        <img src="https://insacmau.com/wp-content/uploads/2023/02/logo-fpt-polytechnic.png" width=150px height=80px; alt="">
+        <h2>Đường Trịnh Văn Bô, Phường Phương Canh, Quận Nam Từ Liêm, Hà Nội</h2>
+        <!-- <p>FIVE School @2024,All Rights Reserved</p> -->
+        
+
     </div>
-    </div>
-    
+    <p>FIVE School @2024,All Rights Reserved</p>
 </body>
 </html>
-
-
-
-
-
-?>

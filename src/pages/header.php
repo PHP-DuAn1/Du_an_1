@@ -19,7 +19,7 @@
         <main>
     <div class="box-left">
         <div class="menu-list" id="menuList">
-            <a href="index.php?act=new"><i class="fas fa-bell"></i> Thông Báo</a>
+            <a href="index.php"><i class="fas fa-bell"></i> Thông Báo</a>
             <a href="index.php?act=schedule" ><i class="far fa-calendar-alt"></i> Lịch Học</a>
             <a href="index.php?act=poin"><i class="fas fa-graduation-cap"></i> Điểm</a>
             <a href="#"><i class="fas fa-concierge-bell"></i> Dịch Vụ</a>
