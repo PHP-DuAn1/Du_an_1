@@ -42,6 +42,12 @@ function checkEmail($email) {
     $check = pdo_query_one($sql, [':email' => $email]);
     return $check;
 }
+function checkEmailNot($email , $id) {
+    $sql = "SELECT * FROM users WHERE email = :email AND NOT id = :id";
+    $check = pdo_query_one($sql, [':email' => $email , ':id' => $id ]);
+    return $check;
+}
+
 
 function loadAllUsers() {
     $sql = "SELECT * FROM users ORDER BY email";
@@ -52,5 +58,17 @@ function loadAllUsers() {
 function deleteUsers($id){
     $sql = "DELETE FROM users WHERE id = :id";
     pdo_execute($sql, [':id' => $id]);
+}
+function getDefaultRoleStudent() {
+    // Thực hiện truy vấn SQL để lấy giá trị roles mặc định từ bảng roles
+    $query = "SELECT id FROM role WHERE roleName = 'Sinh viên'"; // Điều kiện tìm kiếm cho Sinh viên
+    $result = pdo_query_one($query);
+
+    if ($result) {
+        return $result['id'];
+    } else {
+       
+        return 1; 
+    }
 }
 ?>

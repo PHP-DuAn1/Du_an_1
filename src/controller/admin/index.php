@@ -5,7 +5,7 @@
       $act = $_GET['act'];
       switch($act){
 
-        case 'qltb':
+        case 'qltb': // Quản lý sinh viên
           include '../notification/list.php';
           break;
 

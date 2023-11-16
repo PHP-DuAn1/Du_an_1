@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thêm người dùng</title>
 </head>
 <body>
@@ -21,12 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $studentCode = $_POST['studentCode'];
     $fullName = $_POST['fullName'];
     $avatar = $_FILES['avatar']['tmp_name'];
-    $roleId = $_POST['roleId']; // Chức vụ, có thể là '1' hoặc '2' (sinh viên hoặc giáo viên)
-    
-    $avatar=$_FILES['avatar']['name'];
-    $target_dir = " upload/";
+
+    $defaultRoleId = getDefaultRoleStudent();
+
+    $avatar_name = $_FILES['avatar']['name'];
+    $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["avatar"]["name"]);
-    if (empty($email) || empty($pass) || empty($studentCode) || empty($fullName) || empty($avatar) || empty($roleId)) {
+    
+    if (empty($email) || empty($pass) || empty($studentCode) || empty($fullName) || empty($avatar_name)) {
         echo "Vui lòng điền đầy đủ thông tin!";
     } elseif (!isValidEmail($email)) {
         echo "Email không hợp lệ!";
@@ -38,7 +42,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             echo "Email đã tồn tại!";
         } else {
             // Thêm người dùng mới vào cơ sở dữ liệu
-            insertUsers($roleId, $email, $pass, $studentCode, $fullName, $avatar);
+            insertUsers($defaultRoleId, $email, $pass, $studentCode, $fullName, $avatar_name);
+            
+            // Lưu file ảnh đại diện vào thư mục upload
+            move_uploaded_file($avatar, $target_file);
+
             echo "Thêm người dùng thành công!";
         }
     }
@@ -66,18 +74,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         <label for="avatar">Ảnh đại diện</label>
         <input type="file" name="avatar">
     </div>
-    <div>
-        <label for="roleId">Vai trò</label>
-        <select name="roleId">
-            <option value="1">Sinh viên</option>
-            <option value="2">Giáo viên</option>
-        </select>
-    </div>
+   
     <input type="submit" name="submit" value="Thêm người dùng">
 </form>
-  <script>
-    
-  </script>
-</body>
 
+</body>
 </html>
