@@ -1,9 +1,8 @@
 <?php
 require('../../../models/Major.php');
-require('../../../models/PDO.php');// Tên file có thể thay đổi tùy theo cách bạn tổ chức mã nguồn của mình
+require('../../../models/PDO.php');
 
 $listMajors = getAllMajors();
-
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +23,8 @@ $listMajors = getAllMajors();
         <th>Mã Chuyên Ngành</th>
         <th>Chỉnh Sửa</th>
         <th>Xóa</th>
+        <th>Xem môn học</th>
+        <th>Xem sinh viên</th> <!-- Thêm cột mới -->
     </tr>
 
     <?php foreach ($listMajors as $major): ?>
@@ -35,8 +36,7 @@ $listMajors = getAllMajors();
             <td>
                 <a href="javascript:void(0);" onclick="confirmDelete(<?= $major['id'] ?>, '<?= $major['majorName'] ?>')">Xóa</a>
             </td>
-            <td><a href="subject_list.php?major_id=<?= $major['id'] ?>">Xem Môn Học</a></td>
-
+            <td><a href="../subject/list.php?major_name=<?= urlencode($major['majorName']) ?>">Xem Môn Học</a></td>
         </tr>
     <?php endforeach; ?>
 

@@ -6,7 +6,7 @@
       $act = $_GET['act'];
       switch($act){
           case 'qlsv':
-              include './admin/';
+              include './admin/student/index.php';
               break;
           
           case 'poin':

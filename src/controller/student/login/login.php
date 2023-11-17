@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user'] = $user; // Lưu thông tin người dùng vào phiên đăng nhập
 
         // Chuyển hướng đến trang chủ
-        header('Location: home.php');
+        header('Location: ../index.php');
         exit(); // Đảm bảo dừng việc thực thi mã nguồn sau header
     } else {
         // Đăng nhập thất bại
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           
         </div>
         <div class="content-right">
-            <img src="https://caodang.fpt.edu.vn/wp-content/uploads/176198234_10207898689062597_8908401704523734923_n.jpg" alt="" />
+            <img src="../../../img/loginStudent.jpg" alt="" />
         </div>
     </div>
 </body>
