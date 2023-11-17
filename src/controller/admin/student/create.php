@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thêm người dùng</title>
+    <title>Thêm sinh viên</title>
 </head>
 <body>
 
-<h1>Thêm người dùng</h1>
+<h1>Thêm sinh viên</h1>
 
 <?php
 require('../../../models/PDO.php');
@@ -23,6 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $studentCode = $_POST['studentCode'];
     $fullName = $_POST['fullName'];
     $avatar = $_FILES['avatar']['tmp_name'];
+    $gender = $_POST['gender'];
+    $age = $_POST['age'];
 
     $defaultRoleId = getDefaultRoleStudent();
 
@@ -30,10 +32,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["avatar"]["name"]);
     
-    if (empty($email) || empty($pass) || empty($studentCode) || empty($fullName) || empty($avatar_name)) {
+    if (!is_numeric($age) || $age < 0) {
+        echo "Độ tuổi không hợp lệ";
+
+    } elseif (empty($email) || empty($pass) || empty($studentCode) || empty($fullName) || empty($avatar_name) || empty($gender) || empty($age)) {
         echo "Vui lòng điền đầy đủ thông tin!";
-    } elseif (!isValidEmail($email)) {
-        echo "Email không hợp lệ!";
+    } elseif (!isValidEmail($email) || strpos($email, '@hn.edu.vn') === false) {
+        echo "Email không hợp lệ ";
     } else {
         // Kiểm tra email đã tồn tại trong cơ sở dữ liệu chưa
         $existing_user = checkEmail($email);
@@ -42,12 +47,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             echo "Email đã tồn tại!";
         } else {
             // Thêm người dùng mới vào cơ sở dữ liệu
-            insertUsers($defaultRoleId, $email, $pass, $studentCode, $fullName, $avatar_name);
+            insertUsers($defaultRoleId, $email, $pass, $studentCode, $fullName, $avatar_name ,$gender,$age);
             
             // Lưu file ảnh đại diện vào thư mục upload
             move_uploaded_file($avatar, $target_file);
 
-            echo "Thêm người dùng thành công!";
+            echo "Thêm sinh viên thành công!";
         }
     }
 }
@@ -69,6 +74,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     <div>
         <label for="fullName">Họ và tên</label>
         <input type="text" name="fullName" placeholder="Họ và tên">
+    </div>
+    <div>
+        <label for="gender">Giới tính</label>
+        <select name="gender">
+            <option value="Nam">Nam</option>
+            <option value="Nữ">Nữ</option>
+        </select>
+    </div>
+    <div>
+        <label for="age">Tuổi</label>
+        <input type="number" name="age" placeholder="Tuổi">
     </div>
     <div>
         <label for="avatar">Ảnh đại diện</label>

@@ -1,26 +1,30 @@
  <?php
  require('PDO.php');
 
- function insertUsers($roleId, $email, $password, $studentCode, $fullName, $avatar) {
-    $sql = "INSERT INTO users (roleId, email, password, studentCode, fullName, avatar) VALUES (:roleId, :email, :password, :studentCode, :fullName, :avatar)";
+ function insertUsers($roleId, $email, $password, $studentCode, $fullName, $gender, $age, $avatar) {
+    $sql = "INSERT INTO users (roleId, email, password, studentCode, fullName, gender, age, avatar) VALUES (:roleId, :email, :password, :studentCode, :fullName, :gender, :age, :avatar)";
     pdo_execute($sql, [
         ':roleId' => $roleId,
         ':email' => $email,
         ':password' => $password,
         ':studentCode' => $studentCode,
         ':fullName' => $fullName,
+        ':gender' => $gender,
+        ':age' => $age,
         ':avatar' => $avatar
     ]);
 }
-function updateUsers($id, $roleId, $email, $password, $studentCode, $fullName, $avatar) {
-    $sql = "UPDATE users SET roleId = :roleId, email = :email, password = :password, studentCode = :studentCode, fullName = :fullName, avatar = :avatar WHERE id = :id";
+
+function updateUsers($id, $email, $password, $studentCode, $fullName, $gender, $age, $avatar) {
+    $sql = "UPDATE users SET email = :email, password = :password, studentCode = :studentCode, fullName = :fullName, gender = :gender, age = :age, avatar = :avatar WHERE id = :id";
     pdo_execute($sql, [
         ':id' => $id,
-        ':roleId' => $roleId,
         ':email' => $email,
         ':password' => $password,
         ':studentCode' => $studentCode,
         ':fullName' => $fullName,
+        ':gender' => $gender,
+        ':age' => $age,
         ':avatar' => $avatar
     ]);
 }
@@ -62,6 +66,18 @@ function deleteUsers($id){
 function getDefaultRoleStudent() {
     // Thực hiện truy vấn SQL để lấy giá trị roles mặc định từ bảng roles
     $query = "SELECT id FROM role WHERE roleName = 'Sinh viên'"; // Điều kiện tìm kiếm cho Sinh viên
+    $result = pdo_query_one($query);
+
+    if ($result) {
+        return $result['id'];
+    } else {
+       
+        return 1; 
+    }
+}
+function getDefaultRoleTeacher() {
+    // Thực hiện truy vấn SQL để lấy giá trị roles mặc định từ bảng roles
+    $query = "SELECT id FROM role WHERE roleName = 'Giáo viên'"; // Điều kiện tìm kiếm cho Giáo viên
     $result = pdo_query_one($query);
 
     if ($result) {

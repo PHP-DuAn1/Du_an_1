@@ -33,18 +33,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         if ($existing_user) {
             echo "Email đã tồn tại!";
         } else {
-            // Cập nhật thông tin sinh viên
+            // Cập nhật thông tin giáo viên
             updateUsers($id, $email, $pass, $studentCode, $fullName, $gender, $age, $avatar_name);
 
             // Lưu file ảnh đại diện vào thư mục upload
             move_uploaded_file($avatar, $target_file);
 
-            echo "Sửa sinh viên thành công!";
+            echo "Sửa giáo viên thành công!";
         }
     }
 }
 
-// Lấy thông tin sinh viên để hiển thị trước khi sửa
+// Lấy thông tin giáo viên để hiển thị trước khi sửa
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $studentInfo = loadOneUsers($id);
@@ -60,11 +60,11 @@ if (isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sửa sinh viên</title>
+    <title>Sửa giáo viên</title>
 </head>
 <body>
 
-<h1>Sửa sinh viên</h1>
+<h1>Sửa giáo viên</h1>
 
 <form action="" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?= $studentInfo['id'] ?>">
@@ -77,8 +77,8 @@ if (isset($_GET['id'])) {
         <input type="password" name="password" placeholder="Mật khẩu" value="<?= $studentInfo['password'] ?>">
     </div>
     <div>
-        <label for="studentCode">Mã sinh viên</label>
-        <input type="text" name="studentCode" placeholder="Mã sinh viên" value="<?= $studentInfo['studentCode'] ?>">
+        <label for="studentCode">Mã giáo viên</label>
+        <input type="text" name="studentCode" placeholder="Mã giáo viên" value="<?= $studentInfo['studentCode'] ?>">
     </div>
     <div>
         <label for="fullName">Họ và tên</label>
@@ -100,7 +100,7 @@ if (isset($_GET['id'])) {
         <input type="file" name="avatar">
     </div>
    
-    <input type="submit" name="submit" value="Sửa sinh viên">
+    <input type="submit" name="submit" value="Sửa giáo viên">
 </form>
 
 </body>
