@@ -17,6 +17,14 @@ header {
   height: 80px;
 }
 
+header .logo {
+  margin-left: auto; /* This will push the logo to the right */
+}
+
+header img {
+  max-height: 100%; /* Ensure the logo does not exceed the height of the header */
+}
+
 .userpage {
   display: flex;
   list-style: none;
@@ -32,12 +40,13 @@ header {
 
 .box-left {
   position: sticky;
+  height: 100%;
   border-top: 15px solid grey;
   width: 15%;
-  height: 100%;
   top: 0;
   left: 0;
   z-index: 1; /* Ensure it's above other elements */
+  background-color: #004666;
 }
 
 .menu-icon {
@@ -53,14 +62,14 @@ header {
   flex-direction: column;
   top: 80px;
   left: 0;
-  background-color: white;
+  background-color: #004666;
 }
 
 .menu-list a {
   display: block;
   padding: 10px 25px;
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .menu-list a.active,
@@ -161,7 +170,7 @@ main {
   border-top: 1px solid #000;
 }
 
-.box_footer{
+.box_footer {
   display: flex;
 }
 
@@ -205,7 +214,6 @@ main {
   line-height: 1.8rem;
 }
 
-
 #footer .card_1 {
   width: 100%;
 }
@@ -236,12 +244,11 @@ main {
   margin-top: 10px;
 }
 
-.card_2 i,.card_1 i {
+.card_2 i,
+.card_1 i {
   margin-right: 10px;
   color: black;
 }
-
-
 
 /* footer section ends */
 .spct {

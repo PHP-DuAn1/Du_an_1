@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../../css/css.css">
+    <link rel="stylesheet" href="../../css/css.css">
     <script src="https://kit.fontawesome.com/509cc166d7.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
         <header>
+            <div class="logo">
+                <img src="./img/z4882685840288_1a95851ec438de621f3e2a928fd10843.jpg" alt="">
+            </div>
             <div class="userpage">
                 <a href="#">Xin Chào, admin</a>
                 <a href="#">Đăng xuất</a>
