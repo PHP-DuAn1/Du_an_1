@@ -1,3 +1,5 @@
+<!-- src/controller/admin/subject/list.php -->
+
 <?php
 require('../../../models/Subject.php');
 require('../../../models/PDO.php');
@@ -6,7 +8,6 @@ if (isset($_GET['major_name'])) {
     $majorName = $_GET['major_name'];
     $listSubjects = loadSubjectsByMajorName($majorName);
 } else {
-    // Nếu không có major_name, có thể chuyển hướng hoặc xử lý theo nhu cầu của bạn
     header("Location: ../major/list.php");
     exit();
 }
@@ -25,7 +26,7 @@ if (isset($_GET['major_name'])) {
 
 <table border="1">
     <tr>
-        <th>Name</th>
+        <th>ID</th>
         <th>Tên Môn Học</th>
         <th>Mã Môn Học</th>
         <th>Chỉnh Sửa</th>
@@ -42,7 +43,8 @@ if (isset($_GET['major_name'])) {
             <td>
                 <a href="javascript:void(0);" onclick="confirmDelete('<?= $subject['id'] ?>', '<?= $subject['subjectName'] ?>')">Xóa</a>
             </td>
-            <td><a href="../class/list.php?subject_name=<?= $subject['subjectName'] ?>">Xem Lớp Học</a></td>
+            <!-- Truyền subject_id qua URL khi ấn nút "Xem Lớp Học" -->
+            <td><a href="../class/list.php?subject_id=<?= $subject['id'] ?>">Xem Lớp Học</a></td>
         </tr>
     <?php endforeach; ?>
 

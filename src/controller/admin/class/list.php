@@ -1,16 +1,12 @@
 <?php
-// src/controller/admin/subject/list.php
-
 require('../../../models/Class.php');
 require('../../../models/PDO.php');
 
 if (isset($_GET['subject_id'])) {
     $subjectId = $_GET['subject_id'];
-    $subjectInfo = getSubjectById($subjectId);
-    $listClasses = loadClassesBySubject($subjectId);
+    $listClasses = loadClassesBySubjectName($subjectId);
 } else {
-    // Nếu không có subject_id, có thể chuyển hướng hoặc xử lý theo nhu cầu của bạn
-    header("Location: ../subjects/list.php");
+    header("Location: ../subject/list.php");
     exit();
 }
 ?>
@@ -20,11 +16,11 @@ if (isset($_GET['subject_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh Sách Lớp Học - <?= $subjectInfo['subjectName'] ?></title>
+    <title>Danh Sách Lớp Học</title>
 </head>
 <body>
 
-<h1>Danh Sách Lớp Học - <?= $subjectInfo['subjectName'] ?></h1>
+<h1>Danh Sách Lớp Học</h1>
 
 <table border="1">
     <tr>
@@ -42,7 +38,7 @@ if (isset($_GET['subject_id'])) {
             <td><?= $class['classCode'] ?></td>
             <td><a href="update_class.php?id=<?= $class['id'] ?>">Sửa</a></td>
             <td>
-                <a href="javascript:void(0);" onclick="confirmDelete(<?= $class['id'] ?>, '<?= $class['className'] ?>')">Xóa</a>
+                <a href="javascript:void(0);" onclick="confirmDelete('<?= $class['id'] ?>', '<?= $class['className'] ?>')">Xóa</a>
             </td>
         </tr>
     <?php endforeach; ?>

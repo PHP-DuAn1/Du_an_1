@@ -1,3 +1,4 @@
+
 <div class="content">
     <div class="header">
         <div class="header">
@@ -9,21 +10,20 @@
             <div class="header-right">
                 <i class="fa-solid fa-user"></i>
                 <p>
-                    tên
-                    <?php
-                    // tên admin lúc đăng nhập
-                    ?>
+                admin
+                   
                 </p>
             </div>
         </div>
     </div>
-    <div class="content-content">
-        bách
-        <?php
-        // nút án vào đây
-        ?>
+    <a href="index.php?act=qltb">
+        
+    <div class="content-content" >
+        
+        
 
-    </div>
+        </div></a>
+    
 </div>
 </div>
 </div>

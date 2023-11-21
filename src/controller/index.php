@@ -5,16 +5,16 @@
   if(isset($_GET['act']) && ($_GET['act']!="")){
       $act = $_GET['act'];
       switch($act){
-          case 'qlsv':
-              include './admin/student/index.php';
+          case 'glsv':
+              include './student/login/login.php';
               break;
           
-          case 'poin':
-              include './admin/teacher/list.php';
+          case 'glgv':
+              include './teacher/login/login.php';
               break;    
 
           default:
-              include '../../../pages/admin/home.php';
+              include './admin';
               break;   
       }
   } else {
