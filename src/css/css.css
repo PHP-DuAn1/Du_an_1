@@ -39,14 +39,19 @@ header img {
 }
 
 .box-left {
-  position: sticky;
+  position: fixed;
   height: 100%;
-  border-top: 15px solid grey;
   width: 15%;
   top: 0;
   left: 0;
-  z-index: 1; /* Ensure it's above other elements */
+  z-index: 1000;
   background-color: #004666;
+}
+
+.logo {
+  height: 80px;
+  background-color: white;
+  align-items: center;
 }
 
 .menu-icon {
@@ -84,18 +89,19 @@ main {
   border: 1px solid gray;
 }
 
-.main-content {
+/* .main-content {
   width: 85%;
   display: flex;
-}
+} */
 
 .content {
+  padding-left: 15%;
   flex: 1;
   padding: 10px;
   border: 15px solid grey;
   color: #000;
-  margin-bottom: 0;
-  margin-left: auto;
+  margin-left: 15%;
+  margin-bottom: auto;
   margin-right: auto;
   overflow: auto; /* Bật tính năng cuộn khi nội dung vượt quá kích thước */
 }

@@ -10,7 +10,12 @@
             
             case 'poin':
                 include '../../pages/poin.php';
-                break;    
+                break; 
+                
+            case 'logout':
+                session_unset();
+                header('Location: ../../pages/student/page.php');
+                break;
 
             default:
                 include '../../pages/main.php';

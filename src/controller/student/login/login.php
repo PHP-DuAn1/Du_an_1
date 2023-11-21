@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <div class="content-left">
-            <form class="form-all" method="post" action=""> <!-- Thêm method và action vào form -->
+            <form class="form-all" method="post" action="index.php?act=login"> <!-- Thêm method và action vào form -->
                 <h1>ĐĂNG NHẬP</h1>
                 <div class="form-all">
                     <input type="email" name="email" id="" class="input-form" placeholder="Email" />

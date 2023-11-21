@@ -11,6 +11,10 @@
           
           case 'poin':
               include './admin/teacher/list.php';
+              break;
+              
+            case 'poin':
+              include './admin/teacher/list.php';
               break;    
 
           default:

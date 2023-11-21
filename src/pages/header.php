@@ -10,17 +10,17 @@
 <body>
     <div class="container">
         <header>
-            <div class="logo">
-                <img src="../img/z4882685840288_1a95851ec438de621f3e2a928fd10843.jpg" alt="">
-            </div>
             <div class="userpage">
                 <a href="#">Xin Chào, admin</a>
-                <a href="#">Đăng xuất</a>
+                <a href="index.php?act=logout">Đăng xuất</a>
             </div>
             
         </header>
         <main>
     <div class="box-left">
+        <div class="logo">
+                <img src="../img/logo.jpg" alt="" width="100%">
+        </div>
         <div class="menu-list" id="menuList">
             <a href="index.php"><i class="fas fa-bell"></i> Thông Báo</a>
             <a href="index.php?act=schedule" ><i class="far fa-calendar-alt"></i> Lịch Học</a>
