@@ -1,3 +1,16 @@
+<?php
+require('../../models/PDO.php');
+
+session_start();
+if (isset($_SESSION['user'])) {
+    // Nếu đã đăng nhập, gán thông tin người dùng vào biến $user
+    $user = $_SESSION['user'];
+} else {
+    // Nếu chưa đăng nhập, có thể chuyển hướng hoặc xử lý khác (ví dụ: đưa về trang đăng nhập)
+    header("Location: ../../controller/student/login/login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +24,7 @@
     <div class="container">
         <header>
             <div class="userpage">
-                <a href="#">Xin Chào, admin</a>
+                <a href="#">Xin Chào , <?php echo $user['fullName']   ?></a>
                 <a href="#">Đăng xuất</a>
             </div>
             
