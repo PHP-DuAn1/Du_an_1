@@ -16,8 +16,8 @@ function deleteClass($id) {
     pdo_execute($sql, [':id' => $id]);
 }
 
-function getAllClasss() {
-    $sql = "SELECT * FROM class";
+function getAllClasses() {
+    $sql = "SELECT * FROM class";   
     return pdo_query($sql);
 }
 
@@ -29,5 +29,17 @@ function getClassById($id) {
 function loadOneClass($id) {
     $sql = "SELECT * FROM class WHERE id = :id";
     return pdo_query_one($sql, [':id' => $id]);
+}
+
+function loadSubjectsByClass($classId) {
+    $sql = "SELECT subject.* FROM subject
+            JOIN class ON subject.classId = class.id
+            WHERE class.id = :classId";
+    return pdo_query($sql, [':classId' => $classId]);
+}
+
+function getSubjectByName($subjectName) {
+    $sql = "SELECT * FROM subject WHERE subjectName = :subjectName";
+    return pdo_query_one($sql, [':subjectName' => $subjectName]);
 }
 ?>

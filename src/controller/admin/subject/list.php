@@ -7,7 +7,7 @@ if (isset($_GET['major_name'])) {
     $listSubjects = loadSubjectsByMajorName($majorName);
 } else {
     // Nếu không có major_name, có thể chuyển hướng hoặc xử lý theo nhu cầu của bạn
-    header("Location: ../majors/list.php");
+    header("Location: ../major/list.php");
     exit();
 }
 ?>
@@ -25,11 +25,12 @@ if (isset($_GET['major_name'])) {
 
 <table border="1">
     <tr>
-        <th>ID</th>
+        <th>Name</th>
         <th>Tên Môn Học</th>
         <th>Mã Môn Học</th>
         <th>Chỉnh Sửa</th>
         <th>Xóa</th>
+        <th>Xem Lớp Học</th>
     </tr>
 
     <?php foreach ($listSubjects as $subject): ?>
@@ -37,21 +38,21 @@ if (isset($_GET['major_name'])) {
             <td><?= $subject['id'] ?></td>
             <td><?= $subject['subjectName'] ?></td>
             <td><?= $subject['subjectCode'] ?></td>
-            <td><a href="update_subject.php?id=<?= $subject['id'] ?>">Sửa</a></td>
+            <td><a href="update_subject.php?name=<?= $subject['id'] ?>">Sửa</a></td>
             <td>
-                <a href="javascript:void(0);" onclick="confirmDelete(<?= $subject['id'] ?>, '<?= $subject['subjectName'] ?>')">Xóa</a>
+                <a href="javascript:void(0);" onclick="confirmDelete('<?= $subject['id'] ?>', '<?= $subject['subjectName'] ?>')">Xóa</a>
             </td>
+            <td><a href="../class/list.php?subject_name=<?= $subject['subjectName'] ?>">Xem Lớp Học</a></td>
         </tr>
     <?php endforeach; ?>
 
 </table>
 
 <script>
-    function confirmDelete(subjectId, subjectName) {
-        var confirmation = confirm("Bạn có chắc chắn muốn xóa môn học: " + subjectName + " ?");
+    function confirmDelete(subjectName, subjectDisplayName) {
+        var confirmation = confirm("Bạn có chắc chắn muốn xóa môn học: " + subjectDisplayName + " ?");
         if (confirmation) {
-            // Chuyển hướng đến trang xóa với tham số action=delete và id của môn học
-            window.location.href = "delete_subject.php?action=delete&id=" + subjectId;
+            window.location.href = "delete_subject.php?action=delete&name=" + subjectName;
         }
     }
 </script>
