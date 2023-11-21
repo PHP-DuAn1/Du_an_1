@@ -1,6 +1,7 @@
 <?php
-require('../../../models/Users.php');
-require('../../../models/PDO.php');
+require(__DIR__ . '/../../../models/Users.php');
+require(__DIR__ . '/../../../models/PDO.php');
+
 
 if (isset($_GET['major_id'])) {
     $majorId = $_GET['major_id'];
@@ -19,7 +20,7 @@ if (isset($_GET['major_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh Sách Sinh Viên - <?= $majorName ?></title>
-</head>
+</head> 
 <body>
 
 <h1>Danh Sách Sinh Viên - <?= $majorName ?></h1>

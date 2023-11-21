@@ -2,11 +2,11 @@
 require('../../../models/Class.php');
 require('../../../models/PDO.php');
 
-if (isset($_GET['subject_id'])) {
-    $subjectId = $_GET['subject_id'];
-    $listClasses = loadClassesBySubjectName($subjectId);
+if (isset($_GET['subject_name'])) {
+    $subjectName = $_GET['subject_name'];
+    $listClasses = loadClassesBySubjectName($subjectName);
 } else {
-    header("Location: ../subject/list.php");
+    header("Location: ../subject/listSubject.php");
     exit();
 }
 ?>
@@ -16,11 +16,11 @@ if (isset($_GET['subject_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh Sách Lớp Học</title>
+    <title>Danh Sách Lớp Học - <?= $subjectName ?></title>
 </head>
 <body>
 
-<h1>Danh Sách Lớp Học</h1>
+<h1>Danh Sách Lớp Học - <?= $subjectName ?></h1>
 
 <table border="1">
     <tr>
@@ -49,7 +49,7 @@ if (isset($_GET['subject_id'])) {
     function confirmDelete(classId, className) {
         var confirmation = confirm("Bạn có chắc chắn muốn xóa lớp học: " + className + " ?");
         if (confirmation) {
-            window.location.href = "delete_class.php?action=delete&id=" + classId;
+            window.location.href = "delete.php?action=delete&id=" + classId;
         }
     }
 </script>

@@ -13,12 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     if (empty($subjectName) || empty($subjectCode) || empty($majorId)) {
         $message = "Vui lòng điền đầy đủ thông tin!";
     } else {
-        // Kiểm tra xem môn học đã được thêm thành công hay chưa
-        if (createSubject($subjectName, $subjectCode, $majorId)) {
-            $message = "Thêm môn học thành công!";
-        } else {
-            $message = "Tên môn học đã tồn tại trong chuyên ngành!";
-        }
+        // Gọi hàm createClass để thêm mới lớp học
+        createSubject($subjectName, $subjectCode, $majorId);
+        $message = "Thêm lớp học thành công!";
     }
 }
 

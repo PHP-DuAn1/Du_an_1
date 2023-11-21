@@ -32,6 +32,4 @@ function loadClassesBySubjectName($subjectName) {
             WHERE subject.subjectName = :subjectName";
     return pdo_query($sql, [':subjectName' => $subjectName]);
 }
-
-
 ?>
