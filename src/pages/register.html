@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/register.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="content-left">
+            <form class="form-all" action="">
+                <h1>ĐĂNG NHẬP</h1>
+                <div class="form-all">
+                    <input type="email" name="email" id="" class="input-form" placeholder="Email" />
+                </div>
+                <div class="form-all">
+                    <input type="password" name="password" id="" class="input-form" placeholder="Mật khẩu" />
+                </div>
+                <div class="submit-container">
+                    <input type="submit" value="Đăng nhập" class="submit-form" />
+                </div>
+            </form>
+            <div class="footer-links">
+                <a href="#">Quay về home</a>
+            </div>
+        </div>
+        <div class="content-right">
+            <img src="https://caodang.fpt.edu.vn/wp-content/uploads/176198234_10207898689062597_8908401704523734923_n.jpg" alt="" />
+        </div>
+    </div>
+</body>
+</html>

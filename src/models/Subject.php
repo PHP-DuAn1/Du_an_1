@@ -1,4 +1,4 @@
-    <?php
+<?php
 require('PDO.php');
 
 function createSubject($subjectName, $subjectCode, $majorId) {

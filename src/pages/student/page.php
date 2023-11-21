@@ -82,7 +82,7 @@
       }
 
       .footer .logo img {
-        width: 50px;
+        width: 150px;
         height: auto;
       }
 
@@ -112,7 +112,7 @@
 
       <footer class="footer">
         <div class="logo">
-          <img src="../../img/logo.jpg" alt="Logo" />
+          <img src="../../img/logofpt2.webp" alt="Logo" />
         </div>
         <p>45 ĐƯỜNG XUÂN PHƯƠNG, PHƯỜNG PHƯƠNG CANH, NAM TỪ LIÊM, HÀ NỘI</p>
         <p>Liên hệ: 1900 8390 | Email: fptpolytechnic.edu.vn</p>

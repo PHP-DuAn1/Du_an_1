@@ -1,8 +1,12 @@
 
 <div class="content">
-<div class="content_schedule">
-<h2>Bảng Thời Khóa Biểu</h2>
 
+    <div class="schedule">
+        <i class="far fa-calendar-alt"></i>
+        <h10 style="margin-left: 5px;">Lịch Học</h10>
+    </div>
+
+<div class="content_schedule">
 <table class="table-container">
     <thead>
         <tr>

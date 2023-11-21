@@ -10,7 +10,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])
     deleteSubject($subjectId);
 
     // Chuyển hướng người dùng về trang danh sách
-    header("Location: listSubject.php");
+    header("Location: list.php");
     exit();
 }
 ?>

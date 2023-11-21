@@ -4,7 +4,7 @@ require('../../../models/PDO.php');
 
 $listMajors = getAllMajors();
 ?>
-    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +36,7 @@ $listMajors = getAllMajors();
             <td>
                 <a href="javascript:void(0);" onclick="confirmDelete(<?= $major['id'] ?>, '<?= $major['majorName'] ?>')">Xóa</a>
             </td>
-            <td><a href="../subject/listSubject.php?major_name=<?= urlencode($major['majorName']) ?>">Xem Môn Học</a></td>
+            <td><a href="../subject/list.php?major_name=<?= urlencode($major['majorName']) ?>">Xem Môn Học</a></td>
         </tr>
     <?php endforeach; ?>
 
