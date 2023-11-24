@@ -2,9 +2,9 @@
 require('../../../models/Class.php');
 require('../../../models/PDO.php');
 
-if (isset($_GET['subject_name'])) {
-    $subjectName = $_GET['subject_name'];
-    $listClasses = loadClassesBySubjectName($subjectName);
+if (isset($_GET['subject_id'])) {
+    $subjectId = $_GET['subject_id'];
+    $listClasses = loadClassesBySubjectId($subjectId);
 } else {
     header("Location: ../subject/listSubject.php");
     exit();
@@ -16,11 +16,11 @@ if (isset($_GET['subject_name'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh Sách Lớp Học - <?= $subjectName ?></title>
+    <title>Danh Sách Lớp Học</title>
 </head>
 <body>
 
-<h1>Danh Sách Lớp Học - <?= $subjectName ?></h1>
+<h1>Danh Sách Lớp Học</h1>
 
 <table border="1">
     <tr>
@@ -29,6 +29,7 @@ if (isset($_GET['subject_name'])) {
         <th>Mã Lớp Học</th>
         <th>Chỉnh Sửa</th>
         <th>Xóa</th>
+        <th>Xem lớp học</th> 
     </tr>
 
     <?php foreach ($listClasses as $class): ?>
@@ -36,9 +37,12 @@ if (isset($_GET['subject_name'])) {
             <td><?= $class['id'] ?></td>
             <td><?= $class['className'] ?></td>
             <td><?= $class['classCode'] ?></td>
-            <td><a href="update_class.php?id=<?= $class['id'] ?>">Sửa</a></td>
+            <td><a href="update.php?id=<?= $class['id'] ?>">Sửa</a></td>
             <td>
                 <a href="javascript:void(0);" onclick="confirmDelete('<?= $class['id'] ?>', '<?= $class['className'] ?>')">Xóa</a>
+            </td>
+            <td>
+                <a href="../classInfo/listClassInfo.php.php?id=<?= $class['id'] ?>">Xem</a> 
             </td>
         </tr>
     <?php endforeach; ?>

@@ -1,98 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thêm giáo viên</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: grid;
+            gap: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
 
-<h1>Thêm giáo viên</h1>
+<div class="container">
 
-<?php
-require('../../../models/PDO.php');
-require('../../../models/Users.php');
+    <h1>Thêm giáo viên</h1>
 
-function isValidEmail($email) {
-    return filter_var($email, FILTER_VALIDATE_EMAIL);
-}
+    <?php
+    require('../../../models/PDO.php');
+    require('../../../models/Users.php');
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    $email = $_POST['email'];
-    $pass = $_POST['password'];
-    $studentCode = $_POST['studentCode'];
-    $fullName = $_POST['fullName'];
-    $avatar = $_FILES['avatar']['tmp_name'];
-    $gender = $_POST['gender'];
-    $age = $_POST['age'];
+    function isValidEmail($email) {
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
 
-    $defaultRoleId = getDefaultRoleTeacher();
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+        $email = $_POST['email'];
+        $pass = $_POST['password'];
+        $studentCode = $_POST['studentCode'];
+        $fullName = $_POST['fullName'];
+        $avatar = $_FILES['avatar']['tmp_name'];
+        $gender = $_POST['gender'];
+        $age = $_POST['age'];
 
-    $avatar_name = $_FILES['avatar']['name'];
-    $target_dir = "uploads/";
-    $target_file = $target_dir . basename($_FILES["avatar"]["name"]);
-    
-    if (!is_numeric($age) || $age < 0) {
-        echo "Độ tuổi không hợp lệ";
+        $defaultRoleId = getDefaultRoleTeacher();
 
-    } elseif (empty($email) || empty($pass) || empty($studentCode) || empty($fullName) || empty($avatar_name) || empty($gender) || empty($age)) {
-        echo "Vui lòng điền đầy đủ thông tin!";
-    } elseif (!isValidEmail($email) || strpos($email, '@hn.edu.vn') === false) {
-        echo "Email không hợp lệ ";
-    } else {
-        // Kiểm tra email đã tồn tại trong cơ sở dữ liệu chưa
-        $existing_user = checkEmail($email);
+        $avatar_name = $_FILES['avatar']['name'];
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($_FILES["avatar"]["name"]);
 
-        if ($existing_user) {
-            echo "Email đã tồn tại!";
+        if (!is_numeric($age) || $age < 0) {
+            echo "Độ tuổi không hợp lệ";
+
+        } elseif (empty($email) || empty($pass) || empty($studentCode) || empty($fullName) || empty($avatar_name) || empty($gender) || empty($age)) {
+            echo "Vui lòng điền đầy đủ thông tin!";
+        } elseif (!isValidEmail($email) || strpos($email, '@hn.edu.vn') === false) {
+            echo "Email không hợp lệ ";
         } else {
-            // Thêm người dùng mới vào cơ sở dữ liệu
-            insertUsers($defaultRoleId, $email, $pass, $studentCode, $fullName, $avatar_name ,$gender,$age);
-            
-            // Lưu file ảnh đại diện vào thư mục upload
-            move_uploaded_file($avatar, $target_file);
+            // Kiểm tra email đã tồn tại trong cơ sở dữ liệu chưa
+            $existing_user = checkEmail($email);
 
-            echo "Thêm giáo viên thành công!";
+            if ($existing_user) {
+                echo "Email đã tồn tại!";
+            } else {
+                // Thêm người dùng mới vào cơ sở dữ liệu
+                insertUsers($defaultRoleId, $email, $pass, $studentCode, $fullName, $avatar_name ,$gender,$age,$avatar_name);
+
+                // Lưu file ảnh đại diện vào thư mục upload
+                move_uploaded_file($avatar, $target_file);
+
+                echo "Thêm giáo viên thành công!";
+            }
         }
     }
-}
-?>
+    ?>
 
-<form action="" method="post" enctype="multipart/form-data">
-    <div>
+    <form action="" method="post" enctype="multipart/form-data">
         <label for="email">Email</label>
         <input type="text" name="email" placeholder="Email">
-    </div>
-    <div>
+
         <label for="password">Mật khẩu</label>
         <input type="password" name="password" placeholder="Mật khẩu">
-    </div>
-    <div>
+
         <label for="studentCode">Mã giáo viên</label>
         <input type="text" name="studentCode" placeholder="Mã giáo viên">
-    </div>
-    <div>
+
         <label for="fullName">Họ và tên</label>
         <input type="text" name="fullName" placeholder="Họ và tên">
-    </div>
-    <div>
+
         <label for="gender">Giới tính</label>
         <select name="gender">
             <option value="Nam">Nam</option>
             <option value="Nữ">Nữ</option>
         </select>
-    </div>
-    <div>
+
         <label for="age">Tuổi</label>
         <input type="number" name="age" placeholder="Tuổi">
-    </div>
-    <div>
+
         <label for="avatar">Ảnh đại diện</label>
         <input type="file" name="avatar">
-    </div>
-   
-    <input type="submit" name="submit" value="Thêm người dùng">
-</form>
+
+        <input type="submit" name="submit" value="Thêm người dùng">
+    </form>
+</div>
 
 </body>
 </html>

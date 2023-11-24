@@ -14,26 +14,30 @@ require('../../../models/PDO.php');
 
     <table border="1">
         <tr>
-            <th>Id</th>
+            <th>Stt</th>
             <th>Email</th>
             <th>Mật khẩu</th>
             <th>Mã giáo viên</th>
             <th>Họ và tên</th>
+            <th>Giới tính</th>
+            <th>Tuổi</th>
             <th>Ảnh đại diện</th>
             <th>Chỉnh sửa</th>
             <th>Xóa</th>
         </tr>
-
+        <?php $counter = 1; ?>
         <?php
         $listTeachers = loadAllUsers();
         foreach ($listTeachers as $teacher):
             if ($teacher['roleId'] == getDefaultRoleTeacher()): ?>
                 <tr>
-                    <td><?= $teacher['id'] ?></td>
+                    <td><?=  $counter++  ?></td>
                     <td><?= $teacher['email'] ?></td>
                     <td><?= $teacher['password'] ?></td>
                     <td><?= $teacher['studentCode'] ?></td>
                     <td><?= $teacher['fullName'] ?></td>
+                    <td><?= $teacher['gender'] ?></td>
+                    <td><?= $teacher['age'] ?></td>
                     <td><img src="<?= $teacher['avatar'] ?>" alt="Avatar" style="width: 50px; height: 50px;"></td>
                     <td><a href="update.php?id=<?= $teacher['id'] ?>">Sửa</a></td>
                     <td>
