@@ -1,14 +1,16 @@
 <?php
-require('../../../models/Users.php');
-require('../../../models/PDO.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Users.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Danh sách giáo viên</title>
 </head>
+
 <body>
     <h1>Danh sách giáo viên</h1>
 
@@ -28,10 +30,10 @@ require('../../../models/PDO.php');
         <?php $counter = 1; ?>
         <?php
         $listTeachers = loadAllUsers();
-        foreach ($listTeachers as $teacher):
-            if ($teacher['roleId'] == getDefaultRoleTeacher()): ?>
+        foreach ($listTeachers as $teacher) :
+            if ($teacher['roleId'] == getDefaultRoleTeacher()) : ?>
                 <tr>
-                    <td><?=  $counter++  ?></td>
+                    <td><?= $counter++  ?></td>
                     <td><?= $teacher['email'] ?></td>
                     <td><?= $teacher['password'] ?></td>
                     <td><?= $teacher['studentCode'] ?></td>
@@ -48,7 +50,7 @@ require('../../../models/PDO.php');
         <?php endforeach; ?>
 
     </table>
-            <div><a href="create.php">Thêm giáo viên</a></div>
+    <div><a href="create.php">Thêm giáo viên</a></div>
     <script>
         function confirmDelete(teacherId, teacherName) {
             var confirmation = confirm("Bạn có chắc chắn muốn xóa giáo viên: " + teacherName + " ?");
@@ -59,4 +61,5 @@ require('../../../models/PDO.php');
         }
     </script>
 </body>
+
 </html>

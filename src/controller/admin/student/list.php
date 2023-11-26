@@ -1,90 +1,91 @@
 <?php
-require('../../../models/Users.php');
-require('../../../models/PDO.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Users.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Danh sách sinh viên</title>
     <style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f8f9fa;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+        }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #3f4857;
-}
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #3f4857;
+        }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-th, td {
-    border: 1px solid #dee2e6;
-    padding: 12px;
-    text-align: left;
-    color: #3f4857;
-}
+        th,
+        td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+            color: #3f4857;
+        }
 
-th {
-    background-color: #3f4857;
-    color: white;
-}
+        th {
+            background-color: #3f4857;
+            color: white;
+        }
 
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 50%;
-}
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
 
-a {
-    text-decoration: none;
-    color: #3f4857;
-    transition: color 0.3s ease-in-out;
-}
+        a {
+            text-decoration: none;
+            color: #3f4857;
+            transition: color 0.3s ease-in-out;
+        }
 
-a:hover {
-    color: #1d2430;
-}
+        a:hover {
+            color: #1d2430;
+        }
 
-.create-link {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-}
+        .create-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
 
-.create-link a {
-    padding: 10px 20px;
-    background-color: #3f4857;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
-}
+        .create-link a {
+            padding: 10px 20px;
+            background-color: #3f4857;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
 
-.create-link a:hover {
-    background-color: #1d2430;
-}
+        .create-link a:hover {
+            background-color: #1d2430;
+        }
 
-script {
-    margin-top: 20px;
-}
-
-
+        script {
+            margin-top: 20px;
+        }
     </style>
 </head>
+
 <body>
     <h1>Danh sách sinh viên</h1>
 
@@ -104,8 +105,8 @@ script {
         <?php $counter = 1; ?>
         <?php
         $listStudent = loadAllUsers();
-        foreach ($listStudent as $student):
-            if ($student['roleId'] == getDefaultRolestudent()): ?>
+        foreach ($listStudent as $student) :
+            if ($student['roleId'] == getDefaultRolestudent()) : ?>
                 <tr>
                     <td><?= $counter++ ?></td>
                     <td><?= $student['email'] ?></td>
@@ -124,7 +125,7 @@ script {
         <?php endforeach; ?>
 
     </table>
-            <div><a href="create.php">Thêm sinh viên</a></div>
+    <div><a href="create.php">Thêm sinh viên</a></div>
     <script>
         function confirmDelete(studentId, studentName) {
             var confirmation = confirm("Bạn có chắc chắn muốn xóa sinh viên: " + studentName + " ?");
@@ -135,4 +136,5 @@ script {
         }
     </script>
 </body>
+
 </html>

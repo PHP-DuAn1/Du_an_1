@@ -1,6 +1,6 @@
 <?php
-require('../../../models/Class.php');
-require('../../../models/PDO.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Class.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
 
 if (isset($_GET['subject_id'])) {
     $subjectId = $_GET['subject_id'];
@@ -13,50 +13,53 @@ if (isset($_GET['subject_id'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh Sách Lớp Học</title>
 </head>
+
 <body>
 
-<h1>Danh Sách Lớp Học</h1>
+    <h1>Danh Sách Lớp Học</h1>
 
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Tên Lớp Học</th>
-        <th>Mã Lớp Học</th>
-        <th>Chỉnh Sửa</th>
-        <th>Xóa</th>
-        <th>Xem lớp học</th> 
-    </tr>
-
-    <?php foreach ($listClasses as $class): ?>
+    <table border="1">
         <tr>
-            <td><?= $class['id'] ?></td>
-            <td><?= $class['className'] ?></td>
-            <td><?= $class['classCode'] ?></td>
-            <td><a href="update.php?id=<?= $class['id'] ?>">Sửa</a></td>
-            <td>
-                <a href="javascript:void(0);" onclick="confirmDelete('<?= $class['id'] ?>', '<?= $class['className'] ?>')">Xóa</a>
-            </td>
-            <td>
-                <a href="../classInfo/listClassInfo.php.php?id=<?= $class['id'] ?>">Xem</a> 
-            </td>
+            <th>ID</th>
+            <th>Tên Lớp Học</th>
+            <th>Mã Lớp Học</th>
+            <th>Chỉnh Sửa</th>
+            <th>Xóa</th>
+            <th>Xem lớp học</th>
         </tr>
-    <?php endforeach; ?>
 
-</table>
+        <?php foreach ($listClasses as $class) : ?>
+            <tr>
+                <td><?= $class['id'] ?></td>
+                <td><?= $class['className'] ?></td>
+                <td><?= $class['classCode'] ?></td>
+                <td><a href="update.php?id=<?= $class['id'] ?>">Sửa</a></td>
+                <td>
+                    <a href="javascript:void(0);" onclick="confirmDelete('<?= $class['id'] ?>', '<?= $class['className'] ?>')">Xóa</a>
+                </td>
+                <td>
+                    <a href="../classInfo/listClassInfo.php.php?id=<?= $class['id'] ?>">Xem</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
 
-<script>
-    function confirmDelete(classId, className) {
-        var confirmation = confirm("Bạn có chắc chắn muốn xóa lớp học: " + className + " ?");
-        if (confirmation) {
-            window.location.href = "delete.php?action=delete&id=" + classId;
+    </table>
+
+    <script>
+        function confirmDelete(classId, className) {
+            var confirmation = confirm("Bạn có chắc chắn muốn xóa lớp học: " + className + " ?");
+            if (confirmation) {
+                window.location.href = "delete.php?action=delete&id=" + classId;
+            }
         }
-    }
-</script>
+    </script>
 
 </body>
+
 </html>
