@@ -42,7 +42,7 @@ if (isset($_GET['subject_id'])) {
                 <a href="javascript:void(0);" onclick="confirmDelete('<?= $class['id'] ?>', '<?= $class['className'] ?>')">Xóa</a>
             </td>
             <td>
-                <a href="../classInfo/listClassInfo.php.php?id=<?= $class['id'] ?>">Xem</a> 
+                <a href="../classInfo/listclassInfo.php?id=<?= $class['id'] ?>">Xem</a> 
             </td>
         </tr>
     <?php endforeach; ?>

@@ -1,62 +1,63 @@
 <?php
-require('../../../models/PDO.php');
 require('../../../models/ClassInfo.php');
-
-$userInformationList = getUserInformationList();
+require('../../../models/PDO.php');
+ 
+if (isset($_GET['class_id'])) {
+    $subjectId = $_GET['class_id'];
+    $listClasses = loadClassInfoBySClasses($ClassId);
+    $listUser = getAllUsers();
+}  
+else {
+    header("Location: ../class/listClass.php");
+    exit();
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Information List</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <title> Lớp Học</title>
 </head>
 <body>
 
-<h2>Danh sách sinh viên</h2>
+<h1> Lớp Học</h1>
 
-<table>
+<table border="1">
     <tr>
-        <th>User Type</th>
-        <th>STT</th>
-        <th>Student Code</th> 
-        <th>Full Name</th>
-        <th>Gender</th>
-        <th>Age</th>
-        <th>Avatar</th>
+        <th>ID</th>
+        <th>Tên Lớp Học</th>
+        <th>Mã Lớp Học</th>
+        <th>Chỉnh Sửa</th>
+        <th>Xóa</th>
+        <th>Xem lớp học</th> 
     </tr>
 
-    <?php $counter = 1; ?>
-    <?php foreach ($userInformationList as $user): ?>
+    <?php foreach ($listClasses as $class): ?>
         <tr>
-            <td><?php echo $user['UserType']; ?></td>
-            <td><?php echo $counter++; ?></td>
-            <td><?php echo $user['StudentCode']; ?></td>
-            <td><?php echo $user['FullName']; ?></td>
-            <td><?php echo $user['gender']; ?></td>
-            <td><?php echo $user['Age']; ?></td>
-            <td><img src="<?php echo $user['Avatar']; ?>" alt="User Avatar"></td>
+            <td><?= $class['id'] ?></td>
+            <td><?= $class['className'] ?></td>
+            <td><?= $class['classCode'] ?></td>
+            <td><a href="update.php?id=<?= $class['id'] ?>">Sửa</a></td>
+            <td>
+                <a href="javascript:void(0);" onclick="confirmDelete('<?= $class['id'] ?>', '<?= $class['className'] ?>')">Xóa</a>
+            </td>
+            <td>
+                <a href="../classInfo/listclassInfo.php?id=<?= $class['id'] ?>">Xem</a> 
+            </td>
         </tr>
     <?php endforeach; ?>
 
 </table>
+
+<script>
+    function confirmDelete(classId, className) {
+        var confirmation = confirm("Bạn có chắc chắn muốn xóa lớp học: " + className + " ?");
+        if (confirmation) {
+            window.location.href = "delete.php?action=delete&id=" + classId;
+        }
+    }
+</script>
 
 </body>
 </html>

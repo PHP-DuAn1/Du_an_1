@@ -24,36 +24,14 @@ function getClassInfoById($id) {
 function getAllClassInfo() {
     $sql = "SELECT * FROM classinfo";
     return pdo_query($sql);
-}
-function getUserInformationList() {
-    $sql = "SELECT 
-                users.id AS ID,
-                users.fullName AS FullName,
-                users.studentCode AS StudentCode,
-                users.gender AS gender,
-                users.age AS Age,
-                users.avatar AS Avatar,
-                'Student' AS UserType
-            FROM users
-            WHERE users.roleId = 1
-
-            UNION
-
-            SELECT 
-                users.id AS ID,
-                users.fullName AS FullName,
-                users.studentCode AS StudentCode,
-                users.gender AS gender,
-                users.age AS Age,
-                users.avatar AS Avatar,
-                'Teacher' AS UserType
-            FROM users
-            WHERE users.roleId = 2";
-
+} 
+function getAllUsers() {
+    $sql = "SELECT * FROM users";
     return pdo_query($sql);
 }
-function getAllClass() {
-    $sql = "SELECT * FROM class";
-    return pdo_query($sql);
+
+function loadClassInfoBySClasses($classId) {
+    $sql = "SELECT * FROM classInfo WHERE classId = :classId";
+    return pdo_query($sql, [':classId' => $classId]);
 }
 ?>
