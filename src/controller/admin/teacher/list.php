@@ -12,6 +12,12 @@ require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
 </head>
 
 <body>
+    <div class="box_search">
+        <form action="" method="POST">
+            <input type="text" name="kyw" placeholder="Từ khóa tìm kiếm">
+            <input type="submit" name="timkiem" value="Tìm Kiếm">
+        </form>
+    </div>
     <h1>Danh sách giáo viên</h1>
 
     <table border="1">
@@ -29,7 +35,8 @@ require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
         </tr>
         <?php $counter = 1; ?>
         <?php
-        $listTeachers = loadAllUsers();
+        $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
+        $listTeachers = loadAllUsers($kyw);
         foreach ($listTeachers as $teacher) :
             if ($teacher['roleId'] == getDefaultRoleTeacher()) : ?>
                 <tr>
