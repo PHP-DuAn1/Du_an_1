@@ -1,6 +1,11 @@
 <?php
 require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Users.php');
 require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
+
+$kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
+
+// Gọi hàm loadAllUsers với tham số $kyw
+$listStudent = loadAllUsers($kyw);
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +14,8 @@ require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
 <head>
     <meta charset="UTF-8">
     <title>Danh sách sinh viên</title>
+
+
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -87,6 +94,12 @@ require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
 </head>
 
 <body>
+    <div class="box_search">
+        <form action="index.php?act=qlStudent" method="POST">
+            <input type="text" name="kyw" placeholder="Từ khóa tìm kiếm">
+            <input type="submit" name="timkiem" value="Tìm Kiếm">
+        </form>
+    </div>
     <h1>Danh sách sinh viên</h1>
 
     <table border="1">
