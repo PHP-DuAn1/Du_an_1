@@ -5,7 +5,7 @@ require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
 $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
 
 // Gọi hàm loadAllUsers với tham số $kyw
-$listStudent = loadAllUsers($kyw);
+
 ?>
 
 <!DOCTYPE html>
@@ -95,7 +95,7 @@ $listStudent = loadAllUsers($kyw);
 
 <body>
     <div class="box_search">
-        <form action="index.php?act=qlStudent" method="POST">
+        <form action="" method="POST">
             <input type="text" name="kyw" placeholder="Từ khóa tìm kiếm">
             <input type="submit" name="timkiem" value="Tìm Kiếm">
         </form>
@@ -117,7 +117,7 @@ $listStudent = loadAllUsers($kyw);
         </tr>
         <?php $counter = 1; ?>
         <?php
-        $listStudent = loadAllUsers();
+        $listStudent = loadAllUsers($kyw);
         foreach ($listStudent as $student) :
             if ($student['roleId'] == getDefaultRolestudent()) : ?>
                 <tr>
