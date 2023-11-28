@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sửa sinh viên</title>
     <style>
+<<<<<<< HEAD
          body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -61,11 +62,79 @@ input[type="submit"] {
    
 
     <link rel="stylesheet" href="styles.css">
+=======
+          body {
+        background-color: #f2f2f2;
+      }
+
+      form {
+        background-color: #fff;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      select {
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #3f4857;
+        color: #fff;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 150px;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #1d2430;
+      }
+      .back-link {
+      display: block;
+      text-align: center;
+      margin-bottom: 20px;
+      margin-top:15px;
+    }
+
+    .back-link a {
+      padding: 10px 20px;
+      
+      color: black;
+      text-decoration: none;
+      border-radius: 5px;
+     
+    }
+
+    .back-link a:hover {
+      color: #33CCCC;
+    }
+    </style>
+>>>>>>> login
 </head>
 <body>
 
 <div class="container">
 
+<<<<<<< HEAD
     <h1>Sửa sinh viên</h1>
 
     <?php
@@ -158,6 +227,49 @@ input[type="submit"] {
     </form>
 
 </div>
+=======
+<form action="" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?= $studentInfo['id'] ?>">
+    <div>
+        <label for="email">Email</label>
+        <input type="text" name="email" placeholder="Email" value="<?= $studentInfo['email'] ?>">
+    </div>
+    <div>
+        <label for="password">Mật khẩu</label>
+        <input type="password" name="password" placeholder="Mật khẩu" value="<?= $studentInfo['password'] ?>">
+    </div>
+    <div>
+        <label for="studentCode">Mã sinh viên</label>
+        <input type="text" name="studentCode" placeholder="Mã sinh viên" value="<?= $studentInfo['studentCode'] ?>">
+    </div>
+    <div>
+        <label for="fullName">Họ và tên</label>
+        <input type="text" name="fullName" placeholder="Họ và tên" value="<?= $studentInfo['fullName'] ?>">
+    </div>
+    <div>
+        <label for="gender">Giới tính</label>
+        <select name="gender">
+            <option value="Nam" <?= ($studentInfo['gender'] == 'Nam') ? 'selected' : '' ?>>Nam</option>
+            <option value="Nữ" <?= ($studentInfo['gender'] == 'Nữ') ? 'selected' : '' ?>>Nữ</option>
+        </select>
+    </div>
+    <div>
+        <label for="age">Tuổi</label>
+        <input type="number" name="age" placeholder="Tuổi" value="<?= $studentInfo['age'] ?>">
+    </div>
+    <div>
+        <label for="avatar">Ảnh đại diện</label>
+        <input type="file" name="avatar">
+    </div>
+   
+    <input type="submit" name="submit" value="Sửa sinh viên">
+    <div class="back-link">
+    <a href="">Quay về </a>
+  </div>
+
+</form>
+>>>>>>> login
+
 
 </body>
 </html>
