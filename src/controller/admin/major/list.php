@@ -65,7 +65,7 @@ $listMajors = getAllMajors();
         <th>Chỉnh Sửa</th>
         <th>Xóa</th>
         <th>Xem môn học</th>
-        <th>Xem sinh viên</th> <!-- Thêm cột mới -->
+        
     </tr>
 
     <?php foreach ($listMajors as $major): ?>

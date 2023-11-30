@@ -2,6 +2,8 @@
 require('../../../models/Users.php');
 require('../../../models/PDO.php');
 require('../../../models/classInfo.php');
+require('../../../models/class.php');
+
  
 ?>
 
@@ -104,11 +106,13 @@ script {
             <th>Giới tính</th>
             <th>Tuổi</th>
             <th>Ảnh đại diện</th>
+            <th>Chon lop</th>
             
             <th>Thêm vào lớp</th>
         </tr>
         <?php $counter = 1; ?>
         <?php
+        $class = getAllClasses();
         $listStudent = loadAllUsers();
         foreach ($listStudent as $student):
             if ($student['roleId'] == getDefaultRolestudent()): ?>
@@ -121,8 +125,14 @@ script {
                     <td><?= $student['gender'] ?></td>
                     <td><?= $student['age'] ?></td>
                     <td><img src="<?= $student['avatar'] ?>" alt="Avatar" style="width: 50px; height: 50px;"></td>
+                    <td>
+                        <select name="classId" >
+            <?php foreach ($class as $classId): ?>
+                <option value="<?= $classId['id'] ?>"><?= $classId['className'] ?></option>
+            <?php endforeach; ?>
+        </select></td>
                    
-                    <td><a href="create.php?id=<?= $student['id'] ?>">Thêm</a></td>
+                    <td><a href="create.php?action=create&id=">Thêm</a></td>
 
 
                 </tr>
@@ -130,15 +140,7 @@ script {
         <?php endforeach; ?>
 
     </table>
-            <div><a href="create.php">Thêm sinh viên</a></div>
-    <script>
-        function confirmDelete(studentId, studentName) {
-            var confirmation = confirm("Bạn có chắc chắn muốn xóa sinh viên: " + studentName + " ?");
-            if (confirmation) {
-                // Chuyển hướng đến trang xóa với tham số action=delete và id của giáo viên
-                window.location.href = "delete.php?action=delete&id=" + studentId;
-            }
-        }
-    </script>
+            
+
 </body>
 </html>

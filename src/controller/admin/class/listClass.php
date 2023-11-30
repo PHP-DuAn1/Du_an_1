@@ -16,9 +16,7 @@ if (isset($_GET['subject_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD:src/controller/admin/class/listClass.php
-    <title>Danh Sách Lớp Học</title>
-=======
+
     <title>Danh Sách Lớp Học - <?= $subjectInfo['subjectName'] ?></title>
     <style>
        h1 {
@@ -59,7 +57,7 @@ if (isset($_GET['subject_id'])) {
       }
       
     </style>
->>>>>>> login:src/controller/admin/class/list.php
+
 </head>
 <body>
 
@@ -85,7 +83,7 @@ if (isset($_GET['subject_id'])) {
                 <a href="javascript:void(0);" onclick="confirmDelete('<?= $class['id'] ?>', '<?= $class['className'] ?>')">Xóa</a>
             </td>
             <td>
-                <a href="../classInfo/listclassInfo.php?id=<?= $class['id'] ?>">Xem</a> 
+                <a href="../classInfo/listClassInfo.php?id=<?= $class['id'] ?>">Xem</a> 
             </td>
         </tr>
     <?php endforeach; ?>

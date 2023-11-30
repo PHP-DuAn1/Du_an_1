@@ -3,11 +3,13 @@ require('../../../models/ClassInfo.php');
 require('../../../models/PDO.php');
 
 // Kiểm tra xóa lớp học
-if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])) {
+if (isset($_GET['action']) && $_GET['action'] === 'create' && isset($_GET['id'])) {
     $classId = $_GET['id'];
+    $usersId = $_GET['id'];
+
 
     // Gọi hàm xóa lớp học
-    createClassInfo($classId);
+    createClassInfo($classId,$usersId);
 
     // Chuyển hướng người dùng về trang danh sách
     header("Location: listClassInfo.php");

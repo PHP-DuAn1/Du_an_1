@@ -3,7 +3,7 @@ require('../../../models/PDO.php');
 require('../../../models/Subject.php');
 require('../../../models/Class.php');
 
-$message = '';
+
 
 // Lấy danh sách môn học để hiển thị trong form
 $subjects = getAllSubjects();
