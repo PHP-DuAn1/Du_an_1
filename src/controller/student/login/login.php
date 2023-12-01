@@ -12,7 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = checkUser($email, $password);
 
     if ($user) {
+        // Lưu thông tin người dùng vào session
         $_SESSION['user'] = $user;
+
         header('Location: ../index.php');
         exit();
     } else {
@@ -22,12 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../css/register.css">
     <title>Đăng nhập</title>
 </head>
+
 <body>
     <div class="container">
         <div class="content-left">
@@ -56,4 +60,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </body>
+
 </html>

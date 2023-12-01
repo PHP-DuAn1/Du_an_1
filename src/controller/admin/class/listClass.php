@@ -1,6 +1,6 @@
 <?php
-require('../../../models/Class.php');
-require('../../../models/PDO.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Class.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
 
 if (isset($_GET['subject_id'])) {
     $subjectId = $_GET['subject_id'];
@@ -13,91 +13,93 @@ if (isset($_GET['subject_id'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Danh Sách Lớp Học - <?= $subjectInfo['subjectName'] ?></title>
     <style>
-       h1 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #3f4857;
-      }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #3f4857;
+        }
 
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-      th,
-      td {
-        border: 1px solid #dee2e6;
-        padding: 12px;
-        text-align: left;
-        color: #3f4857;
-      }
+        th,
+        td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+            color: #3f4857;
+        }
 
-      th {
-        background-color: #3f4857;
-        color: white;
-      }
+        th {
+            background-color: #3f4857;
+            color: white;
+        }
 
-      a {
-        text-decoration: none;
-        color: #3f4857;
-        transition: color 0.3s ease-in-out;
-      }
+        a {
+            text-decoration: none;
+            color: #3f4857;
+            transition: color 0.3s ease-in-out;
+        }
 
-      a:hover {
-        color: #1d2430;
-      }
-      
+        a:hover {
+            color: #1d2430;
+        }
     </style>
 
 </head>
+
 <body>
 
-<h1>Danh Sách Lớp Học</h1>
+    <h1>Danh Sách Lớp Học</h1>
 
-<table border="1">
-    <tr>
-        <th>STT</th>
-        <th>Tên Lớp Học</th>
-        <th>Mã Lớp Học</th>
-        <th>Chỉnh Sửa</th>
-        <th>Xóa</th>
-        <th>Xem lớp học</th> 
-    </tr>
-
-    <?php foreach ($listClasses as $class): ?>
+    <table border="1">
         <tr>
-            <td><?= $class['id'] ?></td>
-            <td><?= $class['className'] ?></td>
-            <td><?= $class['classCode'] ?></td>
-            <td><a href="update.php?id=<?= $class['id'] ?>">Sửa</a></td>
-            <td>
-                <a href="javascript:void(0);" onclick="confirmDelete('<?= $class['id'] ?>', '<?= $class['className'] ?>')">Xóa</a>
-            </td>
-            <td>
-                <a href="../classInfo/listClassInfo.php?id=<?= $class['id'] ?>">Xem</a> 
-            </td>
+            <th>ID</th>
+            <th>Tên Lớp Học</th>
+            <th>Mã Lớp Học</th>
+            <th>Chỉnh Sửa</th>
+            <th>Xóa</th>
+            <th>Xem lớp học</th>
         </tr>
-    <?php endforeach; ?>
 
-</table>
+        <?php foreach ($listClasses as $class) : ?>
+            <tr>
+                <td><?= $class['id'] ?></td>
+                <td><?= $class['className'] ?></td>
+                <td><?= $class['classCode'] ?></td>
+                <td><a href="update.php?id=<?= $class['id'] ?>">Sửa</a></td>
+                <td>
+                    <a href="javascript:void(0);" onclick="confirmDelete('<?= $class['id'] ?>', '<?= $class['className'] ?>')">Xóa</a>
+                </td>
+                <td>
+                    <a href="../classInfo/listClassInfo.php?id=<?= $class['id'] ?>">Xem</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
 
-<script>
-    function confirmDelete(classId, className) {
-        var confirmation = confirm("Bạn có chắc chắn muốn xóa lớp học: " + className + " ?");
-        if (confirmation) {
-            window.location.href = "delete.php?action=delete&id=" + classId;
+    </table>
+
+    <script>
+        function confirmDelete(classId, className) {
+            var confirmation = confirm("Bạn có chắc chắn muốn xóa lớp học: " + className + " ?");
+            if (confirmation) {
+                window.location.href = "delete.php?action=delete&id=" + classId;
+            }
         }
-    }
-</script>
+    </script>
 
 </body>
+
 </html>

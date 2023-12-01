@@ -17,13 +17,23 @@ header {
   height: 80px;
 }
 
-header .logo {
-  margin-left: auto; /* This will push the logo to the right */
+.logo {
+  height: 80px;
+  background-color: white;
+  display: flex;
+  /* Add this to make it a flex container */
+  justify-content: center;
+  /* Center content horizontally */
+  align-items: center;
 }
 
-header img {
-  max-height: 100%; /* Ensure the logo does not exceed the height of the header */
+.logo img {
+  max-width: 100%;
+  /* Ensure the image doesn't exceed the container width */
+  height: auto;
+  /* Maintain the aspect ratio */
 }
+
 
 .userpage {
   display: flex;
@@ -100,10 +110,12 @@ main {
   padding: 10px;
   border: 15px solid grey;
   color: #000;
+  min-height: 700px;
   margin-left: 15%;
   margin-bottom: auto;
   margin-right: auto;
-  overflow: auto; /* Bật tính năng cuộn khi nội dung vượt quá kích thước */
+  overflow: auto;
+  /* Bật tính năng cuộn khi nội dung vượt quá kích thước */
 }
 
 .column {
@@ -132,7 +144,6 @@ main {
 
 .content_schedule {
   margin: 80px auto;
-  max-width: 800px;
   padding: 20px;
 }
 
@@ -140,30 +151,38 @@ main {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  overflow: auto; /* Bật tính năng cuộn khi bảng vượt quá kích thước */
+  overflow: auto;
+  /* Bật tính năng cuộn khi bảng vượt quá kích thước */
 }
 
 .table-container th,
 .table-container td {
-  border: 1px solid black;
-  padding: 8px;
+  border: 1px solid #dddddd;
+  /* Updated border color */
+  padding: 12px 15px;
   text-align: left;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-  width: auto;
 }
 
 .table-container th {
-  background-color: #f2f2f2;
+  background-color: #009879;
+  /* Header background color */
+  color: #ffffff;
+}
+
+.table-container tbody tr {
+  border-bottom: 1px solid #dddddd;
 }
 
 .table-container tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #f3f3f3;
+  /* Even row background color */
 }
 
 .table-container tbody tr:hover {
-  background-color: #f1f1f1;
+  background-color: #e0e0e0;
+  /* Hovered row background color */
 }
+
 
 /* footer section starts */
 #footer {
@@ -171,7 +190,7 @@ main {
   font-family: BalloExtra;
   height: auto;
   width: 100%;
-  background-color: rgb(0, 170, 255);
+  background-color: black;
   display: flex;
   border-top: 1px solid #000;
 }
@@ -205,12 +224,14 @@ main {
   font-family: BalooExtra;
   text-align: start;
   color: var(--yellow-color);
+  /* Assuming you have a variable for yellow color */
 }
 
 #footer p,
 #footer a {
   font-family: Barlow;
-  color: #ffff;
+  color: #fff;
+  /* White text color */
   text-align: start;
 }
 
@@ -218,6 +239,8 @@ main {
   text-decoration: none;
   display: block;
   line-height: 1.8rem;
+  color: #fff;
+  /* White text color for links */
 }
 
 #footer .card_1 {
@@ -250,10 +273,11 @@ main {
   margin-top: 10px;
 }
 
-.card_2 i,
-.card_1 i {
+#footer .card_1 i,
+#footer .card_2 i {
   margin-right: 10px;
-  color: black;
+  color: #fff;
+  /* White icon color */
 }
 
 /* footer section ends */
@@ -267,32 +291,4 @@ main {
 
 .h10 {
   margin-left: 5px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: Arial, sans-serif;
-  margin-left: 50px;
-  margin-top: 30px;
-}
-
-th,
-td {
-  border: 1px solid #000000;
-  padding: 10px;
-  text-align: center;
-}
-
-#form {
-  width: 100%;
-}
-
-th {
-  font-size: 15px;
-  color: gray;
-}
-
-td {
-  font-size: 12px;
 }

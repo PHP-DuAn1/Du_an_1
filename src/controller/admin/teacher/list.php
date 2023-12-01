@@ -1,10 +1,11 @@
 <?php
-require('../../../models/Users.php');
-require('../../../models/PDO.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Users.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Danh sách giáo viên</title>
@@ -47,7 +48,14 @@ require('../../../models/PDO.php');
       }
     </style>
 </head>
+
 <body>
+    <div class="box_search">
+        <form action="" method="POST">
+            <input type="text" name="kyw" placeholder="Từ khóa tìm kiếm">
+            <input type="submit" name="timkiem" value="Tìm Kiếm">
+        </form>
+    </div>
     <h1>Danh sách giáo viên</h1>
 
     <table border="1">
@@ -69,11 +77,12 @@ require('../../../models/PDO.php');
         </tr>
         <?php $counter = 1; ?>
         <?php
-        $listTeachers = loadAllUsers();
-        foreach ($listTeachers as $teacher):
-            if ($teacher['roleId'] == getDefaultRoleTeacher()): ?>
+        $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
+        $listTeachers = loadAllUsers($kyw);
+        foreach ($listTeachers as $teacher) :
+            if ($teacher['roleId'] == getDefaultRoleTeacher()) : ?>
                 <tr>
-                    <td><?=  $counter++  ?></td>
+                    <td><?= $counter++  ?></td>
                     <td><?= $teacher['email'] ?></td>
                     <td><?= $teacher['password'] ?></td>
                     <td><?= $teacher['studentCode'] ?></td>
@@ -90,7 +99,7 @@ require('../../../models/PDO.php');
         <?php endforeach; ?>
 
     </table>
-            <div><a href="create.php">Thêm giáo viên</a></div>
+    <div><a href="create.php">Thêm giáo viên</a></div>
     <script>
         function confirmDelete(teacherId, teacherName) {
             var confirmation = confirm("Bạn có chắc chắn muốn xóa giáo viên: " + teacherName + " ?");
@@ -101,4 +110,5 @@ require('../../../models/PDO.php');
         }
     </script>
 </body>
+
 </html>
