@@ -98,7 +98,9 @@
           <img src="../../img/logo.jpg" alt="Logo" />
         </div>
         <ul class="menu-items">
-          <li <?php   ?>><a href="pages/student/header.php">GIẢNG VIÊN</a></li>
+          <li>
+            <a href="../../controller/teacher/login/login.php">GIẢNG VIÊN</a>
+          </li>
           <li>
             <a href="../../controller/student/login/login.php">SINH VIÊN</a>
           </li>

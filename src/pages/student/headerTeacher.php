@@ -16,9 +16,7 @@ $fullName = isset($_SESSION['user']['fullName']) ? $_SESSION['user']['fullName']
 <body>
     <div class="container">
         <header>
-            
             <div class="userpage">
-                
                 <?php if ($fullName !== null) : ?>
                     <a href="index.php?act=userpage">Xin chào <?php echo $fullName; ?></a>
                 <?php else : ?>
@@ -34,8 +32,7 @@ $fullName = isset($_SESSION['user']['fullName']) ? $_SESSION['user']['fullName']
                 </div>
                 <div class="menu-list" id="menuList">
                     <a href="index.php"><i class="fas fa-bell"></i> Thông Báo</a>
-                    <a href="index.php?act=schedule"><i class="far fa-calendar-alt"></i> Lịch Học</a>
-                    <a href="index.php?act=poin"><i class="fas fa-graduation-cap"></i> Điểm</a>
-                    <a href="#"><i class="fas fa-concierge-bell"></i> Dịch Vụ</a>
+                    <a href="index.php?act=schedule"><i class="far fa-calendar-alt"></i> Lịch Dạy</a>
+                   
                 </div>
             </div>

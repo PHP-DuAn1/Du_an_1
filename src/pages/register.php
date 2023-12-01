@@ -22,7 +22,7 @@
                 </div>
             </form>
             <div class="footer-links">
-                <a href="#">Quay về home</a>
+                <a href="#">Thoát</a>
             </div>
         </div>
         <div class="content-right">

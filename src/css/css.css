@@ -34,7 +34,6 @@ header {
   /* Maintain the aspect ratio */
 }
 
-
 .userpage {
   display: flex;
   list-style: none;
@@ -182,7 +181,6 @@ main {
   background-color: #e0e0e0;
   /* Hovered row background color */
 }
-
 
 /* footer section starts */
 #footer {
