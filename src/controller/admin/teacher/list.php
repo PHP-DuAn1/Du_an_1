@@ -1,6 +1,7 @@
 <?php
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Users.php');
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
+require('../../../models/PDO.php');
+require('../../../models/Users.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -60,11 +61,9 @@ require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
 
     <table border="1">
         <tr>
-<<<<<<< HEAD
-            <th>Stt</th>
-=======
+
             <th>STT</th>
->>>>>>> login
+
             <th>Email</th>
             <th>Mật khẩu</th>
             <th>Mã giáo viên</th>

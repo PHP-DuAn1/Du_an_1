@@ -1,9 +1,13 @@
 <?php
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\ClassInfo.php');
 
-$userInformationList = loadAllUsers(); // Assuming this function is defined somewhere
+     require('../../../models/PDO.php');
+     require('../../../models/classInfo.php');
+     require('../../../models/Users.php');
 
+ if (isset($_GET['id'])){
+     $classId = $_GET['id'];
+     $listStudent = getClassInfoByUsers($classId) ;
+ }
 ?>
 
 <!DOCTYPE html>
@@ -11,81 +15,102 @@ $userInformationList = loadAllUsers(); // Assuming this function is defined some
 
 <head>
     <meta charset="UTF-8">
+    <title>Danh sách sinh viên</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Information List</title>
+    <title>Danh Sách Sinh Viên - <?= $majorName ?></title>
     <style>
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #3f4857;
+        }
+
         table {
-            border-collapse: collapse;
             width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         th,
         td {
-            border: 1px solid #ddd;
-            padding: 8px;
+            border: 1px solid #dee2e6;
+            padding: 12px;
             text-align: left;
+            color: #3f4857;
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: #3f4857;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3f4857;
+            transition: color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            color: #1d2430;
         }
     </style>
 </head>
 
 <body>
+    <div class="box_search">
+        <form action="" method="POST">
+            <input type="text" name="kyw" placeholder="Từ khóa tìm kiếm">
+            <input type="submit" name="timkiem" value="Tìm Kiếm">
+        </form>
+    </div>
+        <h1>Danh Sách Sinh Viên </h1>
 
-    <h2>Danh sách sinh viên</h2>
-
-    <table>
-        <tr>
-            <th>User Type</th>
-            <th>STT</th>
-            <th>Student Code</th>
-            <th>Full Name</th>
-            <th>Gender</th>
-            <th>Age</th>
-            <th>Avatar</th>
-        </tr>
-
-        <?php $counter = 1; ?>
-        <?php foreach ($userInformationList as $user) : ?>
+        <table border="1">
             <tr>
-                <td><?php echo $user['UserType']; ?></td>
-                <td><?php echo $counter++; ?></td>
-                <td><?php echo $user['StudentCode']; ?></td>
-                <td><?php echo $user['FullName']; ?></td>
-                <td><?php echo $user['gender']; ?></td>
-                <td><?php echo $user['Age']; ?></td>
-                <td><img src="<?php echo $user['Avatar']; ?>" alt="User Avatar"></td>
+                <th>STT</th>
+                <th>Email</th>
+                <th>Mật khẩu</th>
+                <th>Mã giáo viên</th>
+                <th>Họ và tên</th>
+                <th>Giới tính</th>
+                <th>Tuổi</th>
+                <th>Ảnh đại diện</th>
+                <th>Xóa</th>
             </tr>
-        <?php endforeach; ?>
+            <?php $counter = 1; ?>
+            <?php
+            foreach ($listStudent as $student) :
+                if ($student['roleId'] == getDefaultRoleStudent()) : ?>
 
-    </table>
+                    <tr>
+                        <td><?= $counter++ ?></td>
+                        <td><?= $student['email'] ?></td>
+                        <td><?= $student['password'] ?></td>
+                        <td><?= $student['studentCode'] ?></td>
+                        <td><?= $student['fullName'] ?></td>
+                        <td><?= $student['gender'] ?></td>
+                        <td><?= $student['age'] ?></td>
+                        <td><img src="<?= $student['avatar'] ?>" alt="Avatar" style="width: 50px; height: 50px;"></td>
+                        <td>
+                            <a href="javascript:void(0);" onclick="confirmDelete(<?= $student['id'] ?>, '<?= $student['fullName'] ?>')">Xóa</a>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+            <?php endforeach; ?>
 
-    <h2>Danh sách sinh viên có vai trò mặc định</h2>
-
-    <table>
-        <tr>
-            <th>STT</th>
-            <th>Email</th>
-            <th>Full Name</th>
-            <th>Gender</th>
-            <th>Age</th>
-        </tr>
-
-        <?php $counter = 1; ?>
-        <?php foreach ($listStudent as $student) : ?>
-            <tr>
-                <td><?php echo $counter++; ?></td>
-                <td><?php echo $student['email']; ?></td>
-                <td><?php echo $student['fullName']; ?></td>
-                <td><?php echo $student['gender']; ?></td>
-                <td><?php echo $student['age']; ?></td>
-            </tr>
-        <?php endforeach; ?>
-
-    </table>
-
+        </table>
+        <div><a href="listStudent.php">Thêm sinh viên</a></div>
+        <script>
+            function confirmDelete(studentId, studentName) {
+                var confirmation = confirm("Bạn có chắc chắn muốn xóa sinh viên: " + studentName + " ?");
+                if (confirmation) {
+                    // Chuyển hướng đến trang xóa với tham số action=delete và id của giáo viên
+                    window.location.href = "delete.php?action=delete&id=" + studentId;
+                }
+            }
+        </script>
 </body>
 
 </html>

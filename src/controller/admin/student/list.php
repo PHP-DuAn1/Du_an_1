@@ -1,10 +1,10 @@
 <?php
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Users.php');
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
+require('../../../models/Users.php');
+require('../../../models/PDO.php');
 
 $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
 
-// Gọi hàm loadAllUsers với tham số $kyw
+
 
 ?>
 
@@ -63,12 +63,7 @@ $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
             <input type="submit" name="timkiem" value="Tìm Kiếm">
         </form>
     </div>
-    <h1>Danh sách sinh viên</h1>
-
-
-    <table border="1">
-
-        <h1>Danh Sách Sinh Viên - <?= $majorName ?></h1>
+        <h1>Danh Sách Sinh Viên </h1>
 
         <table border="1">
             <tr>

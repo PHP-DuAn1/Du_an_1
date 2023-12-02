@@ -5,126 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thêm giáo viên</title>
     <style>
-<<<<<<< HEAD
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: #f4f4f4;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f2f2f2;
         }
 
         form {
-            display: grid;
-            gap: 20px;
+            background-color: #fff;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
         }
 
         label {
-            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
         }
 
-        input, select {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
+        input[type="text"],
+        input[type="password"],
+        select,
+        input[type="number"],
         input[type="file"] {
+            width: 90%;
+            padding: 10px;
             margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
 
         input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            text-align: center;
+            padding: 10px 20px;
+            background-color: #3f4857;
+            color: #fff;
             text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
-            border-radius: 4px;
+            margin-left: 150px;
         }
-=======
-         body {
-        background-color: #f2f2f2;
-      }
 
-      form {
-        background-color: #fff;
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
+        input[type="submit"]:hover {
+            background-color: #1d2430;
+        }
 
-      h1 {
-        text-align: center;
-      }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-      label {
-        display: block;
-        margin-bottom: 10px;
-      }
+        .back-link a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+            text-align: center;
+            color: black;
+            text-decoration: none;
+            border-radius: 5px;
+        }
 
-      input[type="text"],
-      select {
-        width: 90%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-      }
-
-      input[type="submit"] {
-        padding: 10px 20px;
-        background-color: #3f4857;
-        color: #fff;
-        text-decoration: none;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-left: 150px;
-      }
-
-      input[type="submit"]:hover {
-        background-color: #1d2430;
-      }
-      .back-link {
-        display: block;
-        text-align: center;
-        margin-bottom: 20px;
-      }
-
-      .back-link a {
-        display: inline-block;
-        padding: 10px 20px;
-        margin-top: 15px;
-        text-align: center;
-
-        color: black;
-        text-decoration: none;
-        border-radius: 5px;
-      }
-
-      .back-link a:hover {
-        background-color: #8cede3;
-      }
->>>>>>> login
+        .back-link a:hover {
+            background-color: #8cede3;
+        }
     </style>
 </head>
 <body>
@@ -134,6 +82,7 @@
     <h1>Thêm giáo viên</h1>
 
     <?php
+    // Include necessary files
     require('../../../models/PDO.php');
     require('../../../models/Users.php');
 
@@ -158,7 +107,6 @@
 
         if (!is_numeric($age) || $age < 0) {
             echo "Độ tuổi không hợp lệ";
-
         } elseif (empty($email) || empty($pass) || empty($studentCode) || empty($fullName) || empty($avatar_name) || empty($gender) || empty($age)) {
             echo "Vui lòng điền đầy đủ thông tin!";
         } elseif (!isValidEmail($email) || strpos($email, '@hn.edu.vn') === false) {
@@ -171,7 +119,7 @@
                 echo "Email đã tồn tại!";
             } else {
                 // Thêm người dùng mới vào cơ sở dữ liệu
-                insertUsers($defaultRoleId, $email, $pass, $studentCode, $fullName, $avatar_name ,$gender,$age,$avatar_name);
+                insertUsers($defaultRoleId, $email, $pass, $studentCode, $fullName, $avatar_name, $gender, $age, $avatar_name);
 
                 // Lưu file ảnh đại diện vào thư mục upload
                 move_uploaded_file($avatar, $target_file);
@@ -206,20 +154,18 @@
 
         <label for="avatar">Ảnh đại diện</label>
         <input type="file" name="avatar">
-<<<<<<< HEAD
 
-        <input type="submit" name="submit" value="Thêm người dùng">
+        <!-- Missing submit button -->
+        <input type="submit" name="submit" value="Thêm giáo viên">
     </form>
-</div>
-=======
-    </div>
-   
-    <input type="submit" name="submit" value="Thêm người dùng">
+         
+    <!-- Back link -->
     <div class="back-link">
-    <a href="../subject/listSubject.php">Quay về </a>
-  </div>
-</form>
->>>>>>> login
+        <a href="list.php">Quay về</a>
+    </div>
+
+</div>
 
 </body>
+
 </html>
