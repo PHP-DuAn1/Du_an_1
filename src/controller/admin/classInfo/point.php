@@ -1,12 +1,16 @@
 <?php
-require('../../../models/PDO.php');
-require('../../../models/Point.php');
 
-if (isset($_GET['id'])){
-    $subjectId = $_GET['id'];
-    $listStudent = getPointByUser($subjectId) ;
-}
+     require('../../../models/PDO.php');
+     require('../../../models/classInfo.php');
+     require('../../../models/Users.php');
+     require('../../../models/Point.php');
+
+ if (isset($_GET['id'])){
+     $classId = $_GET['id'];
+     $listStudent = getClassInfoByUsers($classId) ;
+ }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +18,7 @@ if (isset($_GET['id'])){
     <meta charset="UTF-8">
     <title>Danh sách sinh viên</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh Sách Sinh Viên - <?= $majorName ?></title>
+
     <style>
         h1 {
             text-align: center;
@@ -68,46 +72,54 @@ if (isset($_GET['id'])){
             <tr>
                 <th>STT</th>
                 <th>Email</th>
-                <th>Mật khẩu</th>
-                <th>Mã giáo viên</th>
+                <th>Mã sinh viên</th>
                 <th>Họ và tên</th>
                 <th>Giới tính</th>
                 <th>Tuổi</th>
                 <th>Ảnh đại diện</th>
-                <th>Xóa</th>
+                <th>Điểm </th>
+                <th>Thêm </th>
+             
             </tr>
             <?php $counter = 1; ?>
             <?php
             foreach ($listStudent as $student) :
                 if ($student['roleId'] == getDefaultRoleStudent()) : ?>
-
+            <form action="" method="post">
                     <tr>
                         <td><?= $counter++ ?></td>
                         <td><?= $student['email'] ?></td>
-                        <td><?= $student['password'] ?></td>
                         <td><?= $student['studentCode'] ?></td>
                         <td><?= $student['fullName'] ?></td>
                         <td><?= $student['gender'] ?></td>
                         <td><?= $student['age'] ?></td>
                         <td><img src="<?= $student['avatar'] ?>" alt="Avatar" style="width: 50px; height: 50px;"></td>
-                        <td>
-                            <a href="javascript:void(0);" onclick="confirmDelete(<?= $student['id'] ?>, '<?= $student['fullName'] ?>')">Xóa</a>
-                        </td>
+                        <input type="hidden" name="userId" value="<?= $student['id'] ?>">
+                        <td  ><input type="text" name = "point" ></td>
+                        <td><input type="submit" name="submit" value="Thêm"></td>
                     </tr>
+</form>
+                   
+
                 <?php endif; ?>
             <?php endforeach; ?>
 
         </table>
-        <div><a href="listStudent.php">Thêm điểm sinh viên</a></div>
-        <script>
-            function confirmDelete(studentId, studentName) {
-                var confirmation = confirm("Bạn có chắc chắn muốn xóa sinh viên: " + studentName + " ?");
-                if (confirmation) {
-                    // Chuyển hướng đến trang xóa với tham số action=delete và id của giáo viên
-                    window.location.href = "delete.php?action=delete&id=" + studentId;
-                }
-            }
-        </script>
+       
+<?php
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $point = isset($_POST['point']) ? $_POST['point'] : null;
+            $userId = isset($_POST['userId']) ? $_POST['userId'] : null;
+            $classId = isset($_POST['classId']) ? $_POST['classId'] : null;
+        
+            insertPoint($userId, $point, $classId);
+            echo "Thêm điểm cho sinh viên thành công";
+        }
+
+      
+     
+    ?>
 </body>
 
 </html>

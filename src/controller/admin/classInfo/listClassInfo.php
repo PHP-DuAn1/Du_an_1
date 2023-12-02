@@ -3,10 +3,13 @@
      require('../../../models/PDO.php');
      require('../../../models/classInfo.php');
      require('../../../models/Users.php');
+     require('../../../models/Class.php');
+
 
  if (isset($_GET['id'])){
      $classId = $_GET['id'];
      $listStudent = getClassInfoByUsers($classId) ;
+
  }
 ?>
 
@@ -17,7 +20,7 @@
     <meta charset="UTF-8">
     <title>Danh sách sinh viên</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh Sách Sinh Viên - <?= $majorName ?></title>
+
     <style>
         h1 {
             text-align: center;
@@ -79,9 +82,14 @@
                 <th>Ảnh đại diện</th>
                 <th>Xóa</th>
             </tr>
-            <?php $counter = 1; ?>
+            <?php $counter = 1; 
+            $listClass = getAllClasses();
+            ?>
+            
+
             <?php
             foreach ($listStudent as $student) :
+                foreach ($listClass as $class) :
                 if ($student['roleId'] == getDefaultRoleStudent()) : ?>
 
                     <tr>
@@ -97,11 +105,20 @@
                             <a href="javascript:void(0);" onclick="confirmDelete(<?= $student['id'] ?>, '<?= $student['fullName'] ?>')">Xóa</a>
                         </td>
                     </tr>
+
+              
+            
+
                 <?php endif; ?>
+                <?php endforeach; ?>
+
             <?php endforeach; ?>
 
         </table>
+        <div><a href="point.php?id=<?= $class['id']?> ">Xem điểm lớp  </a></div>
+
         <div><a href="listStudent.php">Thêm sinh viên</a></div>
+
         <script>
             function confirmDelete(studentId, studentName) {
                 var confirmation = confirm("Bạn có chắc chắn muốn xóa sinh viên: " + studentName + " ?");

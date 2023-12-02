@@ -10,8 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     $user = checkUser($email, $password);
-
-    if ($user) {
+    $checkStudent = getDefaultRoleStudent();  
+    if ($checkStudent && $user) {
         // Lưu thông tin người dùng vào session
         $_SESSION['user'] = $user;
 
