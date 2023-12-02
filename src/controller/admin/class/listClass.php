@@ -1,6 +1,8 @@
 <?php
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Class.php');
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
+require('../../../models/PDO.php');
+
+require('../../../models/Class.php');
+
 
 if (isset($_GET['subject_id'])) {
     $subjectId = $_GET['subject_id'];
@@ -20,42 +22,69 @@ if (isset($_GET['subject_id'])) {
 
     <title>Danh Sách Lớp Học - <?= $subjectInfo['subjectName'] ?></title>
     <style>
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #3f4857;
-        }
+      body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #3f4857;
+}
 
-        th,
-        td {
-            border: 1px solid #dee2e6;
-            padding: 12px;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: left;
+    color: #3f4857;
+}
+
+th {
+    background-color: #3f4857;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: #3f4857;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #1d2430;
+}
+
+.add-subject-link {
             text-align: left;
-            color: #3f4857;
+            margin-top: 20px;
         }
 
-        th {
+        .btn-add-major {
+            padding: 10px 20px;
             background-color: #3f4857;
-            color: white;
-        }
-
-        a {
+            color: #fff;
             text-decoration: none;
-            color: #3f4857;
-            transition: color 0.3s ease-in-out;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
         }
 
-        a:hover {
-            color: #1d2430;
+        .btn-add-major:hover {
+            background-color: #1d2430;
+            color: #fff;
         }
+
+
     </style>
 
 </head>
@@ -90,7 +119,9 @@ if (isset($_GET['subject_id'])) {
         <?php endforeach; ?>
 
     </table>
-
+    <div class="add-subject-link">
+        <a href="create.php" class="btn-add-major">Thêm lớp học</a>
+    </div>
     <script>
         function confirmDelete(classId, className) {
             var confirmation = confirm("Bạn có chắc chắn muốn xóa lớp học: " + className + " ?");

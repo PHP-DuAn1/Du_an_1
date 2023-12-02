@@ -33,72 +33,72 @@ $majors = getAllMajors();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tạo Môn Học Mới</title>
     <style>
-         body {
-        background-color: #f2f2f2;
-      }
+       body {
+    background-color: #f2f2f2;
+    font-family: 'Arial', sans-serif;
+}
 
-      form {
-        background-color: #fff;
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
+form {
+    background-color: #fff;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-      h1 {
-        text-align: center;
-      }
+h1 {
+    text-align: center;
+    color: #3f4857;
+}
 
-      label {
-        display: block;
-        margin-bottom: 10px;
-      }
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #3f4857;
+}
 
-      input[type="text"],
-      select {
-        width: 90%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-      }
+input[type="text"],
+select {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
 
-      input[type="submit"] {
-        padding: 10px 20px;
-        background-color: #3f4857;
-        color: #fff;
-        text-decoration: none;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-left: 150px;
-      }
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #3f4857;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 150px;
+}
 
-      input[type="submit"]:hover {
-        background-color: #1d2430;
-      }
-      .back-link {
-        display: block;
-        text-align: center;
-        margin-bottom: 20px;
-        margin-top:15px;
-      }
+input[type="submit"]:hover {
+    background-color: #1d2430;
+}
+.back-link {
+    text-align: left;
+    margin-top: 20px;
+}
 
-      .back-link a {
-        display: inline-block;
-        padding: 10px 20px;
-        margin-top: 15px;
-        text-align: center;
+.back-link a {
+    display: inline;
+    margin-right: 10px; /* Adjust the spacing between the link and the button */
+    color: #3f4857;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
 
-        color: black;
-        text-decoration: none;
-        border-radius: 5px;
-      }
+.back-link a:hover {
+    color: #1d2430;
+}
 
-      .back-link a:hover {
-        color: #33CCCC;
-      }
+
     </style>
 </head>
 <body>
@@ -130,7 +130,7 @@ $majors = getAllMajors();
         <input type="submit" name="submit" value="Tạo Môn Học">
     </div>
     <div class="back-link">
-    <a href="../subject/list.php">Quay về </a>
+    <a href="../subject/listSubject.php">Quay về </a>
   </div>
 </form>
 

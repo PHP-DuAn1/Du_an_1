@@ -100,14 +100,12 @@ script {
         <tr>
             <th>STT</th>
             <th>Email</th>
-           
             <th>Mã giáo viên</th>
             <th>Họ và tên</th>
             <th>Giới tính</th>
             <th>Tuổi</th>
             <th>Ảnh đại diện</th>
             <th>Chon lop</th>
-            
             <th>Thêm vào lớp</th>
         </tr>
         <?php $counter = 1; ?>
@@ -115,11 +113,11 @@ script {
         $class = getAllClasses();
         $listStudent = loadAllUsers();
         foreach ($listStudent as $student):
-            if ($student['roleId'] == getDefaultRolestudent()): ?>
-                <tr>
+            if ($student['roleId'] == getDefaultRoleStudent()): ?>
+            <form action="" method="post">
+            <tr>
                     <td><?= $counter++ ?></td>
                     <td><?= $student['email'] ?></td>
-                   
                     <td><?= $student['studentCode'] ?></td>
                     <td><?= $student['fullName'] ?></td>
                     <td><?= $student['gender'] ?></td>
@@ -129,18 +127,33 @@ script {
                         <select name="classId" >
             <?php foreach ($class as $classId): ?>
                 <option value="<?= $classId['id'] ?>"><?= $classId['className'] ?></option>
+                
             <?php endforeach; ?>
         </select></td>
-                   
-                    <td><a href="create.php?action=create&id=">Thêm</a></td>
-
-
+        <input type="hidden" name="userId" value="<?= $student['id'] ?>">
+                <td><input type="submit" name="submit" value="Thêm"></td>
+            </form>              
                 </tr>
             <?php endif; ?>
         <?php endforeach; ?>
 
     </table>
             
+   <?php
+   $mess = [];
+     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Access the values of classId and userId
+        $classId = $_POST['classId'];
+        $userId = $_POST['userId'];
 
+
+     
+        createClassInfo ( $userId ,$classId );
+        echo "Thêm sinh sinh viên vào lớp thành công" ;
+      }
+
+      
+     
+    ?>
 </body>
 </html>

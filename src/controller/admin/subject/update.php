@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
     exit();
 }
 
-// Kiểm tra xem có dữ liệu được gửi từ form không
+// Xử lý khi form được submit
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $subjectName = $_POST['subjectName'];
     $subjectCode = $_POST['subjectCode'];
@@ -40,6 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         exit();
     }
 }
+
+// Lấy danh sách chuyên ngành để hiển thị trong form
+$majors = getAllMajors();
 ?>
 
 <!DOCTYPE html>
@@ -64,11 +67,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
       h1 {
         text-align: center;
+        color: #3f4857;
       }
 
       label {
         display: block;
         margin-bottom: 10px;
+        color: #3f4857;
       }
 
       input[type="text"],
@@ -103,15 +108,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
     .back-link a {
       padding: 10px 20px;
-     
-      color: black;
+      color: #3f4857;
       text-decoration: none;
       border-radius: 5px;
-     
+      transition: color 0.3s ease-in-out;
     }
 
     .back-link a:hover {
-      color: #33CCCC;
+      color: #1d2430;
     }
     </style>
 </head>
@@ -136,11 +140,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     <div>
         <label for="majorId">Chọn Chuyên Ngành</label>
         <select name="majorId">
-            <?php
-            $majors = getAllMajors();
-            foreach ($majors as $major):
-                $selected = ($major['id'] == $subjectInfo['majorId']) ? 'selected' : '';
-            ?>
+            <?php foreach ($majors as $major): ?>
+                <?php $selected = ($major['id'] == $subjectInfo['majorId']) ? 'selected' : ''; ?>
                 <option value="<?= $major['id'] ?>" <?= $selected ?>><?= $major['majorName'] ?></option>
             <?php endforeach; ?>
         </select>

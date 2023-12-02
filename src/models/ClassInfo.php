@@ -44,22 +44,13 @@ function loadClassInfoBySClasses($classId){
     WHERE class.classId = :classId ";
     return pdo_query($sql, [':classId' => $classId]);
 }
-function loadClassInfoBySUsers($classId){
-    $sql = "SELECT class.* FROM class
-    INNER JOIN users ON class.usersId = users.Id
-    WHERE usersId.usersId = :usersId ";
-    return pdo_query($sql, [':usersId' => $usersId]);
-}
-function getDefaultRoleStudent() {
-    // Thực hiện truy vấn SQL để lấy giá trị roles mặc định từ bảng roles
-    $query = "SELECT id FROM role WHERE roleName = 'Sinh viên'"; // Điều kiện tìm kiếm cho Sinh viên
-    $result = pdo_query_one($query);
-
-    if ($result) {
-        return $result['id'];
-    } else {
+function getClassInfoByUsers ($classId){
+    $query = "SELECT* FROM classinfo
+	LEFT JOIN users ON classinfo.userId = users.id 
+    WHERE classinfo.classId = :classId ";
+    return pdo_query($query,[':classId' => $classId]);
     
-        return 1; 
-    }
 }
+
+
 ?>

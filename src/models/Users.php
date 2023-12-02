@@ -25,7 +25,8 @@
             ':password' => $password,
             ':studentCode' => $studentCode,
             ':fullName' => $fullName,
-            ':gender' => $gender,
+            ':
+            gender' => $gender,
             ':age' => $age,
             ':avatar' => $avatar
         ]);
