@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="content">
         <div class="column" id="column1">
             <div class="news-item">
@@ -46,4 +46,36 @@
       
     </div>
     </div>
-</main>
+</main> -->
+<div class="content">
+        <div class="column" id="column1">
+            <?php foreach ($news as $index => $item) { ?>
+                <?php if ($index % 3 == 0) { ?>
+                    <div class="news-item">
+                        <h2><a href="<?php echo $item['link']; ?>"><?php echo $item['title']; ?></a></h2>
+                        <p><?php echo $item['description']; ?></p>
+                    </div>
+                <?php } ?>
+            <?php } ?>
+        </div>
+        <div class="column" id="column2">
+            <?php foreach ($news as $index => $item) { ?>
+                <?php if ($index % 3 == 1) { ?>
+                    <div class="news-item">
+                        <h2><a href="<?php echo $item['link']; ?>"><?php echo $item['title']; ?></a></h2>
+                        <p><?php echo $item['description']; ?></p>
+                    </div>
+                <?php } ?>
+            <?php } ?>
+        </div>
+        <div class="column" id="column3">
+            <?php foreach ($news as $index => $item) { ?>
+                <?php if ($index % 3 == 2) { ?>
+                    <div class="news-item">
+                        <h2><a href="<?php echo $item['link']; ?>"><?php echo $item['title']; ?></a></h2>
+                        <p><?php echo $item['description']; ?></p>
+                    </div>
+                <?php } ?>
+            <?php } ?>
+        </div>
+    </div>
