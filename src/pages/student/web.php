@@ -91,9 +91,9 @@
         <img src="../../img/logofpt.png" alt="Logo">
       </div>
       <ul class="menu-items">
-        <li><a href="pages/student/header.php">GIẢNG VIÊN</a></li>
-        <li><a href="#">SINH VIÊN</a></li>
-        <li><a href="#">ADMIN</a></li>
+        <li><a href="../../controller/teacher/login/login.php">GIẢNG VIÊN</a></li>
+        <li><a href="../../controller/student/login/login.php">SINH VIÊN</a></li>
+        <li><a href="./../controller/admin/">ADMIN</a></li>
       </ul>
     </div>
 
