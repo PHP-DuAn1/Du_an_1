@@ -1,16 +1,15 @@
 <?php
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Users.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\classInfo.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Class.php');
 
-     require('../../../models/PDO.php');
-     require('../../../models/classInfo.php');
-     require('../../../models/Users.php');
-     require('../../../models/Class.php');
 
 
- if (isset($_GET['id'])){
-     $classId = $_GET['id'];
-     $listStudent = getClassInfoByUsers($classId) ;
-
- }
+if (isset($_GET['id'])) {
+    $classId = $_GET['id'];
+    $listStudent = getClassInfoByUsers($classId);
+}
 ?>
 
 <!DOCTYPE html>
@@ -68,28 +67,28 @@
             <input type="submit" name="timkiem" value="Tìm Kiếm">
         </form>
     </div>
-        <h1>Danh Sách Sinh Viên </h1>
+    <h1>Danh Sách Sinh Viên </h1>
 
-        <table border="1">
-            <tr>
-                <th>STT</th>
-                <th>Email</th>
-                <th>Mật khẩu</th>
-                <th>Mã giáo viên</th>
-                <th>Họ và tên</th>
-                <th>Giới tính</th>
-                <th>Tuổi</th>
-                <th>Ảnh đại diện</th>
-                <th>Xóa</th>
-            </tr>
-            <?php $counter = 1; 
-            $listClass = getAllClasses();
-            ?>
-            
+    <table border="1">
+        <tr>
+            <th>STT</th>
+            <th>Email</th>
+            <th>Mật khẩu</th>
+            <th>Mã giáo viên</th>
+            <th>Họ và tên</th>
+            <th>Giới tính</th>
+            <th>Tuổi</th>
+            <th>Ảnh đại diện</th>
+            <th>Xóa</th>
+        </tr>
+        <?php $counter = 1;
+        $listClass = getAllClasses();
+        ?>
 
-            <?php
-            foreach ($listStudent as $student) :
-                foreach ($listClass as $class) :
+
+        <?php
+        foreach ($listStudent as $student) :
+            foreach ($listClass as $class) :
                 if ($student['roleId'] == getDefaultRoleStudent()) : ?>
 
                     <tr>
@@ -106,28 +105,28 @@
                         </td>
                     </tr>
 
-              
-            
+
+
 
                 <?php endif; ?>
-                <?php endforeach; ?>
-
             <?php endforeach; ?>
 
-        </table>
-        <div><a href="point.php?id=<?= $class['id']?> ">Xem điểm lớp  </a></div>
+        <?php endforeach; ?>
 
-        <div><a href="listStudent.php">Thêm sinh viên</a></div>
+    </table>
+    <div><a href="point.php?id=<?= $class['id'] ?> ">Xem điểm lớp </a></div>
 
-        <script>
-            function confirmDelete(studentId, studentName) {
-                var confirmation = confirm("Bạn có chắc chắn muốn xóa sinh viên: " + studentName + " ?");
-                if (confirmation) {
-                    // Chuyển hướng đến trang xóa với tham số action=delete và id của giáo viên
-                    window.location.href = "delete.php?action=delete&id=" + studentId;
-                }
+    <div><a href="listStudent.php">Thêm sinh viên</a></div>
+
+    <script>
+        function confirmDelete(studentId, studentName) {
+            var confirmation = confirm("Bạn có chắc chắn muốn xóa sinh viên: " + studentName + " ?");
+            if (confirmation) {
+                // Chuyển hướng đến trang xóa với tham số action=delete và id của giáo viên
+                window.location.href = "delete.php?action=delete&id=" + studentId;
             }
-        </script>
+        }
+    </script>
 </body>
 
 </html>

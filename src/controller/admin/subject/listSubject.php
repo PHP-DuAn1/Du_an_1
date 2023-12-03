@@ -1,6 +1,6 @@
 <?php
-require('../../../models/Subject.php');
-require('../../../models/PDO.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Subject.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
 
 if (isset($_GET['major_name'])) {
     $majorName = $_GET['major_name'];
@@ -38,7 +38,8 @@ if (isset($_GET['major_name'])) {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #dee2e6;
             padding: 12px;
             text-align: left;

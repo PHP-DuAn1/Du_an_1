@@ -1,6 +1,6 @@
 <?php
-require('../../../models/Class.php');
-require('../../../models/PDO.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Class.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
 
 // Kiểm tra xóa lớp học
 if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])) {
@@ -13,4 +13,3 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])
     header("Location: listClass.php");
     exit();
 }
-?>

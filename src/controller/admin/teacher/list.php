@@ -1,6 +1,6 @@
 <?php
-require('../../../models/PDO.php');
-require('../../../models/Users.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
+require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Users.php');
 
 ?>
 
@@ -12,41 +12,41 @@ require('../../../models/Users.php');
     <title>Danh sách giáo viên</title>
     <style>
         h1 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #3f4857;
-      }
+            text-align: center;
+            margin-bottom: 20px;
+            color: #3f4857;
+        }
 
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-      th,
-      td {
-        border: 1px solid #dee2e6;
-        padding: 12px;
-        text-align: left;
-        color: #3f4857;
-      }
+        th,
+        td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+            color: #3f4857;
+        }
 
-      th {
-        background-color: #3f4857;
-        color: white;
-      }
+        th {
+            background-color: #3f4857;
+            color: white;
+        }
 
-      a {
-        text-decoration: none;
-        color: #3f4857;
-        transition: color 0.3s ease-in-out;
-      }
+        a {
+            text-decoration: none;
+            color: #3f4857;
+            transition: color 0.3s ease-in-out;
+        }
 
-      a:hover {
-        color: #1d2430;
-      }
+        a:hover {
+            color: #1d2430;
+        }
     </style>
 </head>
 
