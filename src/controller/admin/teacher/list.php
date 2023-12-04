@@ -1,6 +1,8 @@
 <?php
-require('../../../models/PDO.php');
-require('../../../models/Users.php');
+require(dirname(__FILE__) . '/../../../models/PDO.php');
+
+require(dirname(__FILE__) . '/../../../models/Users.php');
+
 
 ?>
 
