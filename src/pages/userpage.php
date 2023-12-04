@@ -6,7 +6,7 @@
     </div>
 
     <div class="content_schedule">
-        <h1>Thông Tin Sinh Viên</h1>
+        <h1>Thông Tin Cá Nhân</h1>
 
         <table class="table-container">
             <tr>
@@ -21,8 +21,8 @@
             </tr>
 
             <?php
-            require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Users.php');
-            require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
+            require('../../models/Users.php');
+            require('../../models/PDO.php');
 
             // session_start();
             if (!isset($_SESSION['user'])) {
