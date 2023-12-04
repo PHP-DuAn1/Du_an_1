@@ -102,7 +102,7 @@ require(dirname(__FILE__) . '/../../../models/Users.php');
         <?php endforeach; ?>
 
     </table>
-    <div><a href="create.php">Thêm giáo viên</a></div>
+    <div><a href="teacher/create.php">Thêm giáo viên</a></div>
     <script>
         function confirmDelete(teacherId, teacherName) {
             var confirmation = confirm("Bạn có chắc chắn muốn xóa giáo viên: " + teacherName + " ?");

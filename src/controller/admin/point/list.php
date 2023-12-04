@@ -79,7 +79,7 @@ if (isset($_GET['id'])) {
         </tr>
         <?php $counter = 1; ?>
         <?php
-        $listStudent = loadAllUsers();
+        $listStudent = loadAllUsers($kyw);
         foreach ($listStudent as $student) :
             if ($student['roleId'] == getDefaultRoleStudent()) : ?>
 
