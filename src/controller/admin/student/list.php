@@ -57,13 +57,13 @@ $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
 </head>
 
 <body>
+    <h1>Danh Sách Sinh Viên </h1>
     <div class="box_search">
         <form action="" method="POST">
             <input type="text" name="kyw" placeholder="Từ khóa tìm kiếm">
             <input type="submit" name="timkiem" value="Tìm Kiếm">
         </form>
     </div>
-    <h1>Danh Sách Sinh Viên </h1>
 
     <table border="1">
         <tr>
@@ -80,7 +80,7 @@ $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
         </tr>
         <?php $counter = 1; ?>
         <?php
-        $listStudent = loadAllUsers();
+        $listStudent = loadAllUsers($kyw);
         foreach ($listStudent as $student) :
             if ($student['roleId'] == getDefaultRoleStudent()) : ?>
 

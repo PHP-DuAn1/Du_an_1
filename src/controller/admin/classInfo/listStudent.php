@@ -112,7 +112,7 @@ require(dirname(__FILE__) . '/../../../models/class.php');
         <?php $counter = 1; ?>
         <?php
         $class = getAllClasses();
-        $listStudent = loadAllUsers();
+        $listStudent = loadAllUsers($kyw);
         foreach ($listStudent as $student) :
             if ($student['roleId'] == getDefaultRoleStudent()) : ?>
                 <form action="" method="post">

@@ -60,7 +60,7 @@
     }
 
 
-    function loadAllUsers($kyw = "")
+    function loadAllUsers($kyw)
     {
         $sql = "SELECT * FROM users WHERE 1";
         $params = array(); // Define $params even if $kyw is empty
