@@ -103,7 +103,7 @@ function isValidEmail($email) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    $id = $_POST['id'];
+    
     $email = $_POST['email'];
     $pass = $_POST['password'];
     $studentCode = $_POST['studentCode'];
@@ -133,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             echo "<p>Email đã tồn tại!</p>";
         } else {
             // Thêm người dùng mới vào cơ sở dữ liệu
-            insertUsers($defaultRoleId, $id,$email, $pass, $studentCode, $fullName, $avatar_name ,$gender,$age);
+            insertUsers($defaultRoleId,$email, $pass, $studentCode, $fullName, $avatar_name ,$gender,$age);
             
             // Lưu file ảnh đại diện vào thư mục upload
             move_uploaded_file($avatar, $target_file);

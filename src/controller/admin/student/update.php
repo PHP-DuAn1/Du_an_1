@@ -188,7 +188,7 @@ input[type="submit"]:hover {
         </form>
 
         <div class="back-link">
-            <a href="list.php">Quay về</a>
+            <a href="?act=qlStudent&action=return">Quay về</a>
         </div>
     </div>
 

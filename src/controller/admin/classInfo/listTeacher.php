@@ -12,14 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $classId = $_POST['classId'];
     $userId = $_POST['userId'];
 
-    // Kiểm tra và thêm sinh viên vào lớp
+    // Kiểm tra và thêm giáo viên vào lớp
     $existingRecord = getClassInfoByUserAndClass($userId, $classId);
 
     if (!$existingRecord) {
         createClassInfo($userId, $classId);
-        $mess[] = "Thêm sinh viên vào lớp thành công";
+        $mess[] = "Thêm giáo viên vào lớp thành công";
     } else {
-        $mess[] = "Sinh viên đã tồn tại trong lớp";
+        $mess[] = "Giáo viên đã tồn tại trong lớp";
     }
 }
 
@@ -33,7 +33,7 @@ $class = getAllClasses();
 
 <head>
     <meta charset="UTF-8">
-    <title>Danh sách sinh viên</title>
+    <title>Danh sách giáo viên</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -112,7 +112,7 @@ $class = getAllClasses();
 </head>
 
 <body>
-    <h1>Danh sách sinh viên</h1>
+    <h1>Danh sách giáo viên</h1>
     <div>
         <input type="text" placeholder="Tìm kiếm sinh viên">
         <input type="submit" name="submit" value="tìm kiếm">
@@ -121,7 +121,7 @@ $class = getAllClasses();
         <tr>
             <th>STT</th>
             <th>Email</th>
-            <th>Mã sinh viên</th>
+            <th>Mã giáo viên</th>
             <th>Họ và tên</th>
             <th>Giới tính</th>
             <th>Tuổi</th>
@@ -131,7 +131,7 @@ $class = getAllClasses();
         </tr>
         <?php $counter = 1; ?>
         <?php foreach ($listStudent as $student) : ?>
-            <?php if ($student['roleId'] == getDefaultRoleStudent()) : ?>
+            <?php if ($student['roleId'] == getDefaultRoleTeacher()) : ?>
                 <form action="" method="post">
                     <tr>
                         <td><?= $counter++ ?></td>

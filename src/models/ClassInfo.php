@@ -26,17 +26,31 @@ function getAllClassInfo() {
     return pdo_query($sql);
 }
 
+function getClassInfoByUserAndClass($userId, $classId) {
+    $sql = "SELECT * FROM classinfo WHERE userId = :userId AND classId = :classId";
+    return pdo_query_one($sql, [':userId' => $userId, ':classId' => $classId]);
+}
+
+function addStudentToClass($userId, $classId) {
+    $existingRecord = getClassInfoByUserAndClass($userId, $classId);
+
+    if ($existingRecord) {
+        return false;
+    }
+
+    createClassInfo($userId, $classId);
+    return true;
+}
+
 function getAllUsers() {
     $sql = "SELECT * FROM users";
     return pdo_query($sql);
 }
 
-
-function getUsersByClassInfo($id_class){
-    $sql = "SELECT * FROM users WHERE id = $id_class";
+function getUsersByClassInfo($classId){
+    $sql = "SELECT * FROM users WHERE id = $classId";
     return pdo_query($sql);
 }
-
 
 function loadClassInfoBySClasses($classId){
     $sql = "SELECT classInfo.* FROM classinfo 
@@ -44,16 +58,11 @@ function loadClassInfoBySClasses($classId){
     WHERE class.classId = :classId ";
     return pdo_query($sql, [':classId' => $classId]);
 }
-function getClassInfoByUsers ($classId){
-    $query = "SELECT* FROM classinfo
+
+function getClassInfoByUsers($classId){
+    $query = "SELECT * FROM classinfo
 	LEFT JOIN users ON classinfo.userId = users.id 
     WHERE classinfo.classId = :classId ";
     return pdo_query($query,[':classId' => $classId]);
-    
 }
-
-
-
-
-
 ?>
