@@ -1,7 +1,7 @@
 
 <?php
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Major.php');
+require(dirname(__FILE__) . '/../../../models/PDO.php');
+require(dirname(__FILE__) . '/../../../models/Major.php');
 
 // Kiểm tra xóa chuyên ngành
 if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])) {

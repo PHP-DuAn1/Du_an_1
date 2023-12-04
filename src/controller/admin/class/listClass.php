@@ -1,7 +1,7 @@
 <?php
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
+require(dirname(__FILE__) . '/../../../models/PDO.php');
 
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Class.php');
+require(dirname(__FILE__) . '/../../../models/Class.php');
 
 
 if (isset($_GET['subject_id'])) {

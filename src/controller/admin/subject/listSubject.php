@@ -1,6 +1,6 @@
 <?php
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Subject.php');
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
+require('../../../models/Subject.php');
+require('../../../models/PDO.php');
 
 if (isset($_GET['major_name'])) {
     $majorName = $_GET['major_name'];

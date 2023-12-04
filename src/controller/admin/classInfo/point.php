@@ -1,9 +1,9 @@
 <?php
 
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\classInfo.php');
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Users.php');
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Point.php');
+require(dirname(__FILE__) . '/../../../models/PDO.php');
+require(dirname(__FILE__) . '/../../../models/classInfo.php');
+require(dirname(__FILE__) . '/../../../models/Users.php');
+require(dirname(__FILE__) . '/../../../models/Point.php');
 
 if (isset($_GET['id'])) {
     $classId = $_GET['id'];

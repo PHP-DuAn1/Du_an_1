@@ -1,7 +1,7 @@
 <?php
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Subject.php');
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\Class.php');
-require('C:\xampp\htdocs\Dự Án 1\Du_an_1\src\models\PDO.php');
+require(dirname(__FILE__) . '/../../../models/Subject.php');
+require(dirname(__FILE__) . '/../../../models/Class.php');
+require(dirname(__FILE__) . '/../../../models/PDO.php');
 
 $message = '';
 
