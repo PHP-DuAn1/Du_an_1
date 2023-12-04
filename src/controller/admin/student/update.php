@@ -6,75 +6,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sửa sinh viên</title>
     <style>
-        body {
-            background-color: #f2f2f2;
-        }
+      body {
+    background-color: #f2f2f2;
+}
 
-        form {
-            background-color: #fff;
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+form {
+    background-color: #fff;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        h1 {
-            text-align: center;
-        }
+h1 {
+    text-align: center;
+}
 
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
+label {
+    display: block;
+    margin-bottom: 10px;
+}
 
-        input[type="text"],
-        input[type="password"],
-        input[type="number"],
-        select,
-        input[type="file"] {
-            width: 90%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
+input[type="text"],
+select {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
 
-        select {
-            padding: 10px;
-        }
+input[type="password"],
+input[type="number"],
+input[type="file"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
 
-        input[type="submit"] {
-            padding: 10px 20px;
-            background-color: #3f4857;
-            color: #fff;
-            text-decoration: none;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-left: 150px;
-        }
+select {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
 
-        input[type="submit"]:hover {
-            background-color: #1d2430;
-        }
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #3f4857;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 150px;
+}
 
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-        }
+input[type="submit"]:hover {
+    background-color: #1d2430;
+}
 
-        .back-link a {
-            padding: 10px 20px;
-            color: black;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+.back-link {
+    text-align: center;
+    margin-top: 20px;
+}
 
-        .back-link a:hover {
-            color: #33CCCC;
-        }
+.back-link a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.back-link a:hover {
+    color: #33CCCC;
+}
+
     </style>
 </head>
 
@@ -84,8 +96,10 @@
         <h1>Sửa sinh viên</h1>
 
         <?php
-        require('../../../models/PDO.php');
-        require('../../../models/Users.php');
+        require(dirname(__FILE__) . '/../../../models/PDO.php');
+        require(dirname(__FILE__) . '/../../../models/Users.php');
+
+      
 
         function isValidEmail($email)
         {

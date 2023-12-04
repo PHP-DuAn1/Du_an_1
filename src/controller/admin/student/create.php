@@ -94,14 +94,16 @@ input[type="submit"]:hover {
 <h1>Thêm sinh viên</h1>
 
 <?php
-require('../../../models/PDO.php');
-require('../../../models/Users.php');
+require(dirname(__FILE__) . '/../../../models/PDO.php');
+require(dirname(__FILE__) . '/../../../models/Users.php');
+
 
 function isValidEmail($email) {
     return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+    $id = $_POST['id'];
     $email = $_POST['email'];
     $pass = $_POST['password'];
     $studentCode = $_POST['studentCode'];
@@ -131,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             echo "<p>Email đã tồn tại!</p>";
         } else {
             // Thêm người dùng mới vào cơ sở dữ liệu
-            insertUsers($defaultRoleId, $email, $pass, $studentCode, $fullName, $avatar_name ,$gender,$age);
+            insertUsers($defaultRoleId, $id,$email, $pass, $studentCode, $fullName, $avatar_name ,$gender,$age);
             
             // Lưu file ảnh đại diện vào thư mục upload
             move_uploaded_file($avatar, $target_file);
@@ -177,7 +179,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
    
     <input type="submit" name="submit" value="Thêm người dùng">
     <div class="back-link">
-    <a href="list.php">Quay về</a>
+    <a href="?act=qlStudent&action=return">Quay về</a>
+
 
   </div>
 </form>

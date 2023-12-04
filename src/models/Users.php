@@ -60,15 +60,10 @@
     }
 
 
-    function loadAllUsers($kyw)
+    function loadAllUsers()
     {
         $sql = "SELECT * FROM users WHERE 1";
         $params = array(); // Define $params even if $kyw is empty
-
-        if ($kyw != "") {
-            $sql .= " AND (fullName LIKE :keyword OR studentCode LIKE :keyword)";
-            $params[':keyword'] = '%' . $kyw . '%';
-        }
 
         $sql .= " ORDER BY email";
         $listUsers = pdo_query($sql, $params); // Pass $params to pdo_query

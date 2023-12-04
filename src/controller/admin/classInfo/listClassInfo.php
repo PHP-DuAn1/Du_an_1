@@ -117,6 +117,8 @@ if (isset($_GET['id'])) {
     <div><a href="point.php?id=<?= $class['id'] ?> ">Xem điểm lớp </a></div>
 
     <div><a href="listStudent.php">Thêm sinh viên</a></div>
+    <div><a href="listStudent.php">Thêm giáo viên</a></div>
+
 
     <script>
         function confirmDelete(studentId, studentName) {

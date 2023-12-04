@@ -144,9 +144,9 @@ $listMajors = getAllMajors();
         </table>
 
         <div class="add-major-link">
-            <div><a href="create.php" class="btn-add-major">Thêm chuyên ngành</a></div>
+            <div><a href="  create.php" class="btn-add-major">Thêm chuyên ngành</a></div>
 
-        </div>
+        </div> 
     </div>
 
     <script>

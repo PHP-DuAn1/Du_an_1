@@ -93,7 +93,8 @@ $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
                     <td><?= $student['gender'] ?></td>
                     <td><?= $student['age'] ?></td>
                     <td><img src="<?= $student['avatar'] ?>" alt="Avatar" style="width: 50px; height: 50px;"></td>
-                    <td><a href="update.php?id=<?= $student['id'] ?>">Sửa</a></td>
+                   <td><a href="?act=qlStudent&action=update&id=<?= $student['id'] ?>">Sửa</a></td>
+
                     <td>
                         <a href="javascript:void(0);" onclick="confirmDelete(<?= $student['id'] ?>, '<?= $student['fullName'] ?>')">Xóa</a>
                     </td>
@@ -102,15 +103,18 @@ $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
         <?php endforeach; ?>
 
     </table>
-    <div><a href="student/create.php">Thêm sinh viên</a></div>
+    <div><a href="?act=qlStudent&action=create">Thêm sinh viên</a></div>
+
     <script>
         function confirmDelete(studentId, studentName) {
             var confirmation = confirm("Bạn có chắc chắn muốn xóa sinh viên: " + studentName + " ?");
             if (confirmation) {
                 // Chuyển hướng đến trang xóa với tham số action=delete và id của giáo viên
-                window.location.href = "delete.php?action=delete&id=" + studentId;
-            }
+                window.location.href = "?act=qlStudent&action=delete&id=" + studentId;
+
+
         }
+    }
     </script>
 </body>
 
