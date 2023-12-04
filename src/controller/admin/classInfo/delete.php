@@ -1,6 +1,6 @@
 <?php
-require('../../../models/PDO.php');
-require('../../../models/ClassInfo.php');
+require(dirname(__FILE__) . '/../../../models/PDO.php');
+require(dirname(__FILE__) . '/../../../models/classInfo.php');
 
 if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])) {
     $classInfoId = $_GET['id'];
@@ -10,4 +10,3 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])
     header("Location: ../class/listClass.php");
     exit();
 }
-?>

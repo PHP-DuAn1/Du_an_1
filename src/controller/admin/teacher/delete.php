@@ -1,6 +1,6 @@
 <?php
-require('../../../models/Users.php');
-require('../../../models/PDO.php');
+require(dirname(__FILE__) . '/../../../models/Users.php');
+require(dirname(__FILE__) . '/../../../models/PDO.php');
 
 // Kiểm tra xóa giáo viên
 if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])) {

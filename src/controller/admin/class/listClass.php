@@ -1,7 +1,7 @@
 <?php
-require('../../../models/PDO.php');
+require(dirname(__FILE__) . '/../../../models/PDO.php');
 
-require('../../../models/Class.php');
+require(dirname(__FILE__) . '/../../../models/Class.php');
 
 
 if (isset($_GET['subject_id'])) {
@@ -22,50 +22,51 @@ if (isset($_GET['subject_id'])) {
 
     <title>Danh Sách Lớp Học - <?= $subjectInfo['subjectName'] ?></title>
     <style>
-      body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-}
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #3f4857;
-}
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #3f4857;
+        }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-th, td {
-    border: 1px solid #dee2e6;
-    padding: 12px;
-    text-align: left;
-    color: #3f4857;
-}
+        th,
+        td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+            color: #3f4857;
+        }
 
-th {
-    background-color: #3f4857;
-    color: white;
-}
+        th {
+            background-color: #3f4857;
+            color: white;
+        }
 
-a {
-    text-decoration: none;
-    color: #3f4857;
-    transition: color 0.3s ease-in-out;
-}
+        a {
+            text-decoration: none;
+            color: #3f4857;
+            transition: color 0.3s ease-in-out;
+        }
 
-a:hover {
-    color: #1d2430;
-}
+        a:hover {
+            color: #1d2430;
+        }
 
-.add-subject-link {
+        .add-subject-link {
             text-align: left;
             margin-top: 20px;
         }
@@ -83,8 +84,6 @@ a:hover {
             background-color: #1d2430;
             color: #fff;
         }
-
-
     </style>
 
 </head>

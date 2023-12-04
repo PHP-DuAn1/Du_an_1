@@ -38,7 +38,8 @@ if (isset($_GET['major_name'])) {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #dee2e6;
             padding: 12px;
             text-align: left;

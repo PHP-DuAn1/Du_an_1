@@ -13,4 +13,3 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])
     header("Location: listSubject.php");
     exit();
 }
-?>

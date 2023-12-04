@@ -4,19 +4,23 @@ require('../../../models/Users.php');
 session_start();
 
 $error = '';
+$checkuser = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
     $user = checkUser($email, $password);
-    $checkStudent = getDefaultRoleTeacher();  
+    $checkStudent = getDefaultRoleStudent();
     if ($checkStudent && $user) {
         // Lưu thông tin người dùng vào session
         $_SESSION['user'] = $user;
-
-        header('Location: ../index.php');
-        exit();
+        if ($user['roleId'] == 2) {
+            header('Location: ../index.php');
+            exit();
+        } else {
+            $checkuser = 'Bạn không có quyền đăng nhập';
+        }
     } else {
         $error = 'Sai email hoặc mật khẩu';
     }
@@ -46,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="error-message">
                     <?php echo $error; ?>
                 </div>
+                <span style="color: red;"><?php echo $checkuser; ?></span>
                 <br>
                 <div class="submit-container">
                     <input type="submit" value="Đăng nhập" class="submit-form" />
