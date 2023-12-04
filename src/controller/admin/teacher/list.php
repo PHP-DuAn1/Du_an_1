@@ -2,9 +2,7 @@
 require(dirname(__FILE__) . '/../../../models/PDO.php');
 
 require(dirname(__FILE__) . '/../../../models/Users.php');
-=======
 
-require(dirname(__FILE__) . '/../../../models/Users.php');
 
 
 
