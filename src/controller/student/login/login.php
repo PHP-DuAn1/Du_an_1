@@ -3,7 +3,9 @@ require('../../../models/PDO.php');
 require('../../../models/Users.php');
 session_start();
 
-// ...
+$error = '';
+$checkuser = '';
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // ...

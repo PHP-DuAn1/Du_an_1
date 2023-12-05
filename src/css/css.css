@@ -4,40 +4,47 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Arial", sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
-  padding: 0;
-}
-
 .container {
   width: 100%;
   margin: 0 auto;
 }
 
 header {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.logo {
+  height: 80px;
+  background-color: white;
+  display: flex;
+  /* Add this to make it a flex container */
+  justify-content: center;
+  /* Center content horizontally */
+  align-items: center;
+}
+
+.logo img {
+  max-width: 100%;
+  /* Ensure the image doesn't exceed the container width */
+  height: auto;
+  /* Maintain the aspect ratio */
 }
 
 .userpage {
   display: flex;
+  list-style: none;
   justify-content: flex-end;
   align-items: center;
-  padding-right: 20px;
+  width: 100%;
 }
 
 .userpage a {
-  color: #fff;
+  padding: 0px 15px;
   text-decoration: none;
-  margin: 0 10px;
-}
-
-main {
-  display: flex;
 }
 
 .box-left {
@@ -50,9 +57,18 @@ main {
   background-color: #004666;
 }
 
-.logo img {
-  max-width: 100%;
-  height: auto;
+.logo {
+  height: 80px;
+  background-color: white;
+  align-items: center;
+}
+
+.menu-icon {
+  background-color: #141313;
+  padding: 10px;
+  cursor: pointer;
+  justify-content: center;
+  text-align: center;
 }
 
 .menu-list {
@@ -75,12 +91,30 @@ main {
   color: rgb(0, 166, 255);
 }
 
+main {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  border: 1px solid gray;
+}
+
+/* .main-content {
+  width: 85%;
+  display: flex;
+} */
+
 .content {
   padding-left: 15%;
   flex: 1;
   padding: 10px;
+  border: 15px solid grey;
+  color: #000;
   min-height: 700px;
+  margin-left: 15%;
+  margin-bottom: auto;
+  margin-right: auto;
   overflow: auto;
+  /* Bật tính năng cuộn khi nội dung vượt quá kích thước */
 }
 
 .column {
@@ -107,11 +141,54 @@ main {
   margin: 0;
 }
 
-/* Footer styles */
+.content_schedule {
+  margin: 80px auto;
+  padding: 20px;
+}
 
+.table-container {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  overflow: auto;
+  /* Bật tính năng cuộn khi bảng vượt quá kích thước */
+}
+
+.table-container th,
+.table-container td {
+  border: 1px solid #dddddd;
+  /* Updated border color */
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.table-container th {
+  background-color: #009879;
+  /* Header background color */
+  color: #ffffff;
+}
+
+.table-container tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.table-container tbody tr:nth-child(even) {
+  background-color: #f3f3f3;
+  /* Even row background color */
+}
+
+.table-container tbody tr:hover {
+  background-color: #e0e0e0;
+  /* Hovered row background color */
+}
+
+/* footer section starts */
 #footer {
+  bottom: 0;
+  font-family: BalloExtra;
+  height: auto;
+  width: 100%;
   background-color: black;
-  color: white;
   display: flex;
   border-top: 1px solid #000;
 }
@@ -122,7 +199,8 @@ main {
 
 .footer-left,
 .footer-right {
-  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .footer-left {
@@ -130,7 +208,7 @@ main {
   justify-content: center;
   align-items: center;
   width: 50%;
-  border-right: 1px solid white;
+  border-right: 1px solid black;
 }
 
 .footer-right {
@@ -141,14 +219,17 @@ main {
 }
 
 #footer h3 {
-  font-family: "BalloExtra", sans-serif;
+  font-family: BalooExtra;
   text-align: start;
   color: var(--yellow-color);
+  /* Assuming you have a variable for yellow color */
 }
 
 #footer p,
 #footer a {
-  font-family: "Barlow", sans-serif;
+  font-family: Barlow;
+  color: #fff;
+  /* White text color */
   text-align: start;
 }
 
@@ -156,21 +237,34 @@ main {
   text-decoration: none;
   display: block;
   line-height: 1.8rem;
-  color: white;
+  color: #fff;
+  /* White text color for links */
 }
 
-#footer .card_1,
+#footer .card_1 {
+  width: 100%;
+}
+
 #footer .card_2 {
   width: 100%;
 }
 
-.card_1,
+.card_1 {
+  margin: 0;
+  margin-top: 10px;
+}
+
 .card_2 {
   margin: 0;
   margin-top: 10px;
 }
 
-.card_1 div,
+.card_1 div {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
 .card_2 div {
   display: flex;
   align-items: center;
@@ -180,23 +274,17 @@ main {
 #footer .card_1 i,
 #footer .card_2 i {
   margin-right: 10px;
-  color: white;
+  color: #fff;
+  /* White icon color */
 }
 
-/* Additional Styles */
-
-.logo {
-  height: 80px;
-  background-color: white;
-  align-items: center;
-}
-
-.menu-icon {
-  background-color: #141313;
-  padding: 10px;
-  cursor: pointer;
-  justify-content: center;
+/* footer section ends */
+.spct {
   text-align: center;
+}
+
+.schedule {
+  display: flex;
 }
 
 .h10 {
