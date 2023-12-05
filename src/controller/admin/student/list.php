@@ -94,7 +94,7 @@ $perPage = 10;
             <th>STT</th>
             <th>Email</th>
             <th>Mật khẩu</th>
-            <th>Mã giáo viên</th>
+            <th>Mã sinh viên</th>
             <th>Họ và tên</th>
             <th>Giới tính</th>
             <th>Tuổi</th>
@@ -153,15 +153,15 @@ $perPage = 10;
         }
     }
 
-    // Hàm thay đổi trang
+    
     function changePage(offset) {
-        // Ẩn tất cả các dòng trong bảng
+       
         var rows = document.querySelectorAll('table tbody tr');
         rows.forEach(function (row) {
             row.style.display = 'none';
         });
 
-        // Hiển thị các dòng của trang mới
+        
         currentPage += offset;
         var startIndex = (currentPage - 1) * perPage;
         for (var i = startIndex; i < startIndex + perPage; i++) {

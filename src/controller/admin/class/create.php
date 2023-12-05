@@ -139,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             <input type="submit" name="submit" value="Tạo lớp học">
         </div>
         <div class="add-subject-link">
-            <a href="listClass.php" class="btn-add-major">Quay lại</a>
+            <a href="?act=qlMajor&action=return" class="btn-add-major">Quay lại</a>
         </div>
         <?php if (!empty($message)) : ?>
             <p class="message"><?= $message ?></p>

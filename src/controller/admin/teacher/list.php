@@ -3,6 +3,7 @@ require(dirname(__FILE__) . '/../../../models/PDO.php');
 
 require(dirname(__FILE__) . '/../../../models/Users.php');
 
+$perPage = 10;
 
 
 
@@ -51,6 +52,25 @@ require(dirname(__FILE__) . '/../../../models/Users.php');
         a:hover {
             color: #1d2430;
         }
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 0 5px;
+            background-color: #3f4857;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .pagination button:hover {
+            background-color: #1d2430;
+        }
     </style>
 </head>
 
@@ -93,7 +113,7 @@ require(dirname(__FILE__) . '/../../../models/Users.php');
                     <td><?= $teacher['gender'] ?></td>
                     <td><?= $teacher['age'] ?></td>
                     <td><img src="<?= $teacher['avatar'] ?>" alt="Avatar" style="width: 50px; height: 50px;"></td>
-                    <td><a href="update.php?id=<?= $teacher['id'] ?>">Sửa</a></td>
+                    <td><a href="?act=qlTeacher&action=update&id=<?= $teacher['id'] ?>">Sửa</a></td>
                     <td>
                         <a href="javascript:void(0);" onclick="confirmDelete(<?= $teacher['id'] ?>, '<?= $teacher['fullName'] ?>')">Xóa</a>
                     </td>
@@ -102,15 +122,44 @@ require(dirname(__FILE__) . '/../../../models/Users.php');
         <?php endforeach; ?>
 
     </table>
-    <div><a href="teacher/create.php">Thêm giáo viên</a></div>
+
+    <div class="pagination">
+        <button onclick="changePage(-1)"><i class="fa-solid fa-angle-left"></i></button>
+        <button onclick="changePage(1)"><i class="fa-solid fa-angle-right"></i></button>
+    </div>
+
+    <div><a href="?act=qlTeacher&action=create">Thêm giáo viên</a></div>
     <script>
+         // Biến để theo dõi trang hiện tại
+    var currentPage = 1;
+    // Số lượng sinh viên hiển thị trên mỗi trang
+    var perPage = <?= $perPage ?>;
+
+    // Hiển thị trang đầu tiên mặc định khi trang được tải lên
+    changePage(0);
         function confirmDelete(teacherId, teacherName) {
             var confirmation = confirm("Bạn có chắc chắn muốn xóa giáo viên: " + teacherName + " ?");
             if (confirmation) {
                 // Chuyển hướng đến trang xóa với tham số action=delete và id của giáo viên
-                window.location.href = "delete.php?action=delete&id=" + teacherId;
+                window.location.href = "?act=qlTeacher&action=delete?action=delete&id=" + teacherId;
             }
         }
+        function changePage(offset) {
+        // Ẩn tất cả các dòng trong bảng
+        var rows = document.querySelectorAll('table tbody tr');
+        rows.forEach(function (row) {
+            row.style.display = 'none';
+        });
+
+        // Hiển thị các dòng của trang mới
+        currentPage += offset;
+        var startIndex = (currentPage - 1) * perPage;
+        for (var i = startIndex; i < startIndex + perPage; i++) {
+            if (rows[i]) {
+                rows[i].style.display = '';
+            }
+        }
+    }
     </script>
 </body>
 

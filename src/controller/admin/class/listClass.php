@@ -7,10 +7,10 @@ require(dirname(__FILE__) . '/../../../models/Class.php');
 if (isset($_GET['subject_id'])) {
     $subjectId = $_GET['subject_id'];
     $listClasses = loadClassesBySubjectId($subjectId);
-} else {
-    header("Location: ../subject/listSubject.php");
-    exit();
-}
+  
+} 
+$perPage = 10;
+ 
 ?>
 
 <!DOCTYPE html>
@@ -84,6 +84,25 @@ if (isset($_GET['subject_id'])) {
             background-color: #1d2430;
             color: #fff;
         }
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 0 5px;
+            background-color: #3f4857;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .pagination button:hover {
+            background-color: #1d2430;
+        }
     </style>
 
 </head>
@@ -94,40 +113,66 @@ if (isset($_GET['subject_id'])) {
 
     <table border="1">
         <tr>
-            <th>ID</th>
+            <th>STT</th>
             <th>Tên Lớp Học</th>
             <th>Mã Lớp Học</th>
             <th>Chỉnh Sửa</th>
             <th>Xóa</th>
             <th>Xem lớp học</th>
         </tr>
+        <?php $stt = 1; ?>
 
         <?php foreach ($listClasses as $class) : ?>
             <tr>
-                <td><?= $class['id'] ?></td>
+                <td><?= $stt++ ?></td>
                 <td><?= $class['className'] ?></td>
                 <td><?= $class['classCode'] ?></td>
-                <td><a href="update.php?id=<?= $class['id'] ?>">Sửa</a></td>
+                <td><a href="?act=qlMajor&action=updateClass&id=<?= $class['id'] ?>">Sửa</a></td>
                 <td>
                     <a href="javascript:void(0);" onclick="confirmDelete('<?= $class['id'] ?>', '<?= $class['className'] ?>')">Xóa</a>
                 </td>
                 <td>
-                    <a href="../classInfo/listClassInfo.php?id=<?= $class['id'] ?>">Xem</a>
+                    <a href="?act=qlMajor&action=classInfo&id=<?= $class['id'] ?>">Xem</a>
                 </td>
             </tr>
         <?php endforeach; ?>
 
     </table>
+    <div class="pagination">
+        <button onclick="changePage(-1)"><i class="fa-solid fa-angle-left"></i></button>
+        <button onclick="changePage(1)"><i class="fa-solid fa-angle-right"></i></button>
+    </div>
     <div class="add-subject-link">
-        <a href="create.php" class="btn-add-major">Thêm lớp học</a>
+        <a href="?act=qlMajor&action=createClass" class="btn-add-major">Thêm lớp học</a>
     </div>
     <script>
+        
+        var currentPage = 1;
+    // Số lượng sinh viên hiển thị trên mỗi trang
+    var perPage = <?= $perPage ?>;
+    changePage(0);
         function confirmDelete(classId, className) {
             var confirmation = confirm("Bạn có chắc chắn muốn xóa lớp học: " + className + " ?");
             if (confirmation) {
-                window.location.href = "delete.php?action=delete&id=" + classId;
+                window.location.href = "?act=qlMajor&action=deleteClass?action=delete&id=" + classId;
             }
         }
+        function changePage(offset) {
+        // Ẩn tất cả các dòng trong bảng
+        var rows = document.querySelectorAll('table tbody tr');
+        rows.forEach(function (row) {
+            row.style.display = 'none';
+        });
+
+        // Hiển thị các dòng của trang mới
+        currentPage += offset;
+        var startIndex = (currentPage - 1) * perPage;
+        for (var i = startIndex; i < startIndex + perPage; i++) {
+            if (rows[i]) {
+                rows[i].style.display = '';
+            }
+        }
+    }
     </script>
 
 </body>

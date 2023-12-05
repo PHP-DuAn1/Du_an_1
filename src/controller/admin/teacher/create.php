@@ -77,14 +77,15 @@
 </head>
 <body>
 
-<div class="container">
+
 
     <h1>Thêm giáo viên</h1>
 
     <?php
     // Include necessary files
-    require('../../../models/PDO.php');
-    require('../../../models/Users.php');
+    require(dirname(__FILE__) . '/../../../models/PDO.php');
+    require(dirname(__FILE__) . '/../../../models/Users.php');
+
 
     function isValidEmail($email) {
         return filter_var($email, FILTER_VALIDATE_EMAIL);
@@ -161,10 +162,10 @@
          
     <!-- Back link -->
     <div class="back-link">
-        <a href="list.php">Quay về</a>
+        <a href="?act=qlTeacher&action=return">Quay về</a>
     </div>
 
-</div>
+
 
 </body>
 
