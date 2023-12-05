@@ -20,11 +20,42 @@ if (isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
+          body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+        }
+
         h1 {
             text-align: center;
             margin-bottom: 20px;
             color: #3f4857;
         }
+
+        .box_search {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.box_search input[type="text"] {
+    padding: 8px;
+}
+
+.box_search input[type="submit"] {
+    padding: 8px 16px;
+    background-color: #3f4857;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.box_search input[type="submit"]:hover {
+    background-color: #1d2430;
+}
 
         table {
             width: 100%;
@@ -66,7 +97,7 @@ if (isset($_GET['id'])) {
             <input type="submit" name="timkiem" value="Tìm Kiếm">
         </form>
     </div>
-    <h1>Danh Sách Sinh Viên </h1>
+    <h1>Danh Sách Sinh Viên</h1>
 
     <table border="1">
         <tr>
@@ -77,14 +108,13 @@ if (isset($_GET['id'])) {
             <th>Giới tính</th>
             <th>Tuổi</th>
             <th>Ảnh đại diện</th>
-            <th>Điểm </th>
-            <th>Thêm </th>
-
+            <th>Điểm</th>
+            <th>Thêm</th>
         </tr>
+
         <?php $counter = 1; ?>
-        <?php
-        foreach ($listStudent as $student) :
-            if ($student['roleId'] == getDefaultRoleStudent()) : ?>
+        <?php foreach ($listStudent as $student) : ?>
+            <?php if ($student['roleId'] == getDefaultRoleStudent()) : ?>
                 <form action="" method="post">
                     <tr>
                         <td><?= $counter++ ?></td>
@@ -99,26 +129,25 @@ if (isset($_GET['id'])) {
                         <td><input type="submit" name="submit" value="Thêm"></td>
                     </tr>
                 </form>
-
-
             <?php endif; ?>
         <?php endforeach; ?>
 
     </table>
 
     <?php
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $point = isset($_POST['point']) ? $_POST['point'] : null;
-        $userId = isset($_POST['userId']) ? $_POST['userId'] : null;
-        $classId = isset($_POST['classId']) ? $_POST['classId'] : null;
+        if (isset($_POST['submit'])) {
+            $point = $_POST['point'];
+            $userId = $_POST['userId'];
 
-        insertPoint($userId, $point, $classId);
-        echo "Thêm điểm cho sinh viên thành công";
+            if ($point !== "" && $userId !== "") {
+                insertPoint($userId, $classId, $point);
+                echo "Thêm điểm cho sinh viên thành công";
+            } else {
+                echo "Vui lòng nhập điểm để thêm";
+            }
+        }
     }
-
-
-
     ?>
 </body>
 

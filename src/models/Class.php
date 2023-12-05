@@ -31,10 +31,8 @@ function loadOneClass($id) {
     return pdo_query_one($sql, [':id' => $id]);
 }
 
-function loadSubjectsByMajor($majorId) {
-    $sql = "SELECT subject.*, major.majorName FROM subject 
-            LEFT JOIN major ON subject.majorId = major.id
-            WHERE subject.majorId = :majorId";
-    return pdo_query($sql, [':majorId' => $majorId]);
+function loadClassesBySubjectId($subjectId) {
+    $sql = "SELECT * FROM class WHERE subjectId = :subjectId";
+    return pdo_query($sql, [':subjectId' => $subjectId]);
 }
 ?>  

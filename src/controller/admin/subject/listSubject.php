@@ -7,6 +7,8 @@ if (isset($_GET['major_name'])) {
     $majorName = $_GET['major_name'];
     $listSubjects = loadSubjectsByMajorName($majorName);
 } 
+$perPage = 10;
+
 ?>
 
 <!DOCTYPE html>
@@ -77,6 +79,25 @@ if (isset($_GET['major_name'])) {
             background-color: #1d2430;
             color: #fff;
         }
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 0 5px;
+            background-color: #3f4857;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .pagination button:hover {
+            background-color: #1d2430;
+        }
     </style>
 </head>
 
@@ -100,26 +121,51 @@ if (isset($_GET['major_name'])) {
                 <td><?= $stt++ ?></td>
                 <td><?= $subject['subjectName'] ?></td>
                 <td><?= $subject['subjectCode'] ?></td>
-                <td><a href="?act=qlMajor&action=updateSubject?id=<?= $subject['id'] ?>">Sửa</a></td>
+                <td><a href="?act=qlMajor&action=updateSubject&id=<?= $subject['id'] ?>">Sửa</a></td>
                 <td>
                     <a href="javascript:void(0);" onclick="confirmDelete('<?= $subject['id'] ?>', '<?= $subject['subjectName'] ?>')">Xóa</a>
                 </td>
-                <td><a href="../class/listClass.php?subject_id=<?= $subject['id'] ?>">Xem Lớp Học</a></td>
+                <td><a href="?act=qlMajor&action=class&subject_id=<?= $subject['id'] ?>">Xem Lớp Học</a></td>
        
             </tr>
         <?php endforeach; ?>
 
     </table>
+    <div class="pagination">
+        <button onclick="changePage(-1)"><i class="fa-solid fa-angle-left"></i></button>
+        <button onclick="changePage(1)"><i class="fa-solid fa-angle-right"></i></button>
+    </div>
     <div class="add-subject-link">
         <a href="?act=qlMajor&action=createSubject" class="btn-add-major">Thêm môn học</a>
     </div>
     <script>
+           var currentPage = 1;
+    // Số lượng sinh viên hiển thị trên mỗi trang
+    var perPage = <?= $perPage ?>;
+    changePage(0);
+
         function confirmDelete(subjectId, subjectName) {
             var confirmation = confirm("Bạn có chắc chắn muốn xóa môn học: " + subjectName + " ?");
             if (confirmation) {
                 window.location.href = "?act=qlMajor&action=deleteSubject?action=delete&id=" + subjectId;
             }
         }
+        function changePage(offset) {
+        // Ẩn tất cả các dòng trong bảng
+        var rows = document.querySelectorAll('table tbody tr');
+        rows.forEach(function (row) {
+            row.style.display = 'none';
+        });
+
+        // Hiển thị các dòng của trang mới
+        currentPage += offset;
+        var startIndex = (currentPage - 1) * perPage;
+        for (var i = startIndex; i < startIndex + perPage; i++) {
+            if (rows[i]) {
+                rows[i].style.display = '';
+            }
+        }
+    }
     </script>
 
 </body>
