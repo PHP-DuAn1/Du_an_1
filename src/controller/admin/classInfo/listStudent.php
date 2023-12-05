@@ -5,6 +5,7 @@ require(dirname(__FILE__) . '/../../../models/classInfo.php');
 require(dirname(__FILE__) . '/../../../models/class.php');
 
 $mess = [];
+$perPage = 10;
 
 // Kiểm tra nếu form được submit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -108,6 +109,25 @@ $class = getAllClasses();
         script {
             margin-top: 20px;
         }
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 0 5px;
+            background-color: #3f4857;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .pagination button:hover {
+            background-color: #1d2430;
+        }
     </style>
 </head>
 
@@ -118,6 +138,7 @@ $class = getAllClasses();
         <input type="submit" name="submit" value="tìm kiếm">
     </div>
     <table border="1">
+    <thead>
         <tr>
             <th>STT</th>
             <th>Email</th>
@@ -129,6 +150,7 @@ $class = getAllClasses();
             <th>Chọn lớp</th>
             <th>Thêm vào lớp</th>
         </tr>
+        </thead>
         <?php $counter = 1; ?>
         <?php foreach ($listStudent as $student) : ?>
             <?php if ($student['roleId'] == getDefaultRoleStudent()) : ?>
@@ -155,10 +177,43 @@ $class = getAllClasses();
             <?php endif; ?>
         <?php endforeach; ?>
     </table>
-
+    <div class="pagination">
+        <button onclick="changePage(-1)"><i class="fa-solid fa-angle-left"></i></button>
+        <button onclick="changePage(1)"><i class="fa-solid fa-angle-right"></i></button>
+    </div>
     <?php foreach ($mess as $message) : ?>
         <p><?= $message ?></p>
     <?php endforeach; ?>
+    <div class="back-link">
+            <a href="?act=qlMajor&action=return">Quay về </a>
+        </div>
+    <script>
+        
+        var currentPage = 1;
+    // Số lượng sinh viên hiển thị trên mỗi trang
+    var perPage = <?= $perPage ?>;
+
+    // Hiển thị trang đầu tiên mặc định khi trang được tải lên
+    changePage(0);
+
+    function changePage(offset) {
+        // Ẩn tất cả các dòng trong bảng
+        var rows = document.querySelectorAll('table tbody tr');
+        rows.forEach(function (row) {
+            row.style.display = 'none';
+        });
+
+        // Hiển thị các dòng của trang mới
+        currentPage += offset;
+        var startIndex = (currentPage - 1) * perPage;
+        for (var i = startIndex; i < startIndex + perPage; i++) {
+            if (rows[i]) {
+                rows[i].style.display = '';
+            }
+        }
+    }
+    </script>
+
 </body>
 
 </html>

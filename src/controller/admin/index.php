@@ -60,8 +60,16 @@
                       
                         // Quản lí giáo viên
                         case 'qlTeacher':
+                            if (isset($_GET['action']) && $_GET['action'] === 'create') {
+                                include './teacher/create.php';
+                            } elseif (isset($_GET['action']) && $_GET['action'] === 'return') {
+                                include './teacher/list.php';
+                            } elseif (isset($_GET['action']) && $_GET['action']==='delete') {
+                                 include './teacher/delete.php';
+                            }else {
+                                 include './teacher/list.php';
+                            }
                          
-                            include './teacher/list.php';
                             break;
 
                         case 'qlPoint':
@@ -86,10 +94,32 @@
                                  include './subject/update.php';
                            }elseif(isset($_GET['action']) && $_GET['action']==='deleteSubject'){
                                  include './subject/delete.php';
-                           }elseif(isset($_GET['action']) && $_GET['action']==='returnSubject'){
-                            include './major/list.php';
+                   
+                           }elseif(isset($_GET['action']) && $_GET['action']==='class'){
+                                 include './class/listClass.php';
+                           }elseif(isset($_GET['action']) && $_GET['action']==='createClass'){
+                                 include './class/create.php';
+                           }elseif(isset($_GET['action']) && $_GET['action']==='updateClass'){
+                                 include './class/update.php';
+                           }elseif(isset($_GET['action']) && $_GET['action']==='deleteClass'){
+                                 include './class/delete.php';
 
-                              
+                           }elseif(isset($_GET['action']) && $_GET['action']==='classInfo'){
+                                 include './classInfo/listClassInfo.php';
+                           }elseif(isset($_GET['action']) && $_GET['action']==='createClassInfo'){
+                                 include './classInfo/create.php';
+                           }elseif(isset($_GET['action']) && $_GET['action']==='updateClassInfo'){
+                                 include './classInfo/update.php';
+                            }elseif(isset($_GET['action']) && $_GET['action']==='deleteClassInfo'){
+                                 include './classInfo/delete.php';
+                           } elseif (isset($_GET['action']) && $_GET['action']==='listStudent') {
+                                 include './classInfo/listStudent.php';
+                           } elseif (isset($_GET['action']) && $_GET['action']==='listTeacher') {
+                                 include './classInfo/listTeacher.php';
+
+                           } elseif (isset($_GET['action']) && $_GET['action']==='point') {
+                                 include './classInfo/point.php';
+   
                            }else{
                                 include './major/list.php';
                            }

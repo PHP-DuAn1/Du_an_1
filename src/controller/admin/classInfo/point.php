@@ -95,7 +95,7 @@ if (isset($_GET['id'])) {
                         <td><?= $student['age'] ?></td>
                         <td><img src="<?= $student['avatar'] ?>" alt="Avatar" style="width: 50px; height: 50px;"></td>
                         <input type="hidden" name="userId" value="<?= $student['id'] ?>">
-                        <td><input type="text" name="point"></td>
+                        <td><input type="text" name="point[<?= $student['id'] ?>]"></td>
                         <td><input type="submit" name="submit" value="Thêm"></td>
                     </tr>
                 </form>
@@ -108,14 +108,12 @@ if (isset($_GET['id'])) {
 
     <?php
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $point = isset($_POST['point']) ? $_POST['point'] : null;
-        $userId = isset($_POST['userId']) ? $_POST['userId'] : null;
-        $classId = isset($_POST['classId']) ? $_POST['classId'] : null;
-
-        insertPoint($userId, $point, $classId);
-        echo "Thêm điểm cho sinh viên thành công";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    foreach ($_POST['point'] as $userId => $point) {
+        insertPoint($userId, $point, $_POST['classId']);
     }
+    echo "Thêm điểm cho sinh viên thành công";
+}
 
 
 

@@ -153,7 +153,7 @@ $majors = getAllMajors();
       <input type="submit" name="submit" value="Cập Nhật">
     </div>
     <div class="back-link">
-      <a href="../subject/list.php">Quay về </a>
+      <a href="?act=qlMajor&action=return">Quay về </a>
     </div>
   </form>
 
