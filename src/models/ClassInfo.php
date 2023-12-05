@@ -34,12 +34,14 @@ function getAllClassInfo()
 
 
 
-function getClassInfoByUserAndClass($userId, $classId) {
+function getClassInfoByUserAndClass($userId, $classId)
+{
     $sql = "SELECT * FROM classinfo WHERE userId = :userId AND classId = :classId";
     return pdo_query_one($sql, [':userId' => $userId, ':classId' => $classId]);
 }
 
-function addStudentToClass($userId, $classId) {
+function addStudentToClass($userId, $classId)
+{
     $existingRecord = getClassInfoByUserAndClass($userId, $classId);
 
     if ($existingRecord) {
@@ -50,7 +52,8 @@ function addStudentToClass($userId, $classId) {
     return true;
 }
 
-function getAllUsers() {
+function getAllUsers()
+{
 
     $sql = "SELECT * FROM users";
     return pdo_query($sql);
@@ -67,13 +70,6 @@ function getUsersByClassInfo($id_class)
 
 function loadClassInfoBySClasses($classId)
 {
-
-function getUsersByClassInfo($classId){
-    $sql = "SELECT * FROM users WHERE id = $classId";
-    return pdo_query($sql);
-}
-
-function loadClassInfoBySClasses($classId){
 
     $sql = "SELECT classInfo.* FROM classinfo 
     INNER JOIN class ON classInfo.classId = class.Id
@@ -112,13 +108,3 @@ function loadClassInfoByClasses($classId)
     WHERE classInfo.classId = :classId ";
     return pdo_query($sql, [':classId' => $classId]);
 }
-
-
-function getClassInfoByUsers($classId){
-    $query = "SELECT * FROM classinfo
-	LEFT JOIN users ON classinfo.userId = users.id 
-    WHERE classinfo.classId = :classId ";
-    return pdo_query($query,[':classId' => $classId]);
-}
-?>
-
