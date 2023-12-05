@@ -1,7 +1,7 @@
 <?php
-require('../../../models/Subject.php');
-require('../../../models/Major.php');
-require('../../../models/PDO.php');
+    require(dirname(__FILE__) . '/../../../models/PDO.php');
+    require(dirname(__FILE__) . '/../../../models/Major.php');
+    require(dirname(__FILE__) . '/../../../models/Subject.php');
 
 $message = '';
 

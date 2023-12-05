@@ -54,12 +54,13 @@
                           } elseif (isset($_GET['action']) && $_GET['action']==='delete') {
                                include './student/delete.php';
                           }else {
-                              include './student/list.php';
+                               include './student/list.php';
                           }
                           break;
                       
                         // Quản lí giáo viên
                         case 'qlTeacher':
+                         
                             include './teacher/list.php';
                             break;
 
@@ -68,7 +69,30 @@
                             break;
 
                         case 'qlMajor':
+                            if (isset($_GET['action']) && $_GET['action'] === 'create') {     
+                                include './major/create.php';
+                           }elseif (isset($_GET['action']) && $_GET['action'] === 'return') {
+                                include './major/list.php';
+                           }elseif (isset($_GET['action']) && $_GET['action']==='update') {
+                                include './major/update.php';
+                           }elseif (isset($_GET['action']) && $_GET['action']==='delete') {
+                                include './major/delete.php';
+
+                           }elseif(isset($_GET['action']) && $_GET['action']==='subject') {
+                                 include './subject/listSubject.php';
+                           }elseif(isset($_GET['action']) && $_GET['action']==='createSubject'){
+                                 include './subject/create.php';
+                           }elseif(isset($_GET['action']) && $_GET['action']==='updateSubject'){
+                                 include './subject/update.php';
+                           }elseif(isset($_GET['action']) && $_GET['action']==='deleteSubject'){
+                                 include './subject/delete.php';
+                           }elseif(isset($_GET['action']) && $_GET['action']==='returnSubject'){
                             include './major/list.php';
+
+                              
+                           }else{
+                                include './major/list.php';
+                           }
                             break;
 
                         default:

@@ -5,7 +5,7 @@
     // Kiểm tra xem có tham số id được truyền vào không
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
-        $majorInfo = loadOneMajor($id);
+        $majorInfo =    ($id);
 
         // Kiểm tra xem chuyên ngành có tồn tại không
         if (!$majorInfo) {
@@ -140,7 +140,7 @@
               <input type="submit" name="submit" value="Cập Nhật">
           </div>
           <div class="back-link">
-              <a href="../major/list.php">Quay về </a>
+              <a href="?act=qlMajor&action=return">Quay về </a>
           </div>
       </form>
 

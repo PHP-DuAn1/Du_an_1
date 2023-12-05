@@ -4,14 +4,10 @@ require(dirname(__FILE__) . '/../../../models/Users.php');
 
 $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
 
-$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+$listStudent = loadAllUsers($kyw);
 $perPage = 10;
 
-$start = ($page - 1) * $perPage;
 
-$listStudent = loadAllUsers($kyw, $start, $perPage);
-
-$totalPages = ceil($totalStudents / $perPage);
 ?>
 
 <!DOCTYPE html>
@@ -20,29 +16,71 @@ $totalPages = ceil($totalStudents / $perPage);
 <head>
     <meta charset="UTF-8">
     <title>Danh sách sinh viên</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/4a2609ef57.js" crossorigin="anonymous"></script>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* CSS cho phần trang */
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #3f4857;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+            color: #3f4857;
+        }
+
+        th {
+            background-color: #3f4857;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3f4857;
+            transition: color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            color: #1d2430;
+        }
+
         .pagination {
-            display: flex;
-            justify-content: space-between;
+            text-align: center;
             margin-top: 20px;
         }
 
-        .pagination div {
+        .pagination button {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 0 5px;
+            background-color: #3f4857;
+            color: white;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
         }
 
-        .pagination i {
-            font-size: 24px;
+        .pagination button:hover {
+            background-color: #1d2430;
         }
     </style>
 </head>
 
 <body>
-    <h1>Danh Sách Sinh Viên</h1>
+    <h1>Danh Sách Sinh Viên </h1>
     <div class="box_search">
         <form action="" method="POST">
             <input type="text" name="kyw" placeholder="Từ khóa tìm kiếm">
@@ -50,8 +88,8 @@ $totalPages = ceil($totalStudents / $perPage);
         </form>
     </div>
 
-    <table border="1">
-        <!-- Các thẻ tiêu đề -->
+   <table border="1">
+    <thead>
         <tr>
             <th>STT</th>
             <th>Email</th>
@@ -64,56 +102,75 @@ $totalPages = ceil($totalStudents / $perPage);
             <th>Chỉnh sửa</th>
             <th>Xóa</th>
         </tr>
+    </thead>
+    <tbody>
         <?php $counter = 1; ?>
-        <?php foreach ($listStudent as $student) : ?>
-            <!-- Các dòng dữ liệu -->
-            <tr>
-                <td><?= $counter++ ?></td>
-                <td><?= $student['email'] ?></td>
-                <td><?= $student['password'] ?></td>
-                <td><?= $student['studentCode'] ?></td>
-                <td><?= $student['fullName'] ?></td>
-                <td><?= $student['gender'] ?></td>
-                <td><?= $student['age'] ?></td>
-                <td><img src="<?= $student['avatar'] ?>" alt="Avatar" style="width: 50px; height: 50px;"></td>
-                <td><a href="?act=qlStudent&action=update&id=<?= $student['id'] ?>">Sửa</a></td>
-                <td>
-                    <a href="javascript:void(0);" onclick="confirmDelete(<?= $student['id'] ?>, '<?= $student['fullName'] ?>')">Xóa</a>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
+        <?php
+        $listStudent = loadAllUsers($kyw);
+        foreach ($listStudent as $student) :
+            if ($student['roleId'] == getDefaultRoleStudent()) : ?>
 
-    <!-- Hiển thị phân trang -->
+                <tr>
+                    <td><?= $counter++ ?></td>
+                    <td><?= $student['email'] ?></td>
+                    <td><?= $student['password'] ?></td>
+                    <td><?= $student['studentCode'] ?></td>
+                    <td><?= $student['fullName'] ?></td>
+                    <td><?= $student['gender'] ?></td>
+                    <td><?= $student['age'] ?></td>
+                    <td><img src="<?= $student['avatar'] ?>" alt="Avatar" style="width: 50px; height: 50px;"></td>
+                    <td><a href="?act=qlStudent&action=update&id=<?= $student['id'] ?>">Sửa</a></td>
+                    <td>
+                        <a href="javascript:void(0);" onclick="confirmDelete(<?= $student['id'] ?>, '<?= $student['fullName'] ?>')">Xóa</a>
+                    </td>
+                </tr>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
     <div class="pagination">
-        <div class="prev" onclick="changePage(<?php echo $page - 1; ?>)">
-            <i class="fas fa-angle-left"></i>
-        </div>
-        <div class="next" onclick="changePage(<?php echo $page + 1; ?>)">
-            <i class="fas fa-angle-right"></i>
-        </div>
+        <button onclick="changePage(-1)"><i class="fa-solid fa-angle-left"></i></button>
+        <button onclick="changePage(1)"><i class="fa-solid fa-angle-right"></i></button>
     </div>
 
     <div><a href="?act=qlStudent&action=create">Thêm sinh viên</a></div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
     <script>
-        function changePage(newPage) {
-            // Kiểm tra xem newPage có hợp lệ không (nằm trong khoảng từ 1 đến totalPages)
-            if (newPage >= 1 && newPage <= <?php echo $totalPages; ?>) {
-                // Chuyển hướng đến trang mới
-                window.location.href = "?act=qlStudent&action=create&page=" + newPage;
-            }
-        }
+    // Biến để theo dõi trang hiện tại
+    var currentPage = 1;
+    // Số lượng sinh viên hiển thị trên mỗi trang
+    var perPage = <?= $perPage ?>;
 
-        function confirmDelete(studentId, studentName) {
-            var confirmation = confirm("Bạn có chắc chắn muốn xóa sinh viên: " + studentName + " ?");
-            if (confirmation) {
-                // Chuyển hướng đến trang xóa với tham số action=delete và id của giáo viên
-                window.location.href = "?act=qlStudent&action=delete&id=" + studentId;
+    // Hiển thị trang đầu tiên mặc định khi trang được tải lên
+    changePage(0);
+
+    // Hàm xác nhận xóa sinh viên
+    function confirmDelete(studentId, studentName) {
+        var confirmation = confirm("Bạn có chắc chắn muốn xóa sinh viên: " + studentName + " ?");
+        if (confirmation) {
+            // Chuyển hướng đến trang xóa với tham số action=delete và id của sinh viên
+            window.location.href = "?act=qlStudent&action=delete&id=" + studentId;
+        }
+    }
+
+    // Hàm thay đổi trang
+    function changePage(offset) {
+        // Ẩn tất cả các dòng trong bảng
+        var rows = document.querySelectorAll('table tbody tr');
+        rows.forEach(function (row) {
+            row.style.display = 'none';
+        });
+
+        // Hiển thị các dòng của trang mới
+        currentPage += offset;
+        var startIndex = (currentPage - 1) * perPage;
+        for (var i = startIndex; i < startIndex + perPage; i++) {
+            if (rows[i]) {
+                rows[i].style.display = '';
             }
         }
-    </script>
+    }
+</script>
 </body>
 
 </html>
