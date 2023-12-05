@@ -6,7 +6,7 @@
     </div>
 
     <div class="content_schedule">
-        <h1>Thông Tin Sinh Viên</h1>
+        <h1>Thông Tin Cá Nhân</h1>
 
         <table class="table-container">
             <tr>
@@ -19,6 +19,8 @@
             </tr>
 
             <?php
+            require('../../models/Users.php');
+            require('../../models/PDO.php');
          require(dirname(__FILE__) . '/../models/PDO.php');
          require(dirname(__FILE__) . '/../models/Users.php');
 

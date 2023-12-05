@@ -5,61 +5,51 @@
   </div>
   <div class="content_schedule">
     <form action="#" method="POST" id="bang">
-      <p>Chuyên ngành: Lập trình website </p>
-      <table class="table-container">
-        <tr>
-          <th>#</th>
-          <th>Môn</th>
-          <th>Mã môn</th>
-          <th>Mã lớp</th>
-          <th>Điểm</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Tin học cơ sở</td>
-          <td>TH189</td>
-          <td>WD18322</td>
-          <td>9.2</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Xây dựng trang web </td>
-          <td>WE18930</td>
-          <td>WD183</td>
-          <td>7.5</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Dự án 1</td>
-          <td>DAM399</td>
-          <td>WD18322</td>
-          <td>8.7</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Lập trình PHP </td>
-          <td>PHP599</td>
-          <td>WD18322</td>
-          <td>7</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Lập trình Java </td>
-          <td>JV830</td>
-          <td>WD18322</td>
-          <td>9,8</td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>Tiếng anh 2.1</td>
-          <td>ENT1989</td>
-          <td>WD18322</td>
-          <td>8,9</td>
-        </tr>
-      </table>
+      <?php
+      require('../../models/PDO.php');
+      require('../../models/Users.php');
+      require('../../models/Subject.php');
+      require('../../models/Point.php');
 
+      if (!isset($_SESSION['user'])) {
+        // Nếu không có thông tin người dùng trong session, chuyển hướng về trang đăng nhập
+        header('Location: path_to_login.php');
+        exit();
+      }
+
+      // Lấy userId từ session
+      $userId = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : '';
+
+      if ($userId) {
+        // Gọi hàm để lấy thông tin điểm
+        $pointData = loadOnePoint($userId);
+        echo "<table class='table-container'>
+                <tr>
+                  <th>#</th>
+                  <th>Họ và Tên</th>
+                  <th>Môn Học</th>
+                  <th>Lớp</th>
+                  <th>Điểm</th>
+                </tr>";
+
+        $count = 1;
+        foreach ($pointData as $row) {
+          echo "<tr>
+            <td>{$count}</td>
+            <td>" . (isset($row['HoTen']) ? $row['HoTen'] : '') . "</td>
+             <td>" . (isset($row['MonHoc']) ? $row['MonHoc'] : '') . "</td>
+            <td>" . (isset($row['Lop']) ? $row['Lop'] : '') . "</td>
+            <td>" . (isset($row['Diem']) ? $row['Diem'] : '') . "</td>
+          </tr>";
+          $count++;
+        }
+
+        echo "</table>";
+      } else {
+        echo "Không có thông tin người dùng trong session.";
+      }
+      ?>
     </form>
   </div>
 </div>
-
 </main>
