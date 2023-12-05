@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="content-content">
-        bách
+       
         <?php
         // nút án vào đây
         ?>

@@ -9,6 +9,6 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])
     deleteUsers($studentId);
 
     // Chuyển hướng người dùng về trang danh sách
-    header("Location: list.php");
+    header("Location: /list.php");
     exit();
 }

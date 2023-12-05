@@ -14,15 +14,16 @@
                 <th>Họ và Tên</th>
                 <th>Mã Sinh Viên</th>
                 <th>Email</th>
-                <th>Mật Khẩu</th>
                 <th>Tuổi</th>
                 <th>Giới Tính</th>
-                <th>Chỉnh Sửa</th>
             </tr>
 
             <?php
             require('../../models/Users.php');
             require('../../models/PDO.php');
+         require(dirname(__FILE__) . '/../models/PDO.php');
+         require(dirname(__FILE__) . '/../models/Users.php');
+
 
             // session_start();
             if (!isset($_SESSION['user'])) {
@@ -36,20 +37,18 @@
             // echo $id;
             // die();
 
-            $inforStudent = loadOneUsers($id);
+            $infoStudent = loadOneUsers($id);
             // print_r($inforStudent);
             // die();
             // Kiểm tra xem có thông tin sinh viên hay không
-            if ($inforStudent) {
+            if ($infoStudent) {
                 echo '<tr>
-                        <td><img src="' . $inforStudent['avatar'] . '" alt="Avatar" style="width: 50px; height: 50px;"></td>
-                        <td>' . $inforStudent['fullName'] . '</td>
-                        <td>' . $inforStudent['studentCode'] . '</td>
-                        <td>' . $inforStudent['email'] . '</td>
-                        <td>' . $inforStudent['password'] . '</td>
-                        <td>' . $inforStudent['age'] . '</td>
-                        <td>' . $inforStudent['gender'] . '</td>
-                        <td><a href="update.php?id=' . $inforStudent['id'] . '">Sửa</a></td>
+                        <td><img src="' . $infoStudent['avatar'] . '" alt="Avatar" style="width: 50px; height: 50px;"></td>
+                        <td>' . $infoStudent['fullName'] . '</td>
+                        <td>' . $infoStudent['studentCode'] . '</td>
+                        <td>' . $infoStudent['email'] . '</td>
+                        <td>' . $infoStudent['age'] . '</td>
+                        <td>' . $infoStudent['gender'] . '</td>
                     </tr>';
             }
 

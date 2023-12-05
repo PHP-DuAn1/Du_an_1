@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         </div>
         <input type="submit" name="submit" value="Thêm Chuyên Ngành">
         <div class="back-link">
-            <a href="../major/list.php">Quay về <a>
+            <a href="?act=qlMajor&action=return">Quay về <a>
         </div>
     </form>
 

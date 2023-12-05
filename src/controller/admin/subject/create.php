@@ -1,7 +1,8 @@
 <?php
-require('../../../models/Subject.php');
-require('../../../models/Major.php');
-require('../../../models/PDO.php');
+require(dirname(__FILE__) . '/../../../models/PDO.php');
+require(dirname(__FILE__) . '/../../../models/Subject.php');
+require(dirname(__FILE__) . '/../../../models/Major.php');
+
 
 $message = '';
 
@@ -132,7 +133,7 @@ $majors = getAllMajors();
             <input type="submit" name="submit" value="Tạo Môn Học">
         </div>
         <div class="back-link">
-            <a href="../subject/listSubject.php">Quay về </a>
+            <a href="?act=qlMajor&action=returnSubject?">Quay về </a>
         </div>
     </form>
 

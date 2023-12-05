@@ -4,6 +4,8 @@ require(dirname(__FILE__) . '/../../../models/Users.php');
 
 $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
 
+$listStudent = loadAllUsers($kyw);
+$perPage = 10;
 
 
 ?>
@@ -14,8 +16,9 @@ $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
 <head>
     <meta charset="UTF-8">
     <title>Danh sách sinh viên</title>
+    <script src="https://kit.fontawesome.com/4a2609ef57.js" crossorigin="anonymous"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh Sách Sinh Viên - <?= $majorName ?></title>
     <style>
         h1 {
             text-align: center;
@@ -53,6 +56,26 @@ $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
         a:hover {
             color: #1d2430;
         }
+
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 0 5px;
+            background-color: #3f4857;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .pagination button:hover {
+            background-color: #1d2430;
+        }
     </style>
 </head>
 
@@ -65,7 +88,8 @@ $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
         </form>
     </div>
 
-    <table border="1">
+   <table border="1">
+    <thead>
         <tr>
             <th>STT</th>
             <th>Email</th>
@@ -78,6 +102,8 @@ $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
             <th>Chỉnh sửa</th>
             <th>Xóa</th>
         </tr>
+    </thead>
+    <tbody>
         <?php $counter = 1; ?>
         <?php
         $listStudent = loadAllUsers($kyw);
@@ -93,25 +119,58 @@ $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
                     <td><?= $student['gender'] ?></td>
                     <td><?= $student['age'] ?></td>
                     <td><img src="<?= $student['avatar'] ?>" alt="Avatar" style="width: 50px; height: 50px;"></td>
-                    <td><a href="update.php?id=<?= $student['id'] ?>">Sửa</a></td>
+                    <td><a href="?act=qlStudent&action=update&id=<?= $student['id'] ?>">Sửa</a></td>
                     <td>
                         <a href="javascript:void(0);" onclick="confirmDelete(<?= $student['id'] ?>, '<?= $student['fullName'] ?>')">Xóa</a>
                     </td>
                 </tr>
             <?php endif; ?>
         <?php endforeach; ?>
+    </tbody>
+</table>
 
-    </table>
-    <div><a href="create.php">Thêm sinh viên</a></div>
+    <div class="pagination">
+        <button onclick="changePage(-1)"><i class="fa-solid fa-angle-left"></i></button>
+        <button onclick="changePage(1)"><i class="fa-solid fa-angle-right"></i></button>
+    </div>
+
+    <div><a href="?act=qlStudent&action=create">Thêm sinh viên</a></div>
     <script>
-        function confirmDelete(studentId, studentName) {
-            var confirmation = confirm("Bạn có chắc chắn muốn xóa sinh viên: " + studentName + " ?");
-            if (confirmation) {
-                // Chuyển hướng đến trang xóa với tham số action=delete và id của giáo viên
-                window.location.href = "delete.php?action=delete&id=" + studentId;
+    // Biến để theo dõi trang hiện tại
+    var currentPage = 1;
+    // Số lượng sinh viên hiển thị trên mỗi trang
+    var perPage = <?= $perPage ?>;
+
+    // Hiển thị trang đầu tiên mặc định khi trang được tải lên
+    changePage(0);
+
+    // Hàm xác nhận xóa sinh viên
+    function confirmDelete(studentId, studentName) {
+        var confirmation = confirm("Bạn có chắc chắn muốn xóa sinh viên: " + studentName + " ?");
+        if (confirmation) {
+            // Chuyển hướng đến trang xóa với tham số action=delete và id của sinh viên
+            window.location.href = "?act=qlStudent&action=delete&id=" + studentId;
+        }
+    }
+
+    // Hàm thay đổi trang
+    function changePage(offset) {
+        // Ẩn tất cả các dòng trong bảng
+        var rows = document.querySelectorAll('table tbody tr');
+        rows.forEach(function (row) {
+            row.style.display = 'none';
+        });
+
+        // Hiển thị các dòng của trang mới
+        currentPage += offset;
+        var startIndex = (currentPage - 1) * perPage;
+        for (var i = startIndex; i < startIndex + perPage; i++) {
+            if (rows[i]) {
+                rows[i].style.display = '';
             }
         }
-    </script>
+    }
+</script>
 </body>
 
 </html>

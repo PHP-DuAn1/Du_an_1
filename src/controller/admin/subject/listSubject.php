@@ -1,14 +1,12 @@
 <?php
-require('../../../models/Subject.php');
-require('../../../models/PDO.php');
+require(dirname(__FILE__) . '/../../../models/PDO.php');
+require(dirname(__FILE__) . '/../../../models/Subject.php');
+
 
 if (isset($_GET['major_name'])) {
     $majorName = $_GET['major_name'];
     $listSubjects = loadSubjectsByMajorName($majorName);
-} else {
-    header("Location: ../major/list.php");
-    exit();
-}
+} 
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +15,7 @@ if (isset($_GET['major_name'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh Sách Môn Học - <?= $majorName ?></title>
+    <title>Danh Sách Môn Học  - <?= $majorName ?> </title>
     <style>
         body {
             background-color: #f2f2f2;
@@ -94,7 +92,6 @@ if (isset($_GET['major_name'])) {
             <th>Chỉnh Sửa</th>
             <th>Xóa</th>
             <th>Xem Lớp Học</th>
-            <th>Xem Điểm</th>
         </tr>
         <?php $stt = 1; ?>
 
@@ -103,24 +100,24 @@ if (isset($_GET['major_name'])) {
                 <td><?= $stt++ ?></td>
                 <td><?= $subject['subjectName'] ?></td>
                 <td><?= $subject['subjectCode'] ?></td>
-                <td><a href="update.php?id=<?= $subject['id'] ?>">Sửa</a></td>
+                <td><a href="?act=qlMajor&action=updateSubject?id=<?= $subject['id'] ?>">Sửa</a></td>
                 <td>
                     <a href="javascript:void(0);" onclick="confirmDelete('<?= $subject['id'] ?>', '<?= $subject['subjectName'] ?>')">Xóa</a>
                 </td>
                 <td><a href="../class/listClass.php?subject_id=<?= $subject['id'] ?>">Xem Lớp Học</a></td>
-                <td><a href="../point/list.php?id=<?= $subject['id'] ?>">Xem </a></td>
+       
             </tr>
         <?php endforeach; ?>
 
     </table>
     <div class="add-subject-link">
-        <a href="create.php" class="btn-add-major">Thêm môn học</a>
+        <a href="?act=qlMajor&action=createSubject" class="btn-add-major">Thêm môn học</a>
     </div>
     <script>
         function confirmDelete(subjectId, subjectName) {
             var confirmation = confirm("Bạn có chắc chắn muốn xóa môn học: " + subjectName + " ?");
             if (confirmation) {
-                window.location.href = "delete.php?action=delete&id=" + subjectId;
+                window.location.href = "?act=qlMajor&action=deleteSubject?action=delete&id=" + subjectId;
             }
         }
     </script>
