@@ -13,14 +13,14 @@ function updatePoint($id, $classId, $userId, $point)
 }
 function insertPoint($userId, $classId, $point)
 {
-    $sql = "INSERT INTO point (classId, userId, point)";
+    $sql = "INSERT INTO point (classId, userId, point) VALUES (:classId, :userId, :point)";
     pdo_execute($sql, [
         ':classId' => $classId,
         ':userId' => $userId,
         ':point' => $point,
-
     ]);
 }
+
 
 function deletePoint($id)
 {
@@ -34,6 +34,14 @@ function getPointByUser($subjectId)
         LEFT JOIN users ON point.userId = users.id 
         WHERE point.subjectId = :subjectId ";
     return pdo_query($query, [':subjectId' => $subjectId]);
+}
+
+function getPointByUsers ($classId){
+    $query = "SELECT* FROM point
+	LEFT JOIN users ON point.userId = users.id 
+    WHERE point.classId = :classId ";
+    return pdo_query($query,[':classId' => $classId]);
+    
 }
 
 function loadOnePoint($userId)
