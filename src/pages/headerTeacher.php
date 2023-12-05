@@ -32,7 +32,7 @@ $fullName = isset($_SESSION['user']['fullName']) ? $_SESSION['user']['fullName']
                 </div>
                 <div class="menu-list" id="menuList">
                     <a href="index.php"><i class="fas fa-bell"></i> Thông Báo</a>
-                    <a href="index.php?act=teachingSchedule"><i class="far fa-calendar-alt"></i> Lịch Dạy</a>
-                   
+                    <a href="index.php?act=qlclass"><i class="fas fa-chalkboard-teacher"></i> Quản lí lớp học</a>
+
                 </div>
             </div>

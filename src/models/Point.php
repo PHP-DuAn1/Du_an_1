@@ -53,4 +53,13 @@ function loadOnePoint($userId)
     $result = pdo_query($sql, [':user_id' => $userId]);
 
     return $result;  // Trả về mảng kết hợp chứa dữ liệu điểm
+
+    function getPointByUserIdAndClassId($userId, $classId)
+    {
+        $sql = "SELECT point.* FROM point
+            INNER JOIN classinfo ON point.userId = classinfo.userId AND point.classId = classinfo.classId
+            WHERE point.userId = :userId AND point.classId = :classId";
+
+        return pdo_query_one($sql, [':userId' => $userId, ':classId' => $classId]);
+    }
 }

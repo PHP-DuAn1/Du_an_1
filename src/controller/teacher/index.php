@@ -4,11 +4,13 @@ include "../../pages/headerTeacher.php";
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
-        case 'teachingSchedule':
-            include '../../pages/teachingSchedule.php';
+        case 'qlclass':
+            include '../../pages/teacher/listclass.php';
             break;
 
-        
+        case 'qlstudent':
+            include '../../pages/teacher/liststudent.php';
+            break;
 
         case 'userpage':
             include '../../pages/userpage.php';
