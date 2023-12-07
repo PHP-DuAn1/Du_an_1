@@ -12,6 +12,10 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include '../../pages/teacher/liststudent.php';
             break;
 
+        case 'qlpoint':
+            include '../../pages/teacher/addpoint.php';
+            break;
+
         case 'userpage':
             include '../../pages/userpage.php';
             break;
