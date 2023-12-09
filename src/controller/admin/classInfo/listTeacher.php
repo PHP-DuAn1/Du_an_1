@@ -7,21 +7,30 @@ require(dirname(__FILE__) . '/../../../models/class.php');
 $mess = [];
 $perPage = 10;
 
+if (isset($_GET['id'])) {
+    $classId = $_GET['id'];
+    
+}
 
 // Kiểm tra nếu form được submit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Lấy giá trị của classId và userId
-    $classId = $_POST['classId'];
     $userId = $_POST['userId'];
-
-    // Kiểm tra và thêm giáo viên vào lớp
+   
+    // Kiểm tra và thêm sinh viên vào lớp
     $existingRecord = getClassInfoByUserAndClass($userId, $classId);
 
     if (!$existingRecord) {
-        createClassInfo($userId, $classId);
-        $mess[] = "Thêm giáo viên vào lớp thành công";
+        // Kiểm tra xem sinh viên đã đăng ký lớp chưa
+        if (!isStudentEnrolledInClass($userId, $classId)) {
+            // Nếu chưa, thêm sinh viên vào lớp
+            createClassInfo($userId, $classId);
+            $mess[] = "Thêm sinh viên vào lớp thành công";
+        } else {
+            $mess[] = "Sinh viên đã tồn tại trong lớp";
+        }
     } else {
-        $mess[] = "Giáo viên đã tồn tại trong lớp";
+        $mess[] = "Sinh viên đã tồn tại trong lớp";
     }
 }
 
@@ -149,7 +158,6 @@ $class = getAllClasses();
             <th>Giới tính</th>
             <th>Tuổi</th>
             <th>Ảnh đại diện</th>
-            <th>Chọn lớp</th>
             <th>Thêm vào lớp</th>
         </tr>
     <thead>
@@ -166,13 +174,7 @@ $class = getAllClasses();
                         <td><?= $student['gender'] ?></td>
                         <td><?= $student['age'] ?></td>
                         <td><img src="<?= $student['avatar'] ?>" alt="Avatar" style="width: 50px; height: 50px;"></td>
-                        <td>
-                            <select name="classId">
-                                <?php foreach ($class as $classId) : ?>
-                                    <option value="<?= $classId['id'] ?>"><?= $classId['className'] ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </td>
+                         
                         <input type="hidden" name="userId" value="<?= $student['id'] ?>">
                         <td><input type="submit" name="submit" value="Thêm"></td>
                     </tr>

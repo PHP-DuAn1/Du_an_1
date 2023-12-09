@@ -9,6 +9,8 @@ if (isset($_GET['id'])) {
     $classId = $_GET['id'];
     $listStudent = getClassInfoByUsers($classId);
 }
+$perPage = 10;
+
 ?>
 
 <!DOCTYPE html>
@@ -87,6 +89,25 @@ if (isset($_GET['id'])) {
         a:hover {
             color: #1d2430;
         }
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 0 5px;
+            background-color: #3f4857;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .pagination button:hover {
+            background-color: #1d2430;
+        }
     </style>
 </head>
 
@@ -100,6 +121,7 @@ if (isset($_GET['id'])) {
     <h1>Danh Sách Sinh Viên</h1>
 
     <table border="1">
+        <thead>
         <tr>
             <th>STT</th>
             <th>Email</th>
@@ -110,10 +132,12 @@ if (isset($_GET['id'])) {
             <th>Ảnh đại diện</th>
             <th>Điểm</th>
             <th>Thêm</th>
-        </tr>
-
+        </tr>  
+        </thead>
+        <?php $getAllPoints = getAllPoints();  ?> 
         <?php $counter = 1; ?>
         <?php foreach ($listStudent as $student) : ?>
+        <?php foreach ($getAllPoints as $points) : ?>
             <?php if ($student['roleId'] == getDefaultRoleStudent()) : ?>
                 <form action="" method="post">
                     <tr>
@@ -125,11 +149,12 @@ if (isset($_GET['id'])) {
                         <td><?= $student['age'] ?></td>
                         <td><img src="<?= $student['avatar'] ?>" alt="Avatar" style="width: 50px; height: 50px;"></td>
                         <input type="hidden" name="userId" value="<?= $student['id'] ?>">
-                        <td><input type="text" name="point"></td>
+                        <td><input type="text" name="point" value="<?= $points['point'] ?> " ></td>
                         <td><input type="submit" name="submit" value="Thêm"></td>
                     </tr>
                 </form>
             <?php endif; ?>
+        <?php endforeach; ?>
         <?php endforeach; ?>
 
     </table>
@@ -149,6 +174,35 @@ if (isset($_GET['id'])) {
         }
     }
     ?>
+
+
+
+      <script>
+        
+        var currentPage = 1;
+    // Số lượng sinh viên hiển thị trên mỗi trang
+    var perPage = <?= $perPage ?>;
+
+    // Hiển thị trang đầu tiên mặc định khi trang được tải lên
+    changePage(0);
+
+    function changePage(offset) {
+        // Ẩn tất cả các dòng trong bảng
+        var rows = document.querySelectorAll('table tbody tr');
+        rows.forEach(function (row) {
+            row.style.display = 'none';
+        });
+
+        // Hiển thị các dòng của trang mới
+        currentPage += offset;
+        var startIndex = (currentPage - 1) * perPage;
+        for (var i = startIndex; i < startIndex + perPage; i++) {
+            if (rows[i]) {
+                rows[i].style.display = '';
+            }
+        }
+    }
+    </script>
 </body>
 
 </html>

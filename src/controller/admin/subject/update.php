@@ -11,17 +11,8 @@ if (isset($_GET['id'])) {
   $subjectInfo = getSubjectById($id);
 
   // Kiểm tra xem môn học có tồn tại không
-  if (!$subjectInfo) {
-    // Nếu không, chuyển hướng về trang danh sách môn học hoặc thực hiện xử lý khác theo yêu cầu của bạn
-    header("Location: list_subject.php");
-    exit();
-  }
-} else {
-  // Nếu không có id, chuyển hướng về trang danh sách môn học
-  header("Location: list_subject.php");
-  exit();
+ 
 }
-
 // Xử lý khi form được submit
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
   $subjectName = $_POST['subjectName'];
@@ -36,8 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     updateSubject($id, $subjectName, $subjectCode, $majorId);
 
     // Chuyển hướng về trang danh sách môn học sau khi cập nhật
-    header("Location: list_subject.php");
-    exit();
+   echo 'Thành công'
   }
 }
 

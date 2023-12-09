@@ -5,18 +5,8 @@
     // Kiểm tra xem có tham số id được truyền vào không
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
-        $majorInfo =    ($id);
+        $majorInfo =   loadOneMajor ($id);
 
-        // Kiểm tra xem chuyên ngành có tồn tại không
-        if (!$majorInfo) {
-            // Nếu không, chuyển hướng về trang danh sách chuyên ngành hoặc thực hiện xử lý khác theo yêu cầu của bạn
-            header("Location: list.php");
-            exit();
-        }
-    } else {
-        // Nếu không có id, chuyển hướng về trang danh sách chuyên ngành
-        header("Location: list.php");
-        exit();
     }
 
     // Kiểm tra xem có dữ liệu được gửi từ form không
@@ -32,8 +22,7 @@
             updateMajor($id, $majorName, $majorCode);
 
             // Chuyển hướng về trang danh sách chuyên ngành sau khi cập nhật
-            header("Location: list.php");
-            exit();
+            echo "Thành công";
         }
     }
     ?>

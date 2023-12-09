@@ -35,4 +35,12 @@ function loadClassesBySubjectId($subjectId) {
     $sql = "SELECT * FROM class WHERE subjectId = :subjectId";
     return pdo_query($sql, [':subjectId' => $subjectId]);
 }
+
+function getClassByUserId($userId) {
+    $sql = "SELECT ci.classId
+            FROM classInfo ci
+            INNER JOIN user_class uc ON ci.id = uc.classId
+            WHERE uc.userId = :userId";
+    $result = pdo_query_one($sql, [':userId' => $userId]);
+}
 ?>  

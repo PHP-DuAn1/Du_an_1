@@ -31,13 +31,17 @@ function getAllClassInfo()
     return pdo_query($sql);
 }
 
-
-
-
 function getClassInfoByUserAndClass($userId, $classId)
 {
     $sql = "SELECT * FROM classinfo WHERE userId = :userId AND classId = :classId";
     return pdo_query_one($sql, [':userId' => $userId, ':classId' => $classId]);
+}
+
+function isStudentEnrolledInClass($userId, $classId)
+{
+    $sql = "SELECT * FROM classInfo WHERE userId = :userId AND classId = :classId";
+    $result = pdo_query_one($sql, [':userId' => $userId, ':classId' => $classId]);
+   
 }
 
 function addStudentToClass($userId, $classId)
@@ -58,12 +62,7 @@ function getAllUsers()
     $sql = "SELECT * FROM users";
     return pdo_query($sql);
 }
-
-
-
-
-
-
+function loadClassInfoBySClasses($classId){
     $sql = "SELECT classInfo.* FROM classinfo 
     INNER JOIN class ON classInfo.classId = class.Id
     WHERE class.classId = :classId ";

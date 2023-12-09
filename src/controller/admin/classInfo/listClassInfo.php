@@ -136,12 +136,10 @@ a:hover {
         <h1 class="h1-teachers">Giảng viên : 
             <?php 
             foreach ($listStudent as $teacher) : 
-                foreach ($listClass as $class) : 
                     if ($teacher['roleId'] == getDefaultRoleTeacher()) : 
                         echo $teacher['fullName']; 
                         echo '-' . ''  .$teacher ['studentCode'] ;
                     endif;
-                endforeach; 
             endforeach; 
             ?>
         </h1>
@@ -172,9 +170,9 @@ a:hover {
         <button onclick="changePage(-1)"><i class="fa-solid fa-angle-left"></i></button>
         <button onclick="changePage(1)"><i class="fa-solid fa-angle-right"></i></button>
     </div>
-    <div><a href="?act=qlMajor&action=point&id=<?= $class['id'] ?> ">Thêm điểm lớp </a></div>
-    <div><a href="?act=qlMajor&action=listStudent">Thêm sinh viên</a></div>
-    <div><a href="?act=qlMajor&action=listTeacher">Thêm giáo viên</a></div>
+    <div><a href="?act=qlMajor&action=point&id=<?= $classId ?> ">Thêm điểm lớp </a></div>
+    <div><a href="?act=qlMajor&action=listStudent&id=<?= $classId?>">Thêm sinh viên</a></div>
+    <div><a href="?act=qlMajor&action=listTeacher&id=<?= $classId?>">Thêm giáo viên</a></div>
 
     <script>
           var currentPage = 1;

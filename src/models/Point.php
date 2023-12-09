@@ -13,6 +13,7 @@ function updatePoint($id, $classId, $userId, $point)
 }
 function insertPoint($userId, $classId, $point)
 {
+    deletePointsForUserAndClass($userId, $classId);
     $sql = "INSERT INTO point (classId, userId, point) VALUES (:classId, :userId, :point)";
     pdo_execute($sql, [
         ':classId' => $classId,
@@ -43,6 +44,11 @@ function getPointByUsers ($classId){
     return pdo_query($query,[':classId' => $classId]);
     
 }
+function getAllPoints() {
+    $sql = "SELECT * FROM point ";
+    return pdo_query($sql);
+}
+
 
 function loadOnePoint($userId)
 {
@@ -70,4 +76,13 @@ function loadOnePoint($userId)
 
         return pdo_query_one($sql, [':userId' => $userId, ':classId' => $classId]);
     }
+}
+    
+function deletePointsForUserAndClass($userId, $classId)
+{
+    $sql = "DELETE FROM point WHERE userId = :userId AND classId = :classId";
+    pdo_execute($sql, [
+        ':userId' => $userId,
+        ':classId' => $classId,
+    ]);
 }

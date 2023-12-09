@@ -36,8 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         updateclass($id, $className, $classCode, $subjectId);
 
         // Chuyển hướng về trang danh sách môn học sau khi cập nhật
-        header("Location: list_class.php");
-        exit();
+        echo "Thành công"
     }
 }
 ?>
