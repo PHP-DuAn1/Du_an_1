@@ -6,17 +6,15 @@ session_start();
 $error = '';
 $checkuser = '';
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // ...
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
     $user = checkUser($email, $password);
-
-    if ($user && password_verify($password, $user['password'])) {
+    $checkStudent = getDefaultRoleStudent();
+    if ($checkStudent && $user) {
         // Lưu thông tin người dùng vào session
         $_SESSION['user'] = $user;
-
-        // Chuyển hướng tùy theo vai trò của người dùng
         if ($user['roleId'] == 1) {
             header('Location: ../index.php');
             exit();

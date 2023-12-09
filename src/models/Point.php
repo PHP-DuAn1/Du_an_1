@@ -37,12 +37,12 @@ function getPointByUser($subjectId)
     return pdo_query($query, [':subjectId' => $subjectId]);
 }
 
-function getPointByUsers ($classId){
+function getPointByUsers($classId)
+{
     $query = "SELECT* FROM point
 	LEFT JOIN users ON point.userId = users.id 
     WHERE point.classId = :classId ";
-    return pdo_query($query,[':classId' => $classId]);
-    
+    return pdo_query($query, [':classId' => $classId]);
 }
 function getAllPoints() {
     $sql = "SELECT * FROM point ";
@@ -67,15 +67,20 @@ function loadOnePoint($userId)
     $result = pdo_query($sql, [':user_id' => $userId]);
 
     return $result;  // Trả về mảng kết hợp chứa dữ liệu điểm
-
-    function getPointByUserIdAndClassId($userId, $classId)
-    {
-        $sql = "SELECT point.* FROM point
+}
+function getPointByUserIdAndClassId($userId, $classId)
+{
+    $sql = "SELECT point.* FROM point
             INNER JOIN classinfo ON point.userId = classinfo.userId AND point.classId = classinfo.classId
             WHERE point.userId = :userId AND point.classId = :classId";
 
-        return pdo_query_one($sql, [':userId' => $userId, ':classId' => $classId]);
-    }
+    return pdo_query_one($sql, [':userId' => $userId, ':classId' => $classId]);
+}
+
+function getPointByUserId($classId, $userId)
+{
+    $sql = "SELECT * FROM point WHERE classId = :classId AND userId = :userId";
+    return pdo_query_one($sql, [':classId' => $classId, ':userId' => $userId]);
 }
     
 function deletePointsForUserAndClass($userId, $classId)

@@ -36,10 +36,6 @@ $fullName = isset($_SESSION['user']['fullName']) ? $_SESSION['user']['fullName']
                     <a href="index.php?act=qlclass"><i class="fas fa-chalkboard-teacher"></i> Quản lí lớp học</a>
 
 
-                    <a href="index.php?act=teachingSchedule"><i class="far fa-calendar-alt"></i> Cho điểm</a>
-                    <a href="index.php?act=teachingSchedule"><i class="far fa-calendar-alt"></i> Lớp dậy</a>
-
-                   
 
                 </div>
             </div>

@@ -62,7 +62,12 @@ function getAllUsers()
     $sql = "SELECT * FROM users";
     return pdo_query($sql);
 }
-function loadClassInfoBySClasses($classId){
+
+
+
+function loadClassInfoBySClasses($classId)
+{
+
     $sql = "SELECT classInfo.* FROM classinfo 
     INNER JOIN class ON classInfo.classId = class.Id
     WHERE class.classId = :classId ";
@@ -94,13 +99,10 @@ function loadClassInfoByClasses($classId)
 }
 
 
-function getClassInfoByUsers ($classId){
+function getClassInfoByUsers($classId)
+{
     $query = "SELECT* FROM classinfo
 	LEFT JOIN users ON classinfo.userId = users.id 
     WHERE classinfo.classId = :classId ";
-    return pdo_query($query,[':classId' => $classId]);
-    
+    return pdo_query($query, [':classId' => $classId]);
 }
-?>
-
-
